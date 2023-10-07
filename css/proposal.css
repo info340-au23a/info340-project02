@@ -1,0 +1,20 @@
+body {
+    font-size:18px;
+    font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin:120px;
+    line-height:1.5;
+}
+
+h1{
+    border:8px;
+    text-align:center;
+}
+
+h2 {
+    border:4px;
+    text-align:center;
+}
+
+.question {
+    font-weight:bold;
+}
