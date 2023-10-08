@@ -16,5 +16,12 @@ h2 {
 }
 
 .question {
+    font-size:18px;
     font-weight:bold;
+}
+
+.authornames{
+    font-size:18px;
+    text-align: center;
+    line-height: 1;
 }
