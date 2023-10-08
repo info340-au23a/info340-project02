@@ -1,27 +1,32 @@
 body {
-    font-size:18px;
-    font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
-    margin:120px;
-    line-height:1.5;
+    font-size: 18px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 120px;
+    line-height: 1.5;
 }
 
-h1{
-    border:8px;
-    text-align:center;
+h1 {
+    border: 8px;
+    text-align: center;
 }
 
 h2 {
-    border:4px;
-    text-align:center;
+    border: 4px;
+    text-align: center;
 }
 
 .question {
-    font-size:18px;
-    font-weight:bold;
+    font-size: 18px;
+    font-weight: bold;
 }
 
-.authornames{
-    font-size:18px;
+.authornames {
+    font-size: 18px;
     text-align: center;
     line-height: 1;
+}
+
+.referencetitle {
+    font-size: 26px;
+    text-align: left;
 }
