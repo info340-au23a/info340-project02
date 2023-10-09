@@ -6,3 +6,4 @@ GROUP MEMBERS:
 - Munir Emam
 - Erica Ding
 - Junna Cao
+- Lewis Going
