@@ -6,13 +6,14 @@ body {
 }
 
 h1 {
-    border: 8px;
+    background-color: paleturquoise;
     text-align: center;
 }
 
 h2 {
-    border: 4px;
+    background-color: paleturquoise;
     text-align: center;
+
 }
 
 .question {
