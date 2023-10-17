@@ -3,3 +3,25 @@
     width: auto;
     margin-right: 25px;
 }
+
+* {
+    box-sizing: border-box;
+}
+
+h1{
+    position: relative;
+    text-align: center;
+    font-weight: 50px;
+}
+.question {
+    flex: 1;
+}
+.flex-words {
+    display: flex;
+}
+.flex-word {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    background-color: #DEF193;
+}
