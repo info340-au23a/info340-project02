@@ -1,11 +1,44 @@
-.navbar-logo img {
-    height: 50px;
-    width: auto;
-    margin-right: 25px;
-}
-
 * {
     box-sizing: border-box;
+}
+
+body {
+    align-items: center;
+    font-family: 'Inter';
+    color: #2D334A;
+}
+
+header {
+    outline-style: solid;
+    background-color: #def193;
+    border-radius: 10px;
+    padding: 0.5em;
+    padding-top: 0;
+    margin: 0;
+}
+
+nav {
+    width: 95%;
+    margin: auto;
+    min-height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav li {
+    display: inline-block;
+    padding: 10px;
+}
+
+.nav-branding {
+    font-size: large;
 }
 
 h1{
@@ -13,15 +46,33 @@ h1{
     text-align: center;
     font-weight: 50px;
 }
-.question {
-    flex: 1;
+
+.card {
+    background-color: white;
+    border: 2px solid #ccc;
+    margin: 50px 450px 50px 450px;
+    border-radius: 5px;
+    /* padding: 10px; */
+    text-align: center;
 }
-.flex-words {
-    display: flex;
+
+.answers{
+    margin: 6px;
+    text-align: center;
 }
-.flex-word {
-    margin: 5px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    background-color: #DEF193;
+
+.answers button {
+    background-color: #def193;
+    color: #2D334A;
+    margin: 10px;
+    padding: 20px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #FFD803;
+    color: #2D334A
 }
