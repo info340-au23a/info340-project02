@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter';
+}
+
+header {
+    outline-style: solid;
+    background-color: #def193;
+    border-radius: 10px;
+    padding: 0.5em;
+}
+
+nav {
+    width: 95%;
+    margin: auto;
+    min-height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav li {
+    display: inline-block;
+    padding: 10px;
+}
+
+.nav-branding {
+    font-size: large;
+}
+
+main {
+    text-align: center;
+}
+
+.card {
+    display: block;
+    margin: 2rem 30% 2rem 30%;
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 10px;
+     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(135, 135, 135, 0.23);
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    font-size: xx-large;
+}
+
+.speech-type, .object-type {
+    padding: 16px;
+    background-color: pink;
+    border-radius: 10px;
+    padding: 6px;
+    margin: 6px;
+}
+
+main button {
+    background-color: #def193;
+    padding: 10px;
+    margin: 1em;
+    border-radius: 10px;
+}
