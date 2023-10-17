@@ -9,10 +9,10 @@ body {
 header {
     outline-style: solid;
     background-color: #def193;
-    border-radius: 10px;
-    padding: 0.5em;
-    padding-top: 0;
-    margin: 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 1em;
+    margin: -0.4em;
 }
 
 nav {
@@ -41,6 +41,7 @@ nav li {
 
 main {
     text-align: center;
+    padding-top: 2em;
 }
 
 .card {
