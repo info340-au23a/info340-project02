@@ -21,6 +21,11 @@ header {
     margin: -0.4em;
 }
 
+nav a {
+    text-decoration: none;
+    color: black;
+}
+
 nav {
     width: 95%;
     margin: auto;
@@ -39,8 +44,6 @@ nav ul {
 nav li {
     display: inline-block;
     padding: 10px;
-}
-
-.nav-branding {
-    font-size: large;
+    text-decoration: none;
+    color: black;
 }
