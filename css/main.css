@@ -54,10 +54,16 @@ nav li {
     font-size: large;
 }
 
-h1{
+h1 {
     position: relative;
     text-align: center;
     font-weight: 50px;
+}
+
+.card-deck {
+    flex: 0 0 300px;
+    justify-content: center;
+    display: flex;
 }
 
 .card {
@@ -68,7 +74,7 @@ h1{
     text-align: center;
 }
 
-.answers{
+.answers {
     margin: 6px;
     text-align: center;
 }
@@ -87,4 +93,25 @@ h1{
 button:hover {
     background-color: #FFD803;
     color: #2D334A
+}
+
+img {
+    width: 200px;
+    height: 150px;
+    margin: .5rem;
+    border-radius: 50px;
+}
+
+.card img {
+    border-radius: 50px;
+}
+
+div h3 {
+    text-align: center;
+    margin: auto;
+}
+
+.material-icons {
+    position: relative;
+    top: 5px;
 }
