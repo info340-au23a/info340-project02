@@ -10,6 +10,8 @@
 
 body {
     font-family: 'Inter';
+    align-items: center;
+    color: #2D334A;
 }
 
 header {
