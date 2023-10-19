@@ -47,3 +47,32 @@ nav li {
     text-decoration: none;
     color: black;
 }
+
+main {
+    text-align: center;
+    padding-top: 2em;
+}
+
+.card {
+    display: block;
+    margin: 2rem 30% 2rem 30%;
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 10px;
+     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(135, 135, 135, 0.23);
+}
+
+.speech-type, .object-type {
+    padding: 16px;
+    background-color: pink;
+    border-radius: 10px;
+    padding: 6px;
+    margin: 6px;
+}
+
+main button {
+    background-color: #def193;
+    padding: 10px;
+    margin: 1em;
+    border-radius: 10px;
+}
