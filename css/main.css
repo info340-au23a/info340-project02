@@ -1,11 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+
 .navbar-logo img {
     height: 50px;
     width: auto;
     margin-right: 25px;
-}
-
-* {
-    box-sizing: border-box;
 }
 
 body {
@@ -50,6 +50,11 @@ nav li {
     color: black;
 }
 
+nav li:hover {
+    background-color: #c6d885;
+    border-radius: 5px;
+}
+
 main {
     text-align: center;
     font-weight: 50px;
@@ -61,6 +66,11 @@ main {
     margin: 50px 450px 50px 450px;
     border-radius: 5px;
     text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
 }
 
 .speech-type, .object-type {
@@ -85,4 +95,66 @@ main button {
 button:hover {
     background-color: #FFD803;
     color: #2D334A
+}
+
+/* Lewis's CSS */
+
+.welcome {
+    padding-top: 2em;
+    text-align: center;
+}
+
+.welcome h1 {
+    font-size: 2rem;
+    font-weight: 100;
+}
+
+.welcome h1 img {
+    display: inline-block;
+    vertical-align: middle;
+    width: auto;
+    height: 2em;
+    margin-left: .2em;
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 3em;
+    max-width: 1000px;
+    margin: auto;
+    width: 100%;
+}
+
+.card-container .card {
+    flex: 1;
+    margin: 1em;
+    padding: 1.5em;
+    background: linear-gradient(to bottom, #f0f0f0 0%, #d4d4d4 100%);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-container .card img {
+    max-height: 10em;
+    object-fit: cover;
+}
+
+.card-container .card p {
+    font-size: 1.2rem;
+    font-weight: 100;
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block
+}
+
+.card-link:hover {
+    text-decoration: underline;
+}
+
+.about {
+    padding-top: 50px;
+    text-align: left;
 }
