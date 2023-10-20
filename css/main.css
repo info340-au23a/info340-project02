@@ -97,8 +97,8 @@ button:hover {
     color: #2D334A
 }
 
-/* Lewis's CSS */
 
+/* Lewis's CSS */
 .welcome {
     padding-top: 2em;
     text-align: center;
@@ -157,4 +157,55 @@ button:hover {
 .about {
     padding-top: 50px;
     text-align: left;
+}
+
+/* Media Quieries */
+
+/* Tablets */
+@media screen and (max-width: 1024px) {
+    .card {
+        margin: 50px 100px;
+    }
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav li {
+        padding: 5px 0;
+    }
+
+    .card-container {
+        flex-direction: column;
+        padding: 0 1em;
+    }
+
+    .card-container .card {
+        margin: 20px 0;
+    }
+
+    .card {
+        margin: 20px 20px;
+    }
+}
+
+/* Mobile - Small */
+@media screen and (max-width: 480px) {
+    nav {
+        flex-direction: column;
+    }
+
+    .navbar-logo img {
+        height: 40px;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .card {
+        margin: 20px 10px;
+    }
 }
