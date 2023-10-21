@@ -126,11 +126,12 @@ button:hover {
 }
 
 #list {
-    margin: 0;
+    position: relative;
+    left: -50%;
 }
 
 #tags {
-    align-items: right;
+    position: relative;
 }
 
 /* Lewis's CSS */
