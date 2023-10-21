@@ -107,6 +107,61 @@ button:hover {
     color: #2D334A
 }
 
+/* Quiz CSS */
+main {
+    text-align: center;
+    font-weight: 50px;
+    margin-top: 10em;
+}
+
+h1{
+    position: relative;
+    text-align: center;
+    font-weight: 50px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.quiz-container {
+    display: flex;
+    align-items: center;
+}
+
+.quiz-card {
+    background-color: white;
+    border: 2px solid #ccc;
+    margin: 50px auto;
+    padding: 60px;
+    border-radius: 5px;
+    max-width: 400px;
+    min-width: 200px;
+    text-align: center;
+
+}
+
+.quiz-next {
+    margin-left: 5px;
+}
+
+.quiz-submit{
+    margin: 6px;
+    text-align: center;
+}
+
+.quiz button {
+    background-color: #def193;
+    color: #2D334A;
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+}
+
 /* list builder CSS */
 
 .input-bar {
