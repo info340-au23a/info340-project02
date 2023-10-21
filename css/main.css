@@ -77,6 +77,12 @@ main {
     transform: scale(1.05);
 }
 
+.card a {
+    text-decoration: none;
+    font-size: x-large;
+    color: black;
+}
+
 .speech-type, .object-type {
     padding: 16px;
     background-color: pink;
@@ -101,6 +107,22 @@ button:hover {
     color: #2D334A
 }
 
+/* list builder CSS */
+
+.search-bar {
+    background-color: #def193;
+    border-radius: 10px;
+    width: 20%;
+    margin: 0 auto;
+}
+
+.search-bar input[type=text] {
+    background-color: #def193;
+    border: none;
+    height: 2em;
+    width: 80%;
+    font-size: large;
+}
 
 /* Lewis's CSS */
 .welcome {
