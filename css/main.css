@@ -2,16 +2,16 @@
     box-sizing: border-box;
 }
 
-.navbar-logo img {
-    height: 50px;
-    width: auto;
-    margin-right: 25px;
-}
-
 body {
     font-family: 'Inter';
     align-items: center;
     color: #2D334A;
+}
+
+.navbar-logo img {
+    height: 50px;
+    width: auto;
+    margin-right: 25px;
 }
 
 header {
@@ -34,7 +34,7 @@ nav a {
 nav {
     width: 95%;
     margin: auto;
-    min-height: 70px;
+    min-height: 2.5em;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -185,12 +185,42 @@ button:hover {
     text-align: left;
 }
 
-/* Media Quieries */
+/* Search CSS */
+
+.card-deck {
+    flex:0 0 300px;
+    justify-content:center;
+    display:flex;
+}
+
+.card-deck .card {
+    display:flex;
+    size:0 20 200px;
+    flex:0 0 300px;
+    background-color:rgba(127, 255, 180, 0.236);
+    margin:1.5rem;
+    border-radius:50px;
+    box-shadow:0 1px 3px rgba(0,0,0,0.16), 0 1px 3px rgba(0,0,0,0.23);
+}   
+
+.card-deck .card img {
+    width:200px;
+    height:150px;
+    margin:.5rem;
+    border-radius:50px;
+}   
+
+/* Media Queries */
 
 /* Tablets */
 @media screen and (max-width: 1024px) {
     .card {
         margin: 50px 100px;
+    }
+
+    .card-deck .card {
+        flex: 0 0 auto;
+        margin: 20px 50px;
     }
 }
 
@@ -205,17 +235,25 @@ button:hover {
         padding: 5px 0;
     }
 
-    .card-container {
+    .card-container, .card-deck {
         flex-direction: column;
         padding: 0 1em;
     }
 
-    .card-container .card {
+    .card-container .card, .card-deck .card {
         margin: 20px 0;
+        flex: 1;
+        width: 100%;
     }
 
     .card {
         margin: 20px 20px;
+    }
+
+    .card-deck .card img {
+        width: 100%;
+        height: auto;
+        margin: 1rem 0;
     }
 }
 
@@ -235,7 +273,14 @@ button:hover {
         margin: 20px 10px;
     }
 
-    body {
-        align-items: center;
+    .card-deck .card {
+        flex: 1;
+        width: 100%;
+    }
+
+    .card-deck .card img {
+        width: 150px;
+        height: auto;
+        margin: 0.5rem 0;
     }
 }
