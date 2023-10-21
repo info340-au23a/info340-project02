@@ -181,12 +181,11 @@ h2 {
 }
 
 #list {
-    position: relative;
-    left: -50%;
+    justify-content: left;
 }
 
 #tags {
-    position: relative;
+    justify-content: right;
 }
 
 /* Lewis's CSS */
