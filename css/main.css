@@ -2,19 +2,33 @@
     box-sizing: border-box;
 }
 
+.navbar-logo img {
+    height: 50px;
+    width: auto;
+    margin-right: 25px;
+}
+
 body {
-    align-items: center;
     font-family: 'Inter';
+    align-items: center;
     color: #2D334A;
 }
 
 header {
-    outline-style: solid;
     background-color: #def193;
-    border-radius: 10px;
-    padding: 0.5em;
-    padding-top: 0;
-    margin: 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 1em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
 }
 
 nav {
@@ -35,10 +49,19 @@ nav ul {
 nav li {
     display: inline-block;
     padding: 10px;
+    text-decoration: none;
+    color: black;
 }
 
-.nav-branding {
-    font-size: large;
+nav li:hover {
+    background-color: #c6d885;
+    border-radius: 5px;
+}
+
+main {
+    text-align: center;
+    font-weight: 50px;
+    margin-top: 10em;
 }
 
 h1{
@@ -47,29 +70,46 @@ h1{
     font-weight: 50px;
 }
 
-.card {
-    background-color: white;
-    border: 2px solid #ccc;
-    margin: 50px 450px 50px 450px;
-    border-radius: 5px;
-    /* padding: 10px; */
+h2 {
     text-align: center;
 }
 
-.answers{
+/* .container {
+    display: flex;
+    align-items: center;
+} */
+
+.card {
+    background-color: white;
+    border: 2px solid #ccc;
+    margin: 50px auto;
+    padding: 60px;
+    border-radius: 5px;
+    max-width: 400px;
+    min-width: 200px;
+    text-align: center;
+
+}
+
+.next {
+    margin-left: 5px;
+}
+
+.submit{
     margin: 6px;
     text-align: center;
 }
 
-.answers button {
+button {
     background-color: #def193;
     color: #2D334A;
-    margin: 10px;
-    padding: 20px 20px;
+    margin: 5px;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
 }
 
 button:hover {
