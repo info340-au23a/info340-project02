@@ -39,7 +39,7 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
 }
 
 nav a {
@@ -74,6 +74,39 @@ nav li:hover {
     border-radius: 5px;
 }
 
+main {
+    text-align: center;
+    font-weight: 50px;
+    margin-top: 10em;
+}
+
+.card {
+    background-color: white;
+    border: 2px solid #ccc;
+    margin: 50px 450px 50px 450px;
+    border-radius: 5px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card a {
+    text-decoration: none;
+    font-size: x-large;
+    color: black;
+}
+
+.speech-type, .object-type {
+    padding: 16px;
+    background-color: pink;
+    border-radius: 10px;
+    padding: 6px;
+    margin: 6px;
+}
+
 main button {
     background-color: #def193;
     color: #2D334A;
@@ -91,6 +124,21 @@ button:hover {
 }
 
 /* Quiz CSS */
+main {
+    text-align: center;
+    font-weight: 50px;
+    margin-top: 10em;
+}
+
+h1{
+    position: relative;
+    text-align: center;
+    font-weight: 50px;
+}
+
+h2 {
+    text-align: center;
+}
 
 .quiz-container {
     display: flex;
@@ -113,7 +161,7 @@ button:hover {
     margin-left: 5px;
 }
 
-.quiz-submit{
+.quiz-submit {
     margin: 6px;
     text-align: center;
 }
@@ -127,7 +175,7 @@ button:hover {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
 }
 
 /* List Builder CSS */
@@ -234,27 +282,66 @@ button:hover {
 /* Search CSS */
 
 .card-deck {
-    flex:0 0 300px;
-    justify-content:center;
-    display:flex;
+    flex: 0 0 300px;
+    justify-content: center;
+    display: flex;
 }
 
 .card-deck .card {
-    display:flex;
-    size:0 20 200px;
-    flex:0 0 300px;
-    background-color:rgba(127, 255, 180, 0.236);
-    margin:1.5rem;
-    border-radius:50px;
-    box-shadow:0 1px 3px rgba(0,0,0,0.16), 0 1px 3px rgba(0,0,0,0.23);
-}   
+    display: flex;
+    size: 0 20 200px;
+    flex: 0 0 300px;
+    background-color: rgba(127, 255, 180, 0.236);
+    margin: 1.5rem;
+    border-radius: 50px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
+}
 
 .card-deck .card img {
-    width:200px;
-    height:150px;
-    margin:.5rem;
-    border-radius:50px;
-}   
+    width: 200px;
+    height: 150px;
+    margin: .5rem;
+    border-radius: 50px;
+}
+
+.topnav-search {
+    text-align: center;
+    top: 25px;
+    width: 100%;
+    margin-top: 5%;
+}
+
+.sidebar {
+    font-size: 16px;
+    margin-right: 70%;
+    margin-left: 1px;
+    width: 20%;
+    height: 30%;
+}
+
+.filter-box {
+    background-color: #def1936c;
+    border: 1px solid #d9ec89;
+    padding-left: 10px;
+    margin-left: 10px;
+    margin-top: 0%;
+    border-radius: 10%;
+}
+
+.filter-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.filter-box input {
+    display: block;
+    width: 200px;
+    padding-right: 1px;
+}
+
+
 
 /* Media Queries */
 
@@ -281,12 +368,14 @@ button:hover {
         padding: 5px 0;
     }
 
-    .card-container, .card-deck {
+    .card-container,
+    .card-deck {
         flex-direction: column;
         padding: 0 1em;
     }
 
-    .card-container .card, .card-deck .card {
+    .card-container .card,
+    .card-deck .card {
         margin: 20px 0;
         flex: 1;
         width: 100%;
