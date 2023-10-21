@@ -74,10 +74,10 @@ h2 {
     text-align: center;
 }
 
-/* .container {
+.container {
     display: flex;
     align-items: center;
-} */
+}
 
 .card {
     background-color: white;
