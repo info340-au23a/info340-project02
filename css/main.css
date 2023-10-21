@@ -234,4 +234,8 @@ button:hover {
     .card {
         margin: 20px 10px;
     }
+
+    body {
+        align-items: center;
+    }
 }
