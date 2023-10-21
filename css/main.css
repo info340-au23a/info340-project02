@@ -109,19 +109,28 @@ button:hover {
 
 /* list builder CSS */
 
-.search-bar {
+.input-bar {
     background-color: #def193;
     border-radius: 10px;
     width: 20%;
     margin: 0 auto;
+    margin-bottom: 1em;
 }
 
-.search-bar input[type=text] {
+.input-bar input[type=text] {
     background-color: #def193;
     border: none;
     height: 2em;
     width: 80%;
     font-size: large;
+}
+
+#list {
+    margin: 0;
+}
+
+#tags {
+    align-items: right;
 }
 
 /* Lewis's CSS */

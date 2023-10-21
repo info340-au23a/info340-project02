@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="Author" content="name" />
-    <meta name="Flip card" content="Flip cards for younger ages" />
+    <meta name="Word List builder" content="A word lis builder than can be uploaded" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+    <link rel="stylesheet" href="../css/main.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="../css/main.css" />
     <title>List Builder</title>
   </head>
   <body>
@@ -25,12 +25,25 @@
       </header>
       
       <main>
-        <div class="container">
-            <div class="search-bar">
-                <span class="material-icons" aria-label="Search">search</span>
-                <input name="search" type="text" placeholder="Search..">
-            </div>
+
+        <div class="input-bar">
+            <input type="text" placeholder="List Title">
         </div>
+
+            <div class="input-bar">
+                <span class="material-icons" aria-label="search">
+                    <input type="text" placeholder="search"></span>
+            </div>
+
+            <div class="container">
+                <div class="list">
+                    <h3>Current List Words</h3>
+                </div>
+                <div class="tags">
+                    <h3>Current Tags</h3>
+                </div>
+            </div>
+
       </main>
 
   </body>
