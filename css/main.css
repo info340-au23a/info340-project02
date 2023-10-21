@@ -74,12 +74,12 @@ h2 {
     text-align: center;
 }
 
-.container {
+.quiz-container {
     display: flex;
     align-items: center;
 }
 
-.card {
+.quiz-card {
     background-color: white;
     border: 2px solid #ccc;
     margin: 50px auto;
@@ -91,16 +91,16 @@ h2 {
 
 }
 
-.next {
+.quiz-next {
     margin-left: 5px;
 }
 
-.submit{
+.quiz-submit{
     margin: 6px;
     text-align: center;
 }
 
-button {
+.quiz button {
     background-color: #def193;
     color: #2D334A;
     margin: 5px;
