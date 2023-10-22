@@ -2,8 +2,24 @@
     box-sizing: border-box;
 }
 
+main {
+    text-align: center;
+    font-weight: 50px;
+    margin-top: 10em;
+}
+
+h1{
+    position: relative;
+    text-align: center;
+    font-weight: 50px;
+}
+
+h2 {
+    text-align: center;
+}
+
 body {
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     align-items: center;
     color: #2D334A;
 }
@@ -83,8 +99,7 @@ main {
     color: black;
 }
 
-.speech-type,
-.object-type {
+.speech-type, .object-type {
     padding: 16px;
     background-color: pink;
     border-radius: 10px;
@@ -115,7 +130,7 @@ main {
     margin-top: 10em;
 }
 
-h1 {
+h1{
     position: relative;
     text-align: center;
     font-weight: 50px;
@@ -163,7 +178,15 @@ h2 {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
 }
 
-/* list builder CSS */
+/* List Builder CSS */
+
+.speech-type, .object-type {
+    padding: 16px;
+    background-color: pink;
+    border-radius: 10px;
+    padding: 6px;
+    margin: 6px;
+}
 
 .input-bar {
     background-color: #def193;
@@ -255,6 +278,21 @@ h2 {
     padding: 1.5em;
     background: linear-gradient(to bottom, #f0f0f0 0%, #d4d4d4 100%);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.card-container .card:hover {
+    transform: scale(1.05);
+}
+
+.card-container .card a {
+    text-decoration: none;
+    font-size: x-large;
+    color: black;
 }
 
 .card-container .card img {
