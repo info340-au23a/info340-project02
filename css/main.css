@@ -92,7 +92,7 @@ main {
     margin: 6px;
 }
 
-main button {
+button {
     background-color: #def193;
     color: #2D334A;
     margin: 10px;
@@ -181,13 +181,45 @@ h2 {
     font-size: large;
 }
 
-#list {
-    justify-content: left;
-}
+.container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .list {
+    flex: 1;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: #def193;
+    padding-bottom: 15em;
+    padding-top: 1em;
+    border-radius: 10px;
+    text-align: center;
+  }
 
-#tags {
-    justify-content: right;
-}
+  
+  .tags {
+    flex: 1;
+    margin-left: 10%;
+    margin-right: 5%;
+    background-color: #def193;
+    width: 20%;
+    padding-bottom: 15em;
+    padding-top: 1em;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .word-buttons {
+    margin-top: 5em;
+    margin-left: 5%;
+  }
+
+  .tag-highlight {
+    background-color: orange;
+    border-radius: 15em;
+  }
+
 
 /* Lewis's CSS */
 .welcome {
