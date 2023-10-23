@@ -8,7 +8,7 @@ main {
     margin-top: 10em;
 }
 
-h1{
+h1 {
     position: relative;
     text-align: center;
     font-weight: 50px;
@@ -93,7 +93,8 @@ nav li:hover {
     color: black;
 }
 
-.speech-type, .object-type {
+.speech-type,
+.object-type {
     padding: 16px;
     background-color: pink;
     border-radius: 10px;
@@ -112,7 +113,8 @@ button {
     font-size: 16px;
 }
 
-button:hover, .quiz button:hover {
+button:hover,
+.quiz button:hover {
     background-color: #FFD803;
     color: #2D334A
 }
@@ -154,7 +156,8 @@ button:hover, .quiz button:hover {
 
 /* List Builder CSS */
 
-.speech-type, .object-type {
+.speech-type,
+.object-type {
     background-color: pink;
     border-radius: 10px;
     padding: 6px;
@@ -180,9 +183,9 @@ button:hover, .quiz button:hover {
 .container {
     display: flex;
     justify-content: space-between;
-  }
-  
-  .list {
+}
+
+.list {
     flex: 1;
     margin-left: 5%;
     margin-right: 5%;
@@ -191,9 +194,9 @@ button:hover, .quiz button:hover {
     padding-top: 1em;
     border-radius: 10px;
     text-align: center;
-  }
-  
-  .tags {
+}
+
+.tags {
     flex: 1;
     margin-left: 10%;
     margin-right: 5%;
@@ -203,17 +206,17 @@ button:hover, .quiz button:hover {
     padding-top: 1em;
     border-radius: 10px;
     text-align: center;
-  }
+}
 
-  .word-buttons {
+.word-buttons {
     margin-top: 5em;
     margin-left: 5%;
-  }
+}
 
-  .tag-highlight {
+.tag-highlight {
     background-color: orange;
     border-radius: 15em;
-  }
+}
 
 
 /* Lewis's CSS */
@@ -411,7 +414,7 @@ button:hover, .quiz button:hover {
 @media screen and (max-width: 480px) {
 
     nav {
-        justify-content:space-around; 
+        justify-content: space-around;
         align-items: center;
     }
 
@@ -420,7 +423,7 @@ button:hover, .quiz button:hover {
         margin-right: 0;
         margin-bottom: 10px;
     }
-    
+
     main {
         margin-top: 16em;
     }
@@ -428,7 +431,7 @@ button:hover, .quiz button:hover {
     .card {
         margin: 20px 10px;
     }
-    
+
     .card-container {
         padding: 0;
     }
@@ -448,7 +451,8 @@ button:hover, .quiz button:hover {
         width: 40%;
     }
 
-    .list p, .tags p {
+    .list p,
+    .tags p {
         padding: 5px;
     }
 }
