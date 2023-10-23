@@ -74,6 +74,16 @@ nav li:hover {
     border-radius: 5px;
 }
 
+h1{
+    position: relative;
+    text-align: center;
+    font-weight: 50px;
+}
+
+h2 {
+    text-align: center;
+}
+
 main {
     text-align: center;
     font-weight: 50px;
@@ -118,47 +128,27 @@ button {
     font-size: 16px;
 }
 
-button:hover {
+button:hover, .quiz button:hover {
     background-color: #FFD803;
     color: #2D334A
 }
 
 /* Quiz CSS */
-main {
-    text-align: center;
-    font-weight: 50px;
-    margin-top: 10em;
-}
-
-h1{
-    position: relative;
-    text-align: center;
-    font-weight: 50px;
-}
-
-h2 {
-    text-align: center;
-}
-
 .quiz-container {
     display: flex;
     align-items: center;
 }
 
 .quiz-card {
+    text-align: center;
     background-color: white;
     border: 2px solid #ccc;
     margin: 50px auto;
-    padding: 60px;
+    padding: 80px;
     border-radius: 5px;
     max-width: 400px;
     min-width: 200px;
-    text-align: center;
 
-}
-
-.quiz-next {
-    margin-left: 5px;
 }
 
 .quiz-submit {
@@ -219,7 +209,6 @@ h2 {
     border-radius: 10px;
     text-align: center;
   }
-
   
   .tags {
     flex: 1;
