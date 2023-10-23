@@ -156,8 +156,7 @@ button:hover,
 
 /* List Builder CSS */
 
-.speech-type,
-.object-type {
+.speech-type, .object-type {
     background-color: pink;
     border-radius: 10px;
     padding: 6px;
@@ -182,11 +181,10 @@ button:hover,
 
 .container {
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-}
-
-.list {
+  }
+  
+  .list {
     flex: 1;
     margin-left: 5%;
     margin-right: 5%;
@@ -195,9 +193,9 @@ button:hover,
     padding-top: 1em;
     border-radius: 10px;
     text-align: center;
-}
-
-.tags {
+  }
+  
+  .tags {
     flex: 1;
     margin-left: 10%;
     margin-right: 5%;
@@ -207,17 +205,17 @@ button:hover,
     padding-top: 1em;
     border-radius: 10px;
     text-align: center;
-}
+  }
 
-.word-buttons {
+  .word-buttons {
     margin-top: 5em;
     margin-left: 5%;
-}
+  }
 
-.tag-highlight {
+  .tag-highlight {
     background-color: orange;
     border-radius: 15em;
-}
+  }
 
 
 /* Lewis's CSS */
