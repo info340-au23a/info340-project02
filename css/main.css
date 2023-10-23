@@ -8,7 +8,6 @@ main {
 }
 
 h1 {
-  position: relative;
   text-align: center;
 }
 
@@ -46,7 +45,6 @@ nav a {
 }
 
 nav {
-  width: 95%;
   margin: auto;
   min-height: 2.5em;
   display: flex;
