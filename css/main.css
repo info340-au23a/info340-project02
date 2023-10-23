@@ -118,10 +118,6 @@ button:hover,
 }
 
 /* Quiz CSS */
-.quiz-container {
-    display: flex;
-    align-items: center;
-}
 
 .quiz-card {
     text-align: center;
