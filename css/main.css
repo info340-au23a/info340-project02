@@ -125,6 +125,13 @@ button:hover,
 
 /* Quiz CSS */
 
+#word-input {
+  border: none;
+  border-bottom: 2px solid #000; 
+  font-size: 24px;
+  width: 100px; 
+}
+
 .quiz-card {
   text-align: center;
   background-color: white;
