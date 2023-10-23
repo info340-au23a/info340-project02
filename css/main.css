@@ -153,6 +153,11 @@ button:hover,
   margin: 6px;
 }
 
+.top-nav {
+      display: flex;
+  align-items: center;
+}
+
 .input-bar {
   background-color: #def193;
   border-radius: 10px;
@@ -327,6 +332,10 @@ button:hover,
   margin-top: 5%;
 }
 
+.top-nav {
+    align-items: center;
+}
+
 .sidebar {
   font-size: 16px;
   margin-right: 70%;
@@ -467,7 +476,7 @@ footer .about {
   }
 
   .sidebar {
-    width: 100%;
+    width: 80%;
     padding-left: 0;
     margin-left: 0;
   }
