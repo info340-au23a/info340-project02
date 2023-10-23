@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Feature: Search/Filter</title>
+    <title>Search - Spelling Adventures</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <link rel="icon" href="../img/quiz.ico" type="image/x-icon">
     <!-- include required fonts -->
@@ -30,21 +30,23 @@
     <main>
         <div>
             <section>
-                <h2>Starts the adventures from:</h2>
+                <h2>Start your adventures from:</h2>
                 <div class="topnav">
                     <form>
                         <div class="input-bar">
-                            <span class="material-icons" aria-label="search"><input type="text" placeholder="search"></span>
+                            <span class="material-icons search-icon" aria-hidden="true">search</span>
+                            <input type="text" placeholder="Search" aria-label="search">
                         </div>
                     </form>
                     <div class="sidebar">
                         <div class="filter-box">
-                            <form><span class="material-icons" aria-label="filter_alt"><input type="text" placeholder="filter_alt"></span></form>
-                            <div class="filter-content">
-                                <a href="#Animal">Animal</a>
-                                <a href="#Fruit">Fruit</a>
-                                <a href="#Vegetable">Vegetable</a>
-                            </div>
+                            <span class="material-icons filter-icon" aria-hidden="true">filter_alt</span>
+                            <form><input type="text" placeholder="Filter" aria-label="filter"></form>
+                        </div>
+                        <div class="filter-content">
+                            <a href="#Animal">Animal</a>
+                            <a href="#Fruit">Fruit</a>
+                            <a href="#Vegetable">Vegetable</a>
                         </div>
                     </div>
                     <div class="card-deck">
