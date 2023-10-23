@@ -75,7 +75,7 @@ nav li:hover {
 .card {
     background-color: white;
     border: 2px solid #ccc;
-    margin: 50px 450px 50px 450px;
+    margin: auto 30%;
     border-radius: 5px;
     text-align: center;
     transition: transform 0.3s ease;
