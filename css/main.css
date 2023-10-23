@@ -4,14 +4,12 @@
 
 main {
     text-align: center;
-    font-weight: 50px;
     margin-top: 10em;
 }
 
 h1 {
     position: relative;
     text-align: center;
-    font-weight: 50px;
 }
 
 h2 {
@@ -181,6 +179,7 @@ button:hover,
 
 .container {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
   }
   
@@ -304,7 +303,7 @@ button:hover,
 
 .card-deck .card {
     display: flex;
-    size: 0 20 200px;
+    resize: 0 20 200px;
     flex: 0 0 300px;
     background-color: rgba(127, 255, 180, 0.236);
     margin: 1.5rem;
