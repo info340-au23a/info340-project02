@@ -396,6 +396,16 @@ h2 {
         flex: 0 0 auto;
         margin: 20px 50px;
     }
+
+    .filter-box {
+        background-color: #def1936c;
+        border: 1px solid #d9ec89;
+        padding: 10px;
+        width: 16em;
+        margin-left: 10px;
+        margin-top: 0%;
+        border-radius: 10%;
+        }
 }
 
 /* Mobile */
@@ -435,6 +445,16 @@ h2 {
         height: auto;
         margin: 1rem 0;
     }
+
+    .filter-box {
+        background-color: #def1936c;
+        border: 1px solid #d9ec89;
+        padding: 10px;
+        width: 16em;
+        margin-left: 10px;
+        margin-top: 0%;
+        border-radius: 10%;
+        }
 }
 
 /* Mobile - Small */
@@ -480,5 +500,14 @@ h2 {
 
     .list p, .tags p {
         padding: 5px;
+    }
+    .filter-box {
+    background-color: #def1936c;
+    border: 1px solid #d9ec89;
+    padding: 10px;
+    width: 16em;
+    margin-left: 10px;
+    margin-top: 0%;
+    border-radius: 10%;
     }
 }
