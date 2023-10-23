@@ -409,6 +409,10 @@ h2 {
         padding: 5px 0;
     }
 
+    main {
+        margin-top: 20em;
+    }
+
     .card-container,
     .card-deck {
         flex-direction: column;
@@ -435,8 +439,10 @@ h2 {
 
 /* Mobile - Small */
 @media screen and (max-width: 480px) {
+
     nav {
-        flex-direction: column;
+        justify-content:space-around; 
+        align-items: center;
     }
 
     .navbar-logo img {
@@ -444,9 +450,17 @@ h2 {
         margin-right: 0;
         margin-bottom: 10px;
     }
+    
+    main {
+        margin-top: 16em;
+    }
 
     .card {
         margin: 20px 10px;
+    }
+    
+    .card-container {
+        padding: 0;
     }
 
     .card-deck .card {
@@ -458,5 +472,13 @@ h2 {
         width: 150px;
         height: auto;
         margin: 0.5rem 0;
+    }
+
+    .input-bar {
+        width: 40%;
+    }
+
+    .list p, .tags p {
+        padding: 5px;
     }
 }
