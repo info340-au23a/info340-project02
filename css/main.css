@@ -74,22 +74,6 @@ nav li:hover {
     border-radius: 5px;
 }
 
-h1{
-    position: relative;
-    text-align: center;
-    font-weight: 50px;
-}
-
-h2 {
-    text-align: center;
-}
-
-main {
-    text-align: center;
-    font-weight: 50px;
-    margin-top: 10em;
-}
-
 .card {
     background-color: white;
     border: 2px solid #ccc;
@@ -171,7 +155,6 @@ button:hover, .quiz button:hover {
 /* List Builder CSS */
 
 .speech-type, .object-type {
-    padding: 16px;
     background-color: pink;
     border-radius: 10px;
     padding: 6px;
@@ -370,8 +353,6 @@ button:hover, .quiz button:hover {
     width: 200px;
     padding-right: 1px;
 }
-
-
 
 /* Media Queries */
 
