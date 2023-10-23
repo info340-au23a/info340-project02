@@ -363,6 +363,16 @@ button:hover,
     text-decoration: none;
     color: black;
 }
+
+footer .cite {
+    font-size: 8px;
+    padding-bottom: 0px;
+    padding-left: .5rem;
+}
+
+footer .about {
+    padding-top: 0px;
+}
 /* Media Queries */
 
 /* Tablets */
