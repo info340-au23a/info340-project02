@@ -25,23 +25,28 @@
       </nav>
     </header>
 
-    <main>
-      <div class="quiz">
-        <h1>Word Quiz!</h1>
-          <div class="quiz-card">
-            <h2 style='font-size:24px' class='fas'>&#xf028;  <input type="text" id="word-input" placeholder="_ _ _ _ _" maxlength="5"></h2>
-          </div>
+<main>
+  <div class="quiz">
+    <h1>Word Quiz!</h1>
+    <div class="quiz-card">
+      <h2 style='font-size:24px'>
+        <label for="word-input">
+          <button id="sound-button" class="fas" aria-label="Play Sound">&#xf028;</button>
+        </label>
+        <input type="text" id="word-input" placeholder="_ _ _ _ _" maxlength="5" aria-label="sound-button">
+      </h2>
+    </div>
 
-        <div class="quiz-submit">
-          <button>Submit</button>
-        </div>
-        
-        <div class="quiz-next">
-          <button>&#8592;</button>
-          <button>&#8594;</button>
-        </div>
-      </div>
-    </main>
+    <div class="quiz-submit">
+      <button>Submit</button>
+    </div>
+    
+    <div class="quiz-next">
+      <button>&#8592;</button>
+      <button>&#8594;</button>
+    </div>
+  </div>
+</main>
 
     <footer>
       <div class="about">

@@ -31,12 +31,12 @@
   <main>
     <h1>Word List Builder</h1>
     <div class="input-bar">
-      <input type="text" placeholder="List Title">
+      <label for="list-title"><input type="text" id="list-title" placeholder="List Title"></label>
     </div>
 
     <div class="input-bar">
-      <span class="material-icons" aria-label="search">
-        <input type="text" placeholder="search"></span>
+      <label for="search-word"><span class="material-icons" aria-label="search"></label>
+        <input type="text" id="search-word" placeholder="search"></span>
     </div>
   </main>
 
@@ -58,11 +58,11 @@
     <div class="tags">
       <h2>Select Tags</h2>
       <form>
-      <p><input type="checkbox"> Nouns</p>
-      <p><input type="checkbox"> Verbs</p>
-      <p><input type="checkbox"> Adjectives</p>
-      <p><input type="checkbox"> Animal</p>
-      <p><input type="checkbox"> Places</p>
+        <p><input type="checkbox" id="nouns"><label for="nouns"> Nouns</label></p>
+        <p><input type="checkbox" id="verbs"><label for="verbs"> Verbs</label></p>
+        <p><input type="checkbox" id="adjectives"><label for="adjectives"> Adjectives</label></p>
+        <p><input type="checkbox" id="animal"><label for="animal"> Animal</label></p>
+        <p><input type="checkbox" id="places"><label for="places"> Places</label></p>
       </form>
     </div>
   </section>
