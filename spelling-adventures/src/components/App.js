@@ -1,11 +1,19 @@
-import React from 'react';
+import React from "react";
 
-import { Header } from './Header';
+import { NavBar } from "./NavBar";
+import { HomeCardList } from "./HomeCard";
+
+// import "../index.css";
 
 export function App(props) {
-    return (
-        <div>
-            <Header />
-        </div>
-    )
+  return (
+    <div>
+      <header>
+        <NavBar />
+      </header>
+      <main className="container">
+        <HomeCardList />
+      </main>
+    </div>
+  );
 }
