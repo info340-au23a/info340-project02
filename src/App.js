@@ -8,9 +8,9 @@ function App (props) {
 
     return (
         <section className='container'>
-        <SearchTag/>
-        <ListButtons/>
         <WordDisplay/>
+        <ListButtons/>
+        <SearchTag/>
         </section>
     );
 }
