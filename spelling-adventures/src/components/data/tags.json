@@ -1,0 +1,23 @@
+[
+    {"id": 1, "word": "Animals"},
+    {"id": 2, "word": "Fruits"},
+    {"id": 3, "word": "Countries"},
+    {"id": 4, "word": "Science"},
+    {"id": 5, "word": "Vocabulary"},
+    {"id": 6, "word": "History"},
+    {"id": 7, "word": "Technology"},
+    {"id": 8, "word": "Sports"},
+    {"id": 9, "word": "Movies"},
+    {"id": 10, "word": "Art"},
+    {"id": 11, "word": "Music"},
+    {"id": 12, "word": "Food"},
+    {"id": 13, "word": "Languages"},
+    {"id": 14, "word": "Mathematics"},
+    {"id": 15, "word": "Literature"},
+    {"id": 16, "word": "Geography"},
+    {"id": 17, "word": "Mythology"},
+    {"id": 18, "word": "Space"},
+    {"id": 19, "word": "Holidays"},
+    {"id": 20, "word": "Weather"},
+    {"id": 21, "word": "Random"}
+  ]

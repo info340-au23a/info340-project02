@@ -1,6 +1,5 @@
 * {
   box-sizing: border-box;
-  font-family: "Inter", sans-serif;
 }
 
 main {
@@ -17,11 +16,12 @@ h2 {
 }
 
 body {
+  font-family: "Inter", sans-serif;
   align-items: center;
   color: #2d334a;
 }
 
-/* .navbar-logo img {
+.navbar-logo img {
   height: 50px;
   width: auto;
   margin-right: 25px;
@@ -124,7 +124,6 @@ button:hover,
 }
 
 /* Quiz CSS */
-/*
 
 #word-input {
   border: none;
@@ -150,7 +149,7 @@ button:hover,
 }
 
 /* List Builder CSS */
-/*
+
 .speech-type,
 .object-type {
   background-color: pink;
@@ -230,9 +229,8 @@ button:hover,
   background-color: orange;
   border-radius: 15em;
 }
-*/
+
 /* Lewis's CSS */
-/*
 .welcome {
   padding-top: 2em;
   text-align: center;
@@ -309,7 +307,6 @@ button:hover,
 }
 
 /* Search CSS */
-/*
 .card-deck {
   flex: 0 0 300px;
   justify-content: center;
@@ -408,7 +405,6 @@ footer .about {
 /* Media Queries */
 
 /* Tablets */
-/*
 @media screen and (max-width: 1024px) {
   .card {
     margin: 50px 100px;
@@ -437,7 +433,6 @@ footer .about {
 }
 
 /* Mobile */
-/*
 @media screen and (max-width: 768px) {
   nav ul {
     flex-direction: column;
@@ -493,7 +488,6 @@ footer .about {
 }
 
 /* Mobile - Small */
-/*
 @media screen and (max-width: 480px) {
   nav {
     justify-content: space-around;
@@ -552,4 +546,4 @@ footer .about {
     padding-left: 0;
     margin-left: 0;
   }
-} */
+}
