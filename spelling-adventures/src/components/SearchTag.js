@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TAGS_DATA from './tags.json';
+import TAGS_DATA from '../tags.json';
 
 export function SearchTag (props) {
 
