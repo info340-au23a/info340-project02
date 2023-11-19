@@ -5,7 +5,7 @@ export function NavBar(props) {
   return (
     <nav>
       <a href="index.html" className="navbar-logo">
-        <img src="img/logo.png" alt="Spelling Adventures" />
+        <img src="/img/logo.png" alt="Spelling Adventures" />
       </a>
       <ul>
         <li>
