@@ -4,7 +4,7 @@ import "./navbar.css";
 export function NavBar(props) {
   return (
     <nav>
-      <a href="index.html" class="navbar-logo">
+      <a href="index.html" className="navbar-logo">
         <img src="img/logo.png" alt="Spelling Adventures" />
       </a>
       <ul>

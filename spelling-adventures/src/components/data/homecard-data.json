@@ -2,19 +2,19 @@
     {
         "cardText": "Flip Cards",
         "cardLink": "./src/flip-cards.html",
-        "imgLink": "./img/home/flipcards.png",
+        "imgLink": "/img/home/flipcards.png",
         "imgAltText": "A set of flipcards with the letters Aa on them"
     },
     {
         "cardText": "Spelling Quiz",
         "cardLink": "./src/quiz.html",
-        "imgLink": "./img/home/quiz.png",
+        "imgLink": "/img/home/quiz.png",
         "imgAltText": "A blue box with the letters 'abc' and an outlined checkmark"
     },
     {
         "cardText": "Word Lists",
         "cardLink": "./src/wordlists.html",
-        "imgLink": "./img/home/wordlist.png",
+        "imgLink": "/img/home/wordlist.png",
         "imgAltText": "3 bullet points that resemble a list"
     }
 ]
