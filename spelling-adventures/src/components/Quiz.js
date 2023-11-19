@@ -1,5 +1,7 @@
 import React from "react";
 import "./quiz.css";
+import quizData from "./data/words-data.json";
+
 
 export function QuizComponent (props) {
     return(
@@ -15,7 +17,7 @@ export function QuizComponent (props) {
                     id="sound-button"
                     className="fas"
                     aria-label="Play Sound"
-                    onClick={() => handleSoundButtonClick(quizItem.word)}
+                    // onClick={() => handleSoundButtonClick(quizItem.word)}
                   >
                     &#xf028;
                   </button>
