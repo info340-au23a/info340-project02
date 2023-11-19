@@ -37,6 +37,7 @@ header {
   left: 0;
   right: 0;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1000;
 }
 
 nav a {
@@ -84,19 +85,46 @@ nav li:hover {
   transform: scale(1.05);
 }
 
-.card a {
-  text-decoration: none;
-  font-size: x-large;
-  color: black;
-}
-
+/* flip card css */
 .speech-type,
-.object-type {
+.object-type, .volume {
   padding: 16px;
   background-color: pink;
   border-radius: 10px;
   padding: 6px;
   margin: 6px;
+}
+
+
+.flip-card {
+  text-decoration: none;
+  font-size: large;
+  color: black; 
+  border: 2px solid #ccc;
+  margin: auto 30%;
+  padding: 30px;
+  border-radius: 5px;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-card-back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+
+.flip-card-back {
+  transform: rotateY(180deg);
 }
 
 button,

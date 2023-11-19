@@ -4,6 +4,7 @@ import { NavBar } from "./NavBar";
 import { HomeCardList } from "./HomeCard";
 import { ListBuilderView } from "./ListBuilderView.js";
 import { QuizComponent } from "./Quiz";
+import { FlipCard } from "./FlipCard";
 
 import "../index.css";
 
@@ -19,7 +20,7 @@ export function App(props) {
       </div>
         <HomeCardList />
         <QuizComponent />
-        <h1>Word List Builder</h1>
+        <FlipCard />
         <ListBuilderView />
       </main>
     </div>

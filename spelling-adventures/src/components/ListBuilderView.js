@@ -4,6 +4,8 @@ import { WordDisplay} from "./WordDisplay.js";
 
 export function ListBuilderView(props) {
     return (
+        <>
+    <h1>Word List Builder</h1>
     <div className="container">
         <WordDisplay/>
         <div className="word-buttons">
@@ -13,5 +15,6 @@ export function ListBuilderView(props) {
         </div>
         <SearchTag/>
     </div>
+    </>
     )
 }
