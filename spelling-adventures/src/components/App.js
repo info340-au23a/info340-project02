@@ -1,11 +1,11 @@
-import React, { UseState } from "react";
+import React from "react";
 
 import { NavBar } from "./NavBar";
 import { HomeCardList } from "./HomeCard";
 import { ListBuilderView } from "./ListBuilderView.js";
-// import "../index.css";
+import { QuizComponent } from "./Quiz";
 
-const appViews =  [""]
+// import "../index.css";
 
 export function App(props) {
   return (
@@ -15,6 +15,7 @@ export function App(props) {
       </header>
       <main className="container">
         <HomeCardList />
+        <QuizComponent />
       </main>
     </div>
   );

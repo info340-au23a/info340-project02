@@ -12,23 +12,23 @@ export function NavBar(props) {
           <a href="index.html">Home</a>
         </li>
         <li>
-          <a href="./src/flip-cards.html">Flip Cards</a>
+          <a href="./flip-cards.html">Flip Cards</a>
         </li>
         <li>
-          <a href="./src/quiz.html">Quiz</a>
+          <a href="./quiz.html">Quiz</a>
         </li>
         <li>
-          <a href="./src/wordlists.html">Create</a>
+          <a href="./wordlists.html">Create</a>
         </li>
         <li>
-          <a href="./src/search.html">
+          <a href="./search.html">
             <span className="material-icons" aria-label="Search">
               search
             </span>
           </a>
         </li>
         <li>
-          <a href="./src/account.html">
+          <a href="./account.html">
             <span className="material-icons" aria-label="Account">
               person
             </span>
