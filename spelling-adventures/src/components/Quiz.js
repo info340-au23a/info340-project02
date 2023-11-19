@@ -4,13 +4,14 @@ import quizData from "./data/words-data.json";
 
 
 export function QuizComponent (props) {
+  
     return(
-    <>
+
     <div className="quiz">
         <h1>Word Quiz!</h1>
         
         {quizData.map((quizItem) => (
-            <div key={quizItem.id} className="quiz-card">
+            <QuizCard key={quizItem.id} className="quiz-card">
               <h2 style={{ fontSize: '24px' }}>
                 <label htmlFor="word-input">
                   <button
@@ -30,8 +31,8 @@ export function QuizComponent (props) {
                   aria-label="sound-button"
                 />
               </h2>
-            </div>
-          ))}
+
+          ))};
 
           <div className="quiz-submit">
             <button>Submit</button>
@@ -43,7 +44,7 @@ export function QuizComponent (props) {
           </div>
         </div>
     
-    </>
+
 
     );
 };
