@@ -1,7 +1,6 @@
 import React from "react";
 
-import { NavBar } from "./NavBar";
-import { HomeCardList } from "./HomeCard";
+import { HomePage } from "./HomePage.js";
 import { ListBuilderView } from "./ListBuilderView.js";
 import { QuizComponent } from "./Quiz";
 import { FlipCard } from "./FlipCard";
@@ -11,18 +10,10 @@ import "../index.css";
 export function App(props) {
   return (
     <div>
-      <header>
-        <NavBar />
-      </header>
-      <main>
-      <div className="welcome">
-        <h1>Welcome to <img src="/img/logo.png" alt="Spelling Adventures"/></h1>
-      </div>
-        <HomeCardList />
-        <QuizComponent />
+      <HomePage />
+      <QuizComponent />
         <FlipCard />
         <ListBuilderView />
-      </main>
     </div>
   );
 }
