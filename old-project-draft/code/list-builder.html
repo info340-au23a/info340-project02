@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <link rel="icon" href="../img/quiz.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
+  <link rel="icon" href="../img/quiz.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>List Builder - Spelling Adventures</title>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="../index.html" class="navbar-logo"><img src="../img/logo.png" alt="Spelling Adventures" /></a>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="flip-cards.html">Flip Cards</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="list-builder.html">Create</a></li>
+        <li><a href="search.html"><span class="material-icons" aria-label="Search">search</span></a></li>
+        <li><a href="account.html"><span class="material-icons" aria-label="Account">person</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Word List Builder</h1>
+    <div class="input-bar">
+      <label for="list-title"><input type="text" id="list-title" placeholder="List Title"></label>
+    </div>
+
+    <div class="input-bar">
+      <label for="search-word"><span class="material-icons" aria-label="search"></label>
+        <input type="text" id="search-word" placeholder="search"></span>
+    </div>
+  </main>
+
+  <section class="container">
+    <div class="list">
+      <h2>Current List Words</h2>
+      <p>Tiger</p>
+      <p>Direction</p>
+      <p>Absorb</p>
+      <p>Creation</p>
+    </div>
+
+    <div class="word-buttons">
+      <button>Remove</button>
+      <button>Add</button>
+      <button>Submit</button>
+    </div>
+
+    <div class="tags">
+      <h2>Select Tags</h2>
+      <form>
+        <p><input type="checkbox" id="nouns"><label for="nouns"> Nouns</label></p>
+        <p><input type="checkbox" id="verbs"><label for="verbs"> Verbs</label></p>
+        <p><input type="checkbox" id="adjectives"><label for="adjectives"> Adjectives</label></p>
+        <p><input type="checkbox" id="animal"><label for="animal"> Animal</label></p>
+        <p><input type="checkbox" id="places"><label for="places"> Places</label></p>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="about">
+      <p>&copy; 2023 Spelling Adventures</p>
+    </div>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif; /* Global font-family */
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: #2d334a;
+}
+
+header {
+  background-color: #def193;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 1em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+nav {
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 2.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo img {
+  height: 50px;
+  width: auto;
+  margin-right: 25px;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav li {
+  display: inline-block;
+  padding: 10px;
+}
+
+nav li:hover {
+  background-color: #c6d885;
+  border-radius: 5px;
+}
+
+/* Keyframes for hover effect */
+@keyframes smoothRotate {
+  0%, 100% {
+      transform: rotate(0deg);
+  }
+  50% {
+      transform: rotate(10deg);
+  }
+}
+
+nav img:hover {
+  animation: smoothRotate 1s ease-in-out infinite;
+  transform: scale(1.1);
+}
