@@ -5,6 +5,7 @@ import { HomeCardList } from "./HomeCard";
 import { ListBuilderView } from "./ListBuilderView.js";
 import { QuizComponent } from "./Quiz";
 import { FlipCard } from "./FlipCard";
+import { SearchFilter } from "./SearchFilter.js";
 
 import "../index.css";
 
@@ -22,6 +23,7 @@ export function App(props) {
         <FlipCard />
         <QuizComponent />
         <ListBuilderView />
+        <SearchFilter />
       </main>
     </div>
   );

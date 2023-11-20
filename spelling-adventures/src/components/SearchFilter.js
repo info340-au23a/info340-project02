@@ -27,11 +27,11 @@ export function SearchFilter(props) {
                             <span className="material-icons filter-icon" aria-hidden="true">filter_alt</span>
                             <select value={tagArray}>
                                 <option value="">Filter Tags</option>
-                                {tagArray.map((tag) => (
-                                    <option key={tag} value={tag}>
-                                        {tag}
-                                    </option>
-                                ))}
+                                    {tagArray.map((tag) => (
+                                        <option key={tag} value={tag}>
+                                            {tag}
+                                        </option>
+                                    ))}
                             </select>                        
                         </div>
                     )}
