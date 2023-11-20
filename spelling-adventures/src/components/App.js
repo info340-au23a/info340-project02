@@ -19,8 +19,8 @@ export function App(props) {
         <h1>Welcome to <img src="/img/logo.png" alt="Spelling Adventures"/></h1>
       </div>
         <HomeCardList />
-        <QuizComponent />
         <FlipCard />
+        <QuizComponent />
         <ListBuilderView />
       </main>
     </div>
