@@ -99,19 +99,18 @@ nav img:hover {
 /* flip card css */
 
 .speech-type,
-.object-type, .volume {
+.object-type,
+.volume {
   padding: 16px;
   background-color: pink;
   border-radius: 10px;
-  padding: 6px;
   margin: 6px;
 }
-
 
 .flip-card {
   text-decoration: none;
   font-size: large;
-  color: black; 
+  color: black;
   border: 2px solid #ccc;
   margin: auto 30%;
   padding: 30px;
@@ -132,10 +131,6 @@ nav img:hover {
   left: 0;
   right: 0;
   bottom: 0;
-}
-
-
-.flip-card-back {
   transform: rotateY(180deg);
 }
 
@@ -150,15 +145,19 @@ button,
   cursor: pointer;
   font-size: 16px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-  text-align: center;
-  display: block;
-  margin: 0 auto; /* Center the button horizontally */
+  /* text-align: center; */
+  /* display: block; */
+  justify-content: center;
+  /* margin: 0;  */
+  /* display: flex;
+  justify-content: space-between; */
 }
 
 .quiz-next button {
-  text-align: center;
+  /* text-align: center; */
   display: block;
-  margin: 0 auto; /* Center the button horizontally */
+  justify-content: center;
+  
 }
 
 button:hover,
@@ -190,7 +189,12 @@ button:hover,
 .quiz-submit button {
   margin: 6px;
   background-color: #ffc6c7;
-  text-align: center;
+  justify-content: center;
+}
+
+.quiz-buttons-container {
+  display: flex;
+  justify-content: center;
 }
 
 /* List Builder CSS */
@@ -356,7 +360,6 @@ button:hover,
 
 .card-deck .card {
   display: flex;
-  resize: 0 20 200px;
   flex: 0 0 300px;
   background-color: rgba(127, 255, 180, 0.236);
   margin: 1.5rem;
@@ -379,7 +382,7 @@ button:hover,
 }
 
 .top-nav {
-    align-items: center;
+  align-items: center;
 }
 
 .sidebar {
@@ -412,7 +415,7 @@ button:hover,
   background-color: #def1936c;
   border: none;
   height: 2em;
-  width: 80%;
+  width: 100%;
   font-size: large;
   padding-left: 1em;
 }
@@ -445,8 +448,6 @@ footer .about {
 }
 
 /* Media Queries */
-/* TODO: Update Media Queries */
-
 /* Tablets */
 @media screen and (max-width: 1024px) {
   .card {
