@@ -20,3 +20,8 @@
     margin: 6px;
     background-color: #ffc6c7;
   }
+
+  .quiz-buttons-container {
+    display: flex;
+    justify-content: space-between;
+  }

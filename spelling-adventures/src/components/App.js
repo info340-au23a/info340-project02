@@ -6,6 +6,7 @@ import { ListBuilderView } from "./ListBuilderView.js";
 import { QuizComponent } from "./Quiz";
 import { FlipCard } from "./FlipCard";
 
+
 import "../index.css";
 
 export function App(props) {
@@ -20,7 +21,7 @@ export function App(props) {
       </div>
         <HomeCardList />
         <FlipCard />
-        <QuizComponent />
+        <QuizComponent data={props.data}/>
         <ListBuilderView />
       </main>
     </div>
