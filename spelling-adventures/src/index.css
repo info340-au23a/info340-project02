@@ -525,7 +525,7 @@ footer .about {
   }
 }
 
-Mobile - Small
+/* Mobile - Small */
 @media screen and (max-width: 480px) {
   nav {
     justify-content: space-around;
@@ -585,4 +585,3 @@ Mobile - Small
     margin-left: 0;
   }
 }
-
