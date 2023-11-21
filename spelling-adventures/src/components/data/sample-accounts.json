@@ -1,0 +1,23 @@
+[
+  {
+    "userId": "parrot",
+    "userName": "Parrot",
+    "userImg": "/img/profile-pictures/Parrot.png",
+    "notifications": true,
+    "darkMode": false
+  },
+  {
+    "userId": "penguin",
+    "userName": "Penguin",
+    "userImg": "/img/profile-pictures/Penguin.png",
+    "notifications": false,
+    "darkMode": true
+  },
+  {
+    "userId": "zebra",
+    "userName": "Zebra",
+    "userImg": "/img/profile-pictures/Zebra.png",
+    "notifications": true,
+    "darkMode": true
+  }
+]
