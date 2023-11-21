@@ -6,13 +6,12 @@ import { QuizComponent } from "./Quiz";
 import { FlipCard } from "./FlipCard";
 import { SearchFilter } from "./SearchFilter.js";
 
-import "../index.css";
-
 export function App(props) {
   const [tagSelect, setTagSelect] = useState('');
   function applyFilter(tags) {
     setTagSelect(tags);
   }
+
   return (
     <div>
       <HomePage />
