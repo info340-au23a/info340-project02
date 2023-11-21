@@ -15,7 +15,7 @@ export function App(props) {
       <FlipCard />
       <QuizComponent data={props.data}/>
       <ListBuilderView />
-      <SearchFilter />
+      {/* <SearchFilter /> */}
     </div>
   );
 }

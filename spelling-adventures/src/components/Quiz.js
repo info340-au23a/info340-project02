@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./quiz.css";
+import "../index.css";
 
 // result array that stores the answered questions
 let resultArr = [];
