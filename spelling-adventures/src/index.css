@@ -1,3 +1,5 @@
+/* Global Styles */
+
 * {
   box-sizing: border-box;
 }
@@ -36,10 +38,7 @@ header {
   z-index: 1000;
 }
 
-nav a {
-  text-decoration: none;
-  color: black;
-}
+/* Nav styles */
 
 nav {
   margin: auto;
@@ -53,6 +52,11 @@ nav ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
 }
 
 nav li {
@@ -82,7 +86,9 @@ nav img:hover {
   }
 }
 
-.card {
+/* Does anyone need this? */
+
+/* .card {
   background-color: white;
   border: 2px solid #ccc;
   margin: auto 30%;
@@ -90,13 +96,13 @@ nav img:hover {
   border-radius: 5px;
   text-align: center;
   transition: transform 0.3s ease;
-}
+} */
 
-.card:hover {
+/* .card:hover {
   transform: scale(1.05);
-}
+} */
 
-/* flip card css */
+/* Flip Card CSS */
 
 .speech-type,
 .object-type,
@@ -272,7 +278,7 @@ button:hover,
   border-radius: 15em;
 }
 
-/* HomeCardList CSS */
+/* HomeCard CSS */
 
 #card-container {
   display: flex;
