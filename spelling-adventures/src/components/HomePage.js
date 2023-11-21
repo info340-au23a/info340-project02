@@ -1,6 +1,6 @@
 import React from "react";
 import { NavBar } from "./NavBar.js";
-import { HomeCardList } from "./HomeCard.js";
+import { HomeCardList } from "./HomeCardList.js";
 
 export function HomePage(props) {
   return (

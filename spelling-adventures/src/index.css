@@ -7,11 +7,7 @@ main {
   margin-top: 10em;
 }
 
-h1 {
-  text-align: center;
-}
-
-h2 {
+h1, h2 {
   text-align: center;
 }
 
@@ -71,6 +67,21 @@ nav li:hover {
   border-radius: 5px;
 }
 
+nav img:hover {
+  animation: smoothRotate 1s ease-in-out infinite;
+  transform: scale(1.1);
+}
+
+/* for logo hover effect */
+@keyframes smoothRotate {
+  0%, 100% {
+      transform: rotate(0deg);
+  }
+  50% {
+      transform: rotate(10deg);
+  }
+}
+
 .card {
   background-color: white;
   border: 2px solid #ccc;
@@ -86,6 +97,7 @@ nav li:hover {
 }
 
 /* flip card css */
+
 .speech-type,
 .object-type, .volume {
   padding: 16px;
@@ -256,26 +268,9 @@ button:hover,
   border-radius: 15em;
 }
 
-/* Lewis's CSS */
-.welcome {
-  padding-top: 2em;
-  text-align: center;
-}
+/* HomeCardList CSS */
 
-.welcome h1 {
-  font-size: 2rem;
-  font-weight: 100;
-}
-
-.welcome h1 img {
-  display: inline-block;
-  vertical-align: middle;
-  width: auto;
-  height: 2em;
-  margin-left: 0.2em;
-}
-
-.card-container {
+#card-container {
   display: flex;
   justify-content: space-between;
   padding: 0 3em;
@@ -284,7 +279,7 @@ button:hover,
   width: 100%;
 }
 
-.card-container .card {
+#card-container .card {
   flex: 1;
   margin: 1em;
   padding: 1.5em;
@@ -297,24 +292,24 @@ button:hover,
   transition: transform 0.3s ease;
 }
 
-.card-container .card:hover {
+#card-container .card:hover {
   transform: scale(1.05);
 }
 
-.card-container .card a {
+#card-container .card a {
   text-decoration: none;
   font-size: x-large;
   color: black;
 }
 
-.card-container .card img {
+#card-container .card img {
   max-height: 10em;
   object-fit: cover;
 }
 
-.card-container .card p {
+#card-container .card p {
   font-size: 1.2rem;
-  font-weight: 100;
+  font-weight: 200;
 }
 
 .card-link {
@@ -327,10 +322,30 @@ button:hover,
   text-decoration: underline;
 }
 
-.cite {
+/* Welcome CSS */
+
+.welcome {
+  padding-top: 2em;
+  text-align: center;
+}
+
+.welcome h1 {
+  font-size: 2rem;
+  font-weight: 200;
+}
+
+.welcome h1 img {
+  display: inline-block;
+  vertical-align: middle;
+  width: auto;
+  height: 2em;
+  margin-left: 0.2em;
+}
+
+/* .cite { - to use later once citation is made
   padding-top: 50px;
   text-align: left;
-}
+} */
 
 /* Search CSS */
 .card-deck {
@@ -428,7 +443,9 @@ footer .cite {
 footer .about {
   padding-top: 0px;
 }
+
 /* Media Queries */
+/* TODO: Update Media Queries */
 
 /* Tablets */
 @media screen and (max-width: 1024px) {

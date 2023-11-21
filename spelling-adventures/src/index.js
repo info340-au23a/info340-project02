@@ -1,9 +1,24 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { App } from "./components/App";
-import WORDS_DATA from "./components/data/words-data.json";
+import React, { useState } from "react";
 
-import "./index.css";
+import { HomePage } from "./HomePage.js";
+import { ListBuilderView } from "./ListBuilderView.js";
+import { QuizComponent } from "./Quiz";
+import { FlipCard } from "./FlipCard";
+import { SearchFilter } from "./SearchFilter.js";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App data={WORDS_DATA}/>);
+export function App(props) {
+  const [tagSelect, setTagSelect] = useState('');
+  function applyFilter(tags) {
+    setTagSelect(tags);
+  }
+
+  return (
+    <div>
+      <HomePage />
+      <FlipCard />
+      <QuizComponent data={props.data}/>
+      <ListBuilderView />
+      <SearchFilter />
+    </div>
+  );
+}
