@@ -20,7 +20,7 @@ export function App(props) {
       </div>
         <HomeCardList />
         <FlipCard />
-        <QuizComponent />
+        <QuizComponent data={props.data}/>
         <ListBuilderView />
       </main>
     </div>
