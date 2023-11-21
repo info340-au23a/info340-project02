@@ -1,0 +1,103 @@
+[
+    {
+      "id": 1,
+      "Title":"Organism",
+      "words": [
+        "dog",
+        "cat",
+        "orange",
+        "apple",
+        "animal",
+        "tiger",
+        "person"
+      ],
+      "tags": [
+        "Animals",
+        "Fruits"
+      ]
+    },
+    {
+      "id": 2,
+      "Title":"Vehicles",
+      "words": [
+        "car",
+        "bus",
+        "train",
+        "plane",
+        "bicycle",
+        "vehicle",
+        "driver"
+      ],
+      "tags": [
+        "Transportation"
+      ]
+    },
+    {
+      "id": 3,
+      "Title":"Library Essentials",
+      "words": [
+        "book",
+        "pen",
+        "paper",
+        "library",
+        "reading",
+        "writing",
+        "author"
+      ],
+      "tags": [
+        "Literature",
+        "Education"
+      ]
+    },
+    {
+      "id": 4,
+      "Title":"Healthy",
+      "words": [
+        "apple",
+        "banana",
+        "grape",
+        "strawberry",
+        "melon",
+        "fruit",
+        "smoothie"
+      ],
+      "tags": [
+        "Fruits",
+        "Food"
+      ]
+    },
+    {
+      "id": 5,
+      "Title":"Team Sports",
+      "words": [
+        "football",
+        "basketball",
+        "soccer",
+        "tennis",
+        "sports",
+        "athlete",
+        "competition"
+      ],
+      "tags": [
+        "Sports"
+      ]
+    },
+    {
+      "id": 6,
+      "Title":"Software Development",
+      "words": [
+        "computer",
+        "programming",
+        "code",
+        "software",
+        "technology",
+        "developer",
+        "algorithm"
+      ],
+      "tags": [
+        "Technology",
+        "Programming"
+      ]
+    }
+  ]
+  

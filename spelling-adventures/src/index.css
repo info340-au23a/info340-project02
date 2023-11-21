@@ -178,16 +178,8 @@ button:hover,
 
 /* List Builder CSS */
 
-.speech-type,
-.object-type {
-  background-color: pink;
-  border-radius: 10px;
-  padding: 6px;
-  margin: 6px;
-}
-
 .top-nav {
-      display: flex;
+  display: flex;
   align-items: center;
 }
 
@@ -197,7 +189,6 @@ button:hover,
   width: 20%;
   margin: 0 auto;
   margin-bottom: 1em;
-  display: flex;
   align-items: center;
 }
 
@@ -209,9 +200,11 @@ button:hover,
   background-color: #def193;
   border: none;
   height: 2em;
-  width: 80%;
+  width: 100%;
   font-size: large;
+  padding: 0.5em;
   padding-left: 1em;
+  border-radius: 10px;
 }
 
 .container {
