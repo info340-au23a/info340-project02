@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import WORDSET_DATA from './data/word-list.json';
 import TAGS_DATA from './data/tags.json';
 import Dropdown from 'react-bootstrap/Dropdown';
 
-export function SearchFilter(props) {
+export default function SearchFilter(props) {
     const [isFilterOpen, setIsFilterOpen] = useState(false);
     const [selectedTags, setSelectedTags] = useState([]);
+    const [filteredWords, setFilteredWords] = useState([]);
 
     const toggleFilter = () => {
         setIsFilterOpen(!isFilterOpen);
@@ -23,6 +25,11 @@ export function SearchFilter(props) {
 
     const handleClick = (event) => {
         event.preventDefault();
+        const filteredData = WORDSET_DATA.filter((dataObj) =>
+            selectedTags.some((tag) => dataObj.tags.includes(tag))
+        );
+        const words = filteredData.flatMap((dataObj) => dataObj.words);
+        setFilteredWords(words);
         props.applyFilterCallback(selectedTags);
     };
 
@@ -64,9 +71,25 @@ export function SearchFilter(props) {
                         <div className="submit-button" >
                             <button id="submitButton" type="submit" className="btn btn-warning" style={{ fontSize: '15px', padding: '5px 20px' }}>Apply</button>
                         </div>
+                        <div>
+                            <h3>Related Words:</h3>
+                            <div className="row-cols-8">
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h5 className="card-title">
+                                            {selectedTags.length > 0 ? `Selected Tags: ${selectedTags.join(', ')}` : 'All Tags'}
+                                        </h5>
+                                        <ul>
+                                            {filteredWords.map((word, index) => (
+                                                <li key={index}>{word}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </form>
     );
