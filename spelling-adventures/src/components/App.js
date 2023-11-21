@@ -40,7 +40,6 @@ export function App(props) {
       <ListBuilderView />
       <SearchFilter applyFilterCallback={handleFilterApply} />
       <AccountPage currentUser={currentUser} changeUserFunction={changeUser} />
-
     </div>
   );
 }
