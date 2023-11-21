@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-<<<<<<< HEAD
+
 import "../index.css";
-=======
->>>>>>> 59f71927875693c2552856845bab3bd22d737662
+
 
 // result array that stores the answered questions
 let resultArr = [];
