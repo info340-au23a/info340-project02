@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { HomePage } from "./HomePage.js";
 import { ListBuilderView } from "./ListBuilderView.js";
@@ -9,6 +9,10 @@ import { SearchFilter } from "./SearchFilter.js";
 import "../index.css";
 
 export function App(props) {
+  const [tagSelect, setTagSelect] = useState('');
+  function applyFilter(tags) {
+    setTagSelect(tags);
+  }
   return (
     <div>
       <HomePage />

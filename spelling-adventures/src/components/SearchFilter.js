@@ -3,7 +3,7 @@ import TAGS_DATA from './data/tags.json';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 export function SearchFilter(props) {
-    const [isFilterOpen, setIsFilterOpen] = useState(true);
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
     const [selectedTags, setSelectedTags] = useState([]);
 
     const toggleFilter = () => {
@@ -21,42 +21,53 @@ export function SearchFilter(props) {
         setIsFilterOpen(false);
     };
 
+    const handleClick = (event) => {
+        event.preventDefault();
+        props.applyFilterCallback(selectedTags);
+    };
+
     return (
-        <div className="searchfilter">
-            <h2>Start your adventures from:</h2>
-            <div className="bars">
-                <div className='search'>
-                    <span className="material-icons search-icon" aria-hidden="true">search</span>
-                    <input type="search-box" placeholder="Search List Title" aria-label="search" />
-                </div>
-                <div className='filter'>
-                    <Dropdown show={isFilterOpen} onClose={handleCloseDropdown}>
-                        <Dropdown.Toggle variant="success" id="dropdown-basic" onClick={toggleFilter}>
-                            <span className="material-icons filter-icon" aria-hidden="true">filter_alt</span>
-                            Filter Tags
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu>
-                            {isFilterOpen && (
-                                <div className="dropdown-content">
-                                    <div>
-                                        {TAGS_DATA.map((tagObj) => (
-                                            <p key={tagObj.id} onClick={() => handleTagChange(tagObj.word)}>
-                                                <input
-                                                    type="checkbox"
-                                                    id={tagObj.id}
-                                                    checked={selectedTags.includes(tagObj.word)}
-                                                    onChange={() => handleTagChange(tagObj.word)}
-                                                />
-                                                <label htmlFor={tagObj.id}> {tagObj.word}</label>
-                                            </p>
-                                        ))}
+        <form onSubmit={handleClick}>
+            <div className="searchfilter">
+                <h2>Start your adventures from:</h2>
+                <div className="bars">
+                    <div className='search' style={{ textAlign: 'center' }}>
+                        <span className="material-icons search-icon" aria-hidden="true">search</span>
+                        <input type="search-box" placeholder="Search List Title" aria-label="search" />
+                    </div>
+                    <div className='filter' style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
+                        <Dropdown show={isFilterOpen} onClose={handleCloseDropdown}>
+                            <Dropdown.Toggle variant="success" id="dropdown-basic" onClick={toggleFilter}>
+                                <span className="material-icons filter-icon" aria-hidden="true">filter_alt</span>
+                                Filter Tags
+                            </Dropdown.Toggle>
+                            <Dropdown.Menu>
+                                {isFilterOpen && (
+                                    <div className="dropdown-content">
+                                        <div>
+                                            {TAGS_DATA.map((tagObj) => (
+                                                <p key={tagObj.id} onClick={() => handleTagChange(tagObj.word)}>
+                                                    <input
+                                                        type="checkbox"
+                                                        id={tagObj.id}
+                                                        checked={selectedTags.includes(tagObj.word)}
+                                                        onChange={() => handleTagChange(tagObj.word)}
+                                                    />
+                                                    <label htmlFor={tagObj.id}> {tagObj.word}</label>
+                                                </p>
+                                            ))}
+                                        </div>
                                     </div>
-                                </div>
-                            )}
-                        </Dropdown.Menu>
-                    </Dropdown>
+                                )}
+                            </Dropdown.Menu>
+                        </Dropdown>
+                        <div className="submit-button" >
+                            <button id="submitButton" type="submit" className="btn btn-warning" style={{ fontSize: '15px', padding: '5px 20px' }}>Apply</button>
+                        </div>
+                    </div>
                 </div>
+
             </div>
-        </div>
+        </form>
     );
 }
