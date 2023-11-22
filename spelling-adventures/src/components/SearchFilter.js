@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export default function SearchFilter(props) {
     const [isFilterOpen, setIsFilterOpen] = useState(false);
     const [selectedTags, setSelectedTags] = useState([]);
-    const [tagFilteredWords, setTagFilteredWords] = useState({});
+    const [searchTerm, setSearchTerm] = useState('');
 
     const toggleFilter = () => {
         setIsFilterOpen(!isFilterOpen);
@@ -20,23 +20,51 @@ export default function SearchFilter(props) {
         setSelectedTags(updatedTags);
     };
 
-    const handleCloseDropdown = () => {
-        setIsFilterOpen(false);
+    const handleSearchChange = (event) => {
+        setSearchTerm(event.target.value);
     };
 
     const handleClick = (event) => {
         event.preventDefault();
-        const tagWordsMap = {};
-
-        selectedTags.forEach((tag) => {
-            const filteredData = WORDSET_DATA.filter((dataObj) => dataObj.tags.includes(tag));
-            const words = filteredData.flatMap((dataObj) => dataObj.words);
-            tagWordsMap[tag] = words;
-        });
-
-        setTagFilteredWords(tagWordsMap);
         props.applyFilterCallback(selectedTags);
     };
+
+    const filteredWords = WORDSET_DATA.filter((dataObj) => {
+        const matchesSearch = dataObj.Title.toLowerCase().includes(searchTerm.toLowerCase());
+        const matchesTags = selectedTags.length === 0 || selectedTags.every(tag => dataObj.tags.includes(tag));
+        return matchesSearch && matchesTags;
+    });
+
+    const tagsArray = TAGS_DATA.map((tagObj) => {
+        return (
+        <p key={tagObj.id} onClick={() => handleTagChange(tagObj.word)}>
+            <input
+                type="checkbox"
+                id={tagObj.id}
+                checked={selectedTags.includes(tagObj.word)}
+                onChange={() => handleTagChange(tagObj.word)}
+            />
+            <label htmlFor={tagObj.id}> {tagObj.word}</label>
+        </p>
+        )
+    });
+
+    const cardDom = filteredWords.map((dataObj) => {
+        return (
+        <div key={dataObj.id} className="row-cols-8">
+            <div className="card">
+                <div className="card-body">
+                    <h5 className="card-title">{`${dataObj.Title}`}</h5>
+                    <ul>
+                        {dataObj.tags.map((tag, index) => (
+                            <li key={index}>{tag}</li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        )
+    });
 
     return (
         <form onSubmit={handleClick}>
@@ -47,83 +75,39 @@ export default function SearchFilter(props) {
                         <span className="material-icons search-icon" aria-hidden="true">
                             search
                         </span>
-                        <input type="search-box" placeholder="Search List Title" aria-label="search" />
+                        <input
+                            type="text"
+                            placeholder="Search Title"
+                            aria-label="search"
+                            value={searchTerm}
+                            onChange={handleSearchChange}
+                        />
                     </div>
                     <div className="filter" style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
-                        <Dropdown show={isFilterOpen} onClose={handleCloseDropdown}>
+                        <Dropdown show={isFilterOpen} onClose={() => setIsFilterOpen(false)}>
                             <Dropdown.Toggle variant="success" id="dropdown-basic" onClick={toggleFilter}>
                                 <span className="material-icons filter-icon" aria-hidden="true">
                                     filter_alt
                                 </span>
-                                Filter by Tags
+                                Filter Tags
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
                                 {isFilterOpen && (
                                     <div className="dropdown-content">
                                         <div>
-                                            {TAGS_DATA.map((tagObj) => (
-                                                <p key={tagObj.id} onClick={() => handleTagChange(tagObj.word)}>
-                                                    <input
-                                                        type="checkbox"
-                                                        id={tagObj.id}
-                                                        checked={selectedTags.includes(tagObj.word)}
-                                                        onChange={() => handleTagChange(tagObj.word)}
-                                                    />
-                                                    <label htmlFor={tagObj.id}> {tagObj.word}</label>
-                                                </p>
-                                            ))}
+                                            {tagsArray}
                                         </div>
                                     </div>
                                 )}
                             </Dropdown.Menu>
                         </Dropdown>
-                        <div className="submit-button">
-                            <button
-                                id="submitButton"
-                                type="submit"
-                                className="btn btn-success"
-                                style={{ fontSize: '15px', padding: '5px 20px' }}
-                            >
-                                Apply
-                            </button>
-                        </div>
                     </div>
-                    <div>
-                        <div>
-                            {selectedTags.length === 0 ? (
-                                <div className="row-cols-8">
-                                    <div className="card">
-                                        <div className="card-body">
-                                            <h5 className="card-title">All Words: </h5>
-                                            <ul>
-                                                {WORDSET_DATA.flatMap((dataObj) => dataObj.words).map((word, index) => (
-                                                    <li key={index}>{word}</li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            ) : (
-                                selectedTags.map((tag, index) => (
-                                    <div key={index} className="row-cols-8">
-                                        <div className="card">
-                                            <div className="card-body">
-                                                <h5 className="card-title">{`Selected Tag: ${tag}`}</h5>
-                                                <ul>
-                                                    {tagFilteredWords[tag] &&
-                                                        tagFilteredWords[tag].map((word, index) => (
-                                                            <li key={index}>{word}</li>
-                                                        ))}
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))
-                            )}
-                        </div>
+                    <div className='cardsDisplay'>
+                        {cardDom}
                     </div>
                 </div>
             </div>
         </form>
     );
 }
+
