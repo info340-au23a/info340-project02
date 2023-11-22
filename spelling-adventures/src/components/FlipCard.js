@@ -14,7 +14,7 @@ export function FlipCard(props) {
     };
 
     const handleSoundClick = (id) => {
-        // props.soundClick(id);
+
     };
     
     return (
@@ -22,11 +22,10 @@ export function FlipCard(props) {
         <h1>Flip Cards!</h1>
         <div className={cardClassName} onClick={handleFlip}>
             <div className='flip-card-front'>
-            <img src="./img/apple.png" alt=" an apple" />
+            {!flip && <img src="./img/apple.png" alt=" an apple" />}
             </div>
 
             <div className='flip-card-back'>
-            {/* <span className="material-symbols-outlined volume">volume_up</span> */}
             <button
               id="sound-button"
               className="fas"

@@ -93,6 +93,7 @@ nav img:hover {
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+  transform-origin: center;
 }
 
 .flip-card {
@@ -100,13 +101,18 @@ nav img:hover {
   background-color: white;
   border: 2px solid #ccc;
   margin: 20px auto;
-  padding: 40px; /* Adjust padding for better spacing */
+  padding: 40px;
   border-radius: 5px;
   max-width: 400px;
   min-width: 200px;
   perspective: 1000px;
   transform-style: preserve-3d;
   transition: transform 0.6s;
+  transform-origin: center;
+}
+
+.flip-card img {
+  max-height: 14em;
 }
 
 .flipped {
@@ -119,7 +125,6 @@ nav img:hover {
 
 .flip-card-back {
   backface-visibility: hidden;
-  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -128,13 +133,14 @@ nav img:hover {
 }
 
 .speech-type,
-.object-type{
+.object-type {
   padding: 16px;
   background-color: #ffc6c7;
   border-radius: 10px;
   text-align: center;
   margin: 10px;
 }
+
 
 button,
 .quiz button {
@@ -533,7 +539,7 @@ footer {
   }
 
   .card {
-    margin: 20px 10px;
+    margin: 1.2em 0.6em;
   }
 
   .card-container {
