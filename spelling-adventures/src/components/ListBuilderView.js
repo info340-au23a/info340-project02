@@ -1,11 +1,9 @@
 import { SearchTag } from "./SearchTag.js";
 import { WordDisplay} from "./WordDisplay.js";
 
-
 export function ListBuilderView(props) {
     return (
         <>
-          <h1>Word List Builder</h1>
           <div className="input-bar">
             <label htmlFor="list-title">
               <input type="text" id="list-title" placeholder="List Title" />
@@ -25,7 +23,7 @@ export function ListBuilderView(props) {
               <button>Add</button>
               <button>Submit</button>
             </div>
-            <SearchTag />
+            <SearchTag tagsData={props.tagsData}/>
           </div>
         </>
       );

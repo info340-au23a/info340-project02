@@ -3,7 +3,7 @@ import React from "react";
 export function Footer() {
   return (
     <footer>
-      <div class="cite">
+      <div className="cite">
         <p>
           <cite>
             {/* <a

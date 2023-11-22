@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { HomePage } from "./HomePage.js";
-import { ListBuilderView } from "./ListBuilderView.js";
+import { ListBuilderPage } from "./ListBuilderPage.js";
 import { FlipCardPage } from "./FlipCardPage.js";
 import { AccountPage } from "./AccountPage.js"
 import SearchFilter from "./SearchFilter.js";
@@ -26,10 +26,10 @@ export function App(props) {
 
   return (
     <div>
-      {/* <HomePage />
-      <FlipCardPage wordsData={props.wordsData} /> */}
-      <QuizPage wordList={props.wordsData} />
-      {/* <ListBuilderView /> */}
+      {/* <HomePage /> */}
+      {/* <FlipCardPage wordsData={props.wordsData} /> */}
+      {/* <QuizPage wordList={props.wordsData} /> */}
+      <ListBuilderPage tagsData={props.tagsData}/>
       {/* <SearchFilter applyFilterCallback={handleFilterApply} /> */}
       {/* <AccountPage currentUser={currentUser} changeUserFunction={changeUser} /> */}
     </div>
