@@ -51,8 +51,7 @@ export default function SearchFilter(props) {
 
     const cardDom = filteredWords.map((dataObj) => {
         return (
-        <div key={dataObj.id} className="row-cols-8">
-            <div className="card">
+            <div key={dataObj.id} className="card">
                 <div className="card-body">
                     <h5 className="card-title">{`${dataObj.Title}`}</h5>
                     <ul>
@@ -62,7 +61,6 @@ export default function SearchFilter(props) {
                     </ul>
                 </div>
             </div>
-        </div>
         )
     });
 
@@ -71,7 +69,7 @@ export default function SearchFilter(props) {
             <div className="searchfilter">
                 <h2>Start your adventures from:</h2>
                 <div>
-                    <div className="search" style={{ textAlign: 'center' }}>
+                    <div className="input-bar" style={{ textAlign: 'center' }}>
                         <span className="material-icons search-icon" aria-hidden="true">
                             search
                         </span>
@@ -103,7 +101,9 @@ export default function SearchFilter(props) {
                         </Dropdown>
                     </div>
                     <div className='cardsDisplay'>
+                        <div className='cols-rows-8'>
                         {cardDom}
+                        </div>
                     </div>
                 </div>
             </div>
