@@ -294,7 +294,7 @@ button:hover,
 .card-container {
   display: flex;
   justify-content: space-between;
-  padding: 0 3em;
+  padding: 0;
   max-width: 1000px;
   margin: auto;
   width: 100%;

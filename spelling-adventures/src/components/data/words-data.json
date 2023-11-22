@@ -5,7 +5,8 @@
     "sentence": "She picked a ripe red apple from the tree.",
     "tags": ["noun", "fruit"],
     "imgSrc": "./img/flipcard/apple.png",
-    "imgAlt": "A red apple"
+    "imgAlt": "A red apple",
+    "pronunciationAudio": "./audio/apple.mp3"
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "sentence": "The sunflower turned its face toward the sun.",
     "tags": ["noun", "plant"],
     "imgSrc": "./img/flipcard/pexels-brett-sayles-1454288.jpg",
-    "imgAlt": "A yellow sunflower"
+    "imgAlt": "A yellow sunflower",
+    "pronunciationAudio": "./audio/sunflower.mp3"
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "sentence": "He typed quickly on the computer keyboard.",
     "tags": ["noun", "device"],
     "imgSrc": "./img/flipcard/pexels-olena-bohovyk-1772123.jpg",
-    "imgAlt": "A white 104-key keyboard"
+    "imgAlt": "A white 104-key keyboard",
+    "pronunciationAudio": "./audio/keyboard.mp3"
   },
   {
     "id": 4,
@@ -29,7 +32,8 @@
     "sentence": "The waves crashed on the shore of the vast ocean.",
     "tags": ["noun", "nature"],
     "imgSrc": "./img/flipcard/pexels-kellie-churchman-1001682.jpg",
-    "imgAlt": "A vast ocean with waves crashing onto the shore"
+    "imgAlt": "A vast ocean with waves crashing onto the shore",
+    "pronunciationAudio": "./audio/ocean.mp3"
   },
   {
     "id": 5,
@@ -37,7 +41,8 @@
     "sentence": "The children were joyful as they played in the park.",
     "tags": ["adjective", "emotion"],
     "imgSrc": "./img/flipcard/",
-    "imgAlt": "Children playing joyfully in a park"
+    "imgAlt": "Children playing joyfully in a park",
+    "pronunciationAudio": "./audio/joyful.mp3"
   },
   {
     "id": 6,
@@ -45,7 +50,8 @@
     "sentence": "She studied astronomy to learn about the stars and planets.",
     "tags": ["noun", "science"],
     "imgSrc": "./img/flipcard/pexels-lucas-pezeta-2034892.jpg",
-    "imgAlt": "A telescope pointed towards a starry night sky"
+    "imgAlt": "A telescope pointed towards a starry night sky",
+    "pronunciationAudio": "./audio/astronomy.mp3"
   },
   {
     "id": 7,
@@ -53,7 +59,8 @@
     "sentence": "The car accelerated, reaching a high velocity on the highway.",
     "tags": ["noun", "physics"],
     "imgSrc": "./img/flipcard/pexels-niklas-jeromin-11900708.jpg",
-    "imgAlt": "A car speeding on a highway, illustrating high velocity"
+    "imgAlt": "A car speeding on a highway, illustrating high velocity",
+    "pronunciationAudio": "./audio/velocity.mp3"
   },
   {
     "id": 8,
@@ -61,7 +68,8 @@
     "sentence": "They attended a lively concert featuring their favorite band.",
     "tags": ["noun", "event"],
     "imgSrc": "./img/flipcard/",
-    "imgAlt": "A lively concert with a band performing on stage"
+    "imgAlt": "A lively concert with a band performing on stage",
+    "pronunciationAudio": "./audio/concert.mp3"
   },
   {
     "id": 9,
@@ -69,13 +77,16 @@
     "sentence": "The effervescent drink bubbled in the glass.",
     "tags": ["adjective", "physical property"],
     "imgSrc": "./img/flipcard/pexels-cottonbro-studio-5722880.jpg",
-    "imgAlt": "Bubbles rising in a glass of effervescent drink"
+    "imgAlt": "Bubbles rising in a glass of effervescent drink",
+    "pronunciationAudio": "./audio/effervescent.mp3"
   },
   {
     "id": 10,
     "word": "quintessential",
     "sentence": "The old bookstore was the quintessential place for book lovers.",
     "tags": ["adjective"],
-    "imgAlt": "An old, cozy bookstore filled with shelves of books"
+    "imgSrc": "./img/flipcard/",
+    "imgAlt": "An old, cozy bookstore filled with shelves of books",
+    "pronunciationAudio": "./audio/quintessential.mp3"
   }
 ]

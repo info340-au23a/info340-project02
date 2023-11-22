@@ -12,7 +12,9 @@ export function HomeCardList(props) {
     />
   ));
 
-  return <div className="card-container">{cardArray}</div>;
+  return (
+  <div className="card-container">{cardArray}</div>
+  );
 }
 
 export function HomeCard(props) {

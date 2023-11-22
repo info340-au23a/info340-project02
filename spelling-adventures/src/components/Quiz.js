@@ -1,24 +1,24 @@
 import React, { useState } from "react";
 
-import "../index.css";
-
-
 // result array that stores the answered questions
 let resultArr = [];
 
 function GenerateQuizCard(props) {
-  const quiz = props.data;
+  const wordListData = props.data;
   const setInputValue = props.setInput;
   const setMessage = props.setMessage;
 
-  const handleSoundClick = (id) => {
-    // props.soundClick(id);
+  const handleSoundClick = () => {
+    if (wordListData && wordListData.pronunciationAudio) {
+      const audio = new Audio(wordListData.pronunciationAudio);
+      audio.play();
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (props.input === quiz.word) {
-      resultArr.push(quiz.word);
+    if (props.input === wordListData.word) {
+      resultArr.push(wordListData.word);
       setMessage("You are awesome, keep going!");
     } else {
       setMessage("Oops, try it again.");
@@ -27,15 +27,14 @@ function GenerateQuizCard(props) {
 
   return (
     <div className="quiz">
-      <h1>Word Quiz!</h1>
-      <div key={quiz.id} className="quiz-card">
-        <h2 style={{ fontSize: '24px' }}>
+      <div key={wordListData.id} className="quiz-card">
+        <h2 style={{ fontSize: "24px" }}>
           <label htmlFor="word-input">
             <button
               id="sound-button"
               className="fas"
               aria-label="Play Sound"
-              onClick={() => handleSoundClick(quiz.id)}
+              onClick={() => handleSoundClick(wordListData.id)}
             >
               &#xf028;
             </button>
@@ -43,7 +42,7 @@ function GenerateQuizCard(props) {
           <input
             value={props.input}
             onChange={(e) => setInputValue(e.target.value)}
-            maxLength={quiz.word.length}
+            maxLength={wordListData.word.length}
             aria-label="sound-button"
           />
         </h2>
