@@ -1,5 +1,6 @@
 * {
-  box-sizing: content-box;
+    box-sizing: content-box;
+    font-size: 20px;
 }
 
 main {
@@ -318,27 +319,20 @@ button:hover,
 }
 
 .input-bar {
-  background-color: #def193;
-  border-radius: 10px;
-  width: 40%;
-  margin: 0 auto;
-  margin-bottom: 1em;
-  align-items: center;
-}
-
-.input-bar .search-icon {
-  padding-left: 4px;
+    display: flex;
+    justify-content: center;
 }
 
 .input-bar input[type="text"] {
-  background-color: #def193;
-  border: none;
-  height: 2em;
-  width: 100%;
-  font-size: large;
-  padding: 0.5em;
-  padding-left: 1em;
-  border-radius: 10px;
+    background-color: #def193;
+    border: none;
+    height: 2em;
+    width: 100%; 
+    font-size: large;
+    padding: 0.5em;
+    padding-left: 1em;
+    border-radius: 10px;
+    max-width: 300px;
 }
 
 .container {
@@ -347,9 +341,9 @@ button:hover,
 }
 
 .index-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .list {
@@ -363,15 +357,13 @@ button:hover,
 }
 
 .tags {
-  flex: 1;
-  margin-left: 10%;
-  margin-right: 5%;
-  background-color: #def193;
-  width: 20%;
-  padding-bottom: 15em;
-  padding-top: 1em;
-  border-radius: 10px;
-  text-align: center;
+    flex: 1 1;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: #def193;
+    padding: 5px;
+    border-radius: 10px;
+    text-align: center;
 }
 
 .word-buttons {
@@ -379,26 +371,27 @@ button:hover,
   margin-left: 5%;
 }
 
-.tag-highlight {
-  background-color: orange;
-  border-radius: 15em;
-}
 
 /* Search CSS */
 .card-deck {
-  flex: 0 0 300px;
-  justify-content: center;
-  display: flex;
-}
+    flex: 0 0 300px;
+    justify-content: space-around;
+    display: flex;
+  }
+  
+  .card-deck .card {
+    display: flex;
+    flex: 0 0 300px;
+    background-color: rgba(127, 255, 180, 0.236);
+    margin: 1.5rem;
+    border-radius: 50px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
+  }
 
-.card-deck .card {
-  display: flex;
-  flex: 0 0 300px;
-  background-color: rgba(127, 255, 180, 0.236);
-  margin: 1.5rem;
-  border-radius: 50px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
-}
+  .dropdown-menu.show {
+    z-index: 10;
+  }
+
 
 .card-deck .card img {
   width: 200px;
@@ -502,7 +495,8 @@ footer {
     width: 150px;
     height: auto;
     margin: 0.5rem 0;
-  }
+    }
+
 }
 
 @media (min-width: 768px) {
