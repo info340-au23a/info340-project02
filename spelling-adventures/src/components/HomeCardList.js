@@ -1,7 +1,6 @@
 import React from "react";
 import homeCardData from "./data/homecard-data.json";
 
-// returns list of HomeCards
 export function HomeCardList(props) {
   const cardArray = homeCardData.map((card, index) => (
     <HomeCard
@@ -13,10 +12,9 @@ export function HomeCardList(props) {
     />
   ));
 
-  return <div id="card-container">{cardArray}</div>;
+  return <div className="card-container">{cardArray}</div>;
 }
 
-// returns an individual HomeCard component
 export function HomeCard(props) {
   return (
     <a href={props.cardLink} className="card-link">

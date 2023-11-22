@@ -183,7 +183,7 @@ button:hover,
   margin-bottom: 8px;
 }
 
-#word-input {
+.quiz-card #word-input {
   border: none;
   border-bottom: 2px solid #000;
   font-size: 24px;
@@ -285,7 +285,9 @@ button:hover,
 
 /* HomeCard CSS */
 
-#card-container {
+/* Updated CSS */
+
+.card-container {
   display: flex;
   justify-content: space-between;
   padding: 0 3em;
@@ -294,7 +296,7 @@ button:hover,
   width: 100%;
 }
 
-#card-container .card {
+.card-container .card {
   flex: 1;
   margin: 1em;
   padding: 1.5em;
@@ -307,22 +309,22 @@ button:hover,
   transition: transform 0.3s ease;
 }
 
-#card-container .card:hover {
+.card-container .card:hover {
   transform: scale(1.05);
 }
 
-#card-container .card a {
+.card-container .card a {
   text-decoration: none;
   font-size: x-large;
   color: black;
 }
 
-#card-container .card img {
+.card-container .card img {
   max-height: 10em;
   object-fit: cover;
 }
 
-#card-container .card p {
+.card-container .card p {
   font-size: 1.2rem;
   font-weight: 200;
 }
@@ -336,6 +338,7 @@ button:hover,
 .card-link:hover {
   text-decoration: underline;
 }
+
 
 /* Welcome CSS */
 
