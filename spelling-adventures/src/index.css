@@ -36,6 +36,11 @@ header {
   margin-left: 0;
 }
 
+.cite {
+  padding-top: 50px;
+  text-align: left;
+}
+
 /* nav bar */
 .navbar-logo img {
   height: 40px;
@@ -468,8 +473,8 @@ footer {
   text-align: center;
 }
 
-.footer-content {
-  font-size: 14px;
+footer p {
+    font-size: 14px;
 }
 
 /* Media Queries  */

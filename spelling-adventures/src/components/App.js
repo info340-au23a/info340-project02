@@ -6,13 +6,10 @@ import { QuizComponent } from "./Quiz";
 import { FlipCardPage } from "./FlipCardPage.js";
 import { AccountPage } from "./AccountPage.js"
 import SearchFilter from "./SearchFilter.js";
-import SAMPLE_ACCOUNTS from './data/sample-accounts.json';
 
 export function App(props) {
-  
-  // user account management
-  const [currentUser, setCurrentUser] = useState(SAMPLE_ACCOUNTS[1]);
-  // changes user
+  const [currentUser, setCurrentUser] = useState(props.accountsData[1]);
+
   const changeUser = (newUserObj) => {
     setCurrentUser(newUserObj);
   }
@@ -28,12 +25,12 @@ export function App(props) {
 
   return (
     <div>
-      <HomePage />
-      <FlipCardPage flipCards={props.data} />
-      <QuizComponent data={props.data} />
-      <ListBuilderView />
-      <SearchFilter applyFilterCallback={handleFilterApply} />
-      <AccountPage currentUser={currentUser} changeUserFunction={changeUser} />
+      {/* <HomePage /> */}
+      <FlipCardPage wordsData={props.wordsData} />
+      {/* <QuizComponent data={props.wordsData} /> */}
+      {/* <ListBuilderView /> */}
+      {/* <SearchFilter applyFilterCallback={handleFilterApply} /> */}
+      {/* <AccountPage currentUser={currentUser} changeUserFunction={changeUser} /> */}
     </div>
   );
 }
