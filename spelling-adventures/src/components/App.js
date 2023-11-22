@@ -25,7 +25,7 @@ export function App(props) {
 
   return (
     <div>
-      {/* <HomePage /> */}
+      <HomePage />
       <FlipCardPage wordsData={props.wordsData} />
       {/* <QuizComponent data={props.wordsData} /> */}
       {/* <ListBuilderView /> */}
