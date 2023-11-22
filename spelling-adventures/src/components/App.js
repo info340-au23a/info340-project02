@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { HomePage } from "./HomePage.js";
 import { ListBuilderView } from "./ListBuilderView.js";
 import { QuizComponent } from "./Quiz";
-import { FlipCard } from "./FlipCard";
+import { FlipCardPage } from "./FlipCardPage.js";
 import { AccountPage } from "./AccountPage.js"
 import SearchFilter from "./SearchFilter.js";
 import SAMPLE_ACCOUNTS from './data/sample-accounts.json';
@@ -12,8 +12,6 @@ export function App(props) {
   
   // user account management
   const [currentUser, setCurrentUser] = useState(SAMPLE_ACCOUNTS[1]);
-  const userObj = SAMPLE_ACCOUNTS[1];
-
   // changes user
   const changeUser = (newUserObj) => {
     setCurrentUser(newUserObj);
@@ -31,7 +29,7 @@ export function App(props) {
   return (
     <div>
       <HomePage />
-      <FlipCard />
+      <FlipCardPage flipCards={props.data} />
       <QuizComponent data={props.data} />
       <ListBuilderView />
       <SearchFilter applyFilterCallback={handleFilterApply} />

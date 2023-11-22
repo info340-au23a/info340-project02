@@ -9,7 +9,7 @@ export function AccountPage(props) {
   // saves changes and updates profile/settings
   const handleUpdateSettings = () => {
     setUpdateMessage("Settings updated successfully!");
-    console.log("Settings updated successfully!");
+    console.log(updateMessage);
     setTimeout(() => setUpdateMessage(""), 3000);
   };
 
