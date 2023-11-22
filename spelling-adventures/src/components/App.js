@@ -19,6 +19,7 @@ export function App(props) {
     setCurrentUser(newUserObj);
   }
 
+  // for SearchFilter
   const [filteredData, setFilteredData] = useState([]);
   const handleFilterApply = (selectedTags) => {
     const newData = props.data.filter((item) =>
@@ -27,18 +28,13 @@ export function App(props) {
     setFilteredData(newData);
   };
 
-  // const [tagSelect, setTagSelect] = useState('');
-  // function applyFilter(tags) {
-  //   setTagSelect(tags);
-  // }
-
   return (
     <div>
       <HomePage />
       <FlipCard />
       <QuizComponent data={props.data} />
       <ListBuilderView />
-      {/* <SearchFilter applyFilterCallback={handleFilterApply} /> */}
+      <SearchFilter applyFilterCallback={handleFilterApply} />
       <AccountPage currentUser={currentUser} changeUserFunction={changeUser} />
     </div>
   );
