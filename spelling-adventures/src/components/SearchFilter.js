@@ -55,7 +55,7 @@ export default function SearchFilter(props) {
                                 <span className="material-icons filter-icon" aria-hidden="true">
                                     filter_alt
                                 </span>
-                                Filter Tags
+                                Filter by Tags
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
                                 {isFilterOpen && (
@@ -89,22 +89,37 @@ export default function SearchFilter(props) {
                         </div>
                     </div>
                     <div>
-                        <div className='cardsDisplay'>
-                            {selectedTags.map((tag, index) => (
-                                <div key={index} className="row-cols-8">
+                        <div>
+                            {selectedTags.length === 0 ? (
+                                <div className="row-cols-8">
                                     <div className="card">
                                         <div className="card-body">
-                                            <h5 className="card-title">{`Selected Tag: ${tag}`}</h5>
+                                            <h5 className="card-title">All Words: </h5>
                                             <ul>
-                                                {tagFilteredWords[tag] &&
-                                                    tagFilteredWords[tag].map((word, index) => (
-                                                        <li key={index}>{word}</li>
-                                                    ))}
+                                                {WORDSET_DATA.flatMap((dataObj) => dataObj.words).map((word, index) => (
+                                                    <li key={index}>{word}</li>
+                                                ))}
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                            ))}
+                            ) : (
+                                selectedTags.map((tag, index) => (
+                                    <div key={index} className="row-cols-8">
+                                        <div className="card">
+                                            <div className="card-body">
+                                                <h5 className="card-title">{`Selected Tag: ${tag}`}</h5>
+                                                <ul>
+                                                    {tagFilteredWords[tag] &&
+                                                        tagFilteredWords[tag].map((word, index) => (
+                                                            <li key={index}>{word}</li>
+                                                        ))}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))
+                            )}
                         </div>
                     </div>
                 </div>
