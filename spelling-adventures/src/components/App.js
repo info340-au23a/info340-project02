@@ -38,7 +38,7 @@ export function App(props) {
       <FlipCard />
       <QuizComponent data={props.data} />
       <ListBuilderView />
-      <SearchFilter applyFilterCallback={handleFilterApply} />
+      {/* <SearchFilter applyFilterCallback={handleFilterApply} /> */}
       <AccountPage currentUser={currentUser} changeUserFunction={changeUser} />
     </div>
   );
