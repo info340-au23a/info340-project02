@@ -1,5 +1,6 @@
 * {
-    font-size: 20px;
+  font-size: 20px;
+  box-sizing: content-box;
 }
 
 main {
@@ -103,8 +104,7 @@ nav img:hover {
 
 /* Homecard CSS */
 
-.card-container,
-.card-deck {
+.card-container {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -114,8 +114,7 @@ nav img:hover {
   max-width: 200px;
 }
 
-.card-container .card,
-.card-deck .card {
+.card-container .card {
   flex: 1;
   /* margin: 1em; */
   padding: 1.5em;
@@ -140,22 +139,16 @@ nav img:hover {
   color: black;
 }
 
-.card-deck .card img {
-  width: 150%;
-  height: auto;
-  margin: 0.5rem 0;
-}
-
 .card-container .card img {
-    width: 100%;
-    height: auto;
-    max-height: 10em;
+  width: 100%;
+  height: auto;
+  max-height: 10em;
   object-fit: cover;
 }
 
 .card-container .card p {
-    font-size: 1.2rem;
-    font-weight: 400;
+  font-size: 1.2rem;
+  font-weight: 400;
 }
 
 .card-link {
@@ -328,20 +321,20 @@ button:hover,
 }
 
 .input-bar {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .input-bar input[type="text"] {
-    background-color: #def193;
-    border: none;
-    height: 2em;
-    width: 100%; 
-    font-size: large;
-    padding: 0.5em;
-    padding-left: 1em;
-    border-radius: 10px;
-    max-width: 300px;
+  background-color: #def193;
+  border: none;
+  height: 2em;
+  width: 100%;
+  font-size: large;
+  padding: 0.5em;
+  padding-left: 1em;
+  border-radius: 10px;
+  max-width: 300px;
 }
 
 .container {
@@ -350,9 +343,9 @@ button:hover,
 }
 
 .index-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .list {
@@ -366,13 +359,13 @@ button:hover,
 }
 
 .tags {
-    flex: 1 1;
-    margin-left: 5%;
-    margin-right: 5%;
-    background-color: #def193;
-    padding: 5px;
-    border-radius: 10px;
-    text-align: center;
+  flex: 1 1;
+  margin-left: 5%;
+  margin-right: 5%;
+  background-color: #def193;
+  padding: 5px;
+  border-radius: 10px;
+  text-align: center;
 }
 
 .word-buttons {
@@ -380,33 +373,8 @@ button:hover,
   margin-left: 5%;
 }
 
-
-/* Search CSS */
-.card-deck {
-    flex: 0 0 300px;
-    justify-content: space-around;
-    display: flex;
-  }
-  
-  .card-deck .card {
-    display: flex;
-    flex: 0 0 300px;
-    background-color: rgba(127, 255, 180, 0.236);
-    margin: 1.5rem;
-    border-radius: 50px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
-  }
-
-  .dropdown-menu.show {
-    z-index: 10;
-  }
-
-
-.card-deck .card img {
-  width: 200px;
-  height: 150px;
-  margin: 0.5rem;
-  border-radius: 50px;
+.dropdown-menu.show {
+  z-index: 10;
 }
 
 .topnav-search {
@@ -468,24 +436,16 @@ button:hover,
   padding-right: 1px;
 }
 
-.card-deck h2 a {
-  text-decoration: none;
-  color: black;
-}
-
 footer {
   text-align: center;
 }
 
 footer p {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 /* Media Queries  */
 @media (min-width: 598px) {
-    
-
-
   .card {
     margin: 20px 10px;
   }
@@ -495,95 +455,83 @@ footer p {
     flex-direction: column;
   }
 
-  .card-deck .card {
-    flex: 1;
-    width: 100%;
+  /* Account Page CSS */
+
+  .account-details,
+  .account-settings {
+    text-align: center;
   }
 
-  .card-deck .card img {
-    width: 150px;
-    height: auto;
-    margin: 0.5rem 0;
+  @media (min-width: 768px) {
+    main {
+      margin-top: 8em;
     }
 
-}
+    .welcome {
+      margin-bottom: 0;
+    }
 
+    nav {
+      justify-content: space-between;
+    }
 
-/* Account Page CSS */
+    nav ul {
+      justify-content: space-between;
+      flex-direction: row;
+    }
 
-.account-details, .account-settings {
-  text-align: center;
-}
+    nav li {
+      display: inline-block;
+      padding: 10px;
+      text-decoration: none;
+      color: black;
+    }
 
-@media (min-width: 768px) {
+    .card-container {
+      flex-direction: row;
+      margin: 100px auto;
+      padding: 0 1em;
+      max-width: 768px;
+    }
 
+    .card-container .card {
+      box-sizing: border-box;
+    }
+  }
+
+  @media (min-width: 992px) {
     main {
-        margin-top: 8em;
-      }
+      margin-top: 10em;
+    }
 
-.welcome {
-    margin-bottom: 0;
-}
-        
-  nav {
-    justify-content: space-between;
-  }
+    .welcome {
+      margin-bottom: 4em;
+    }
 
-  nav ul {
-    justify-content: space-between;
-    flex-direction: row;
-  }
+    nav {
+      justify-content: space-between;
+    }
 
-  nav li {
-    display: inline-block;
-    padding: 10px;
-    text-decoration: none;
-    color: black;
-  }
+    nav ul {
+      justify-content: space-between;
+      flex-direction: row;
+    }
 
-  .card-container,
-  .card-deck {
-    flex-direction: row;
-    margin: 100px auto;
-    padding: 0 1em;
-    max-width: 768px;
-  }
-}
+    nav li {
+      display: inline-block;
+      padding: 10px;
+      text-decoration: none;
+      color: black;
+    }
 
-@media (min-width: 992px) {
-  main {
-    margin-top: 10em;
-  }
+    .card-container {
+      flex-direction: row;
+      margin: auto;
+      max-width: 992px;
+    }
 
-  .welcome {
-    margin-bottom: 4em;
-  }
-
-  nav {
-    justify-content: space-between;
-  }
-
-  nav ul {
-    justify-content: space-between;
-    flex-direction: row;
-  }
-
-  nav li {
-    display: inline-block;
-    padding: 10px;
-    text-decoration: none;
-    color: black;
-  }
-
-  .card-container,
-  .card-deck {
-    flex-direction: row;
-    margin: auto;
-    max-width: 992px;
-  }
-
-  .card-container .card,
-  .card-deck .card {
-    width: calc(100% - 10px);
+    .card-container .card {
+      width: calc(100% - 10px);
+    }
   }
 }
