@@ -16,7 +16,7 @@ export function QuizPage(props) {
         </div>
         <QuizComponent data={props.wordList} />
       </main>
-      <Footer />
+      <Footer imageRef="Audio pronunciations provided by Brittanica.com" />
     </div>
   );
 }
