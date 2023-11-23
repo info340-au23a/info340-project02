@@ -1,9 +1,11 @@
 * {
-  font-size: 20px;
+
   box-sizing: content-box;
+  font-family: "Inter", sans-serif;
 }
 
 main {
+  font-size: 20px;
   margin-top: 20em;
   margin-bottom: 30px;
 }
@@ -11,7 +13,6 @@ main {
 h1,
 h2 {
   text-align: center;
-  font-family: "Inter", sans-serif;
   align-items: center;
   color: #2d334a;
 }
@@ -35,16 +36,10 @@ header {
   margin-left: 0;
 }
 
-.cite {
-  padding-top: 50px;
-  text-align: left;
-}
-
 /* nav bar */
 .navbar-logo img {
   height: 40px;
   margin-right: 0;
-  margin-bottom: 10px;
 }
 
 nav a {
@@ -54,15 +49,11 @@ nav a {
 
 nav {
   overflow: hidden;
-
   margin: auto;
-  min-height: 2.5em;
   display: flex;
   justify-content: space-around;
   align-items: center;
   text-align: center;
-  font-family: "Inter", sans-serif;
-  align-items: center;
   color: #2d334a;
 }
 
@@ -75,7 +66,7 @@ nav ul {
 
 nav li {
   display: inline-block;
-  padding: 5px 0;
+  padding: 10px;
   text-decoration: none;
   color: black;
 }
@@ -88,6 +79,10 @@ nav li:hover {
 nav img:hover {
   animation: smoothRotate 1s ease-in-out infinite;
   transform: scale(1.1);
+}
+
+nav .material-icons {
+  transform: translateY(10%);
 }
 
 /* for logo hover effect */
@@ -109,7 +104,7 @@ nav img:hover {
   justify-content: space-between;
   flex-direction: column;
   margin: auto;
-  padding: 0 3em;
+  padding: 0;
   width: 100%;
   max-width: 200px;
 }
@@ -124,8 +119,8 @@ nav img:hover {
   border-radius: 5px;
   text-align: center;
   transition: transform 0.3s ease;
-  margin: 20px 0;
-  width: 100%;
+  margin: 20px auto;
+  width: calc(100% - 40px)
 }
 
 .card-container .card:hover {
@@ -146,10 +141,10 @@ nav img:hover {
   padding-bottom: 10px;
 }
 
-.card-container .card p {
+.card-container .card h2 {
   padding-top: 10px;
-  font-size: 1.2rem;
-  font-weight: 200;
+  font-size: 1.5rem;
+  font-weight: 300;
 }
 
 .card-link {
@@ -209,7 +204,7 @@ nav img:hover {
   height: 100%;
   height: auto;
   position: inherit;
-  box-sizing: border-box;
+  box-sizing: content-box;
   backface-visibility: hidden;
   display: none;
   transition: opacity 0.6s, visibility 0.6s;
@@ -462,11 +457,14 @@ button:hover,
 }
 
 footer {
-  text-align: center;
+  padding-top: 50px;
+  text-align: left;
+  font-size: 14px;
+  margin: auto;
 }
 
 footer p {
-  font-size: 14px;
+  margin-bottom: 0;
 }
 
 /* Media Queries  */
@@ -503,6 +501,7 @@ footer p {
     nav ul {
       justify-content: space-between;
       flex-direction: row;
+      transform: translateY(15%);
     }
 
     nav li {
@@ -535,6 +534,7 @@ footer p {
 
     nav {
       justify-content: space-between;
+      align-items: center;
     }
 
     nav ul {
@@ -544,7 +544,7 @@ footer p {
 
     nav li {
       display: inline-block;
-      padding: 10px;
+      align-items: center;
       text-decoration: none;
       color: black;
     }

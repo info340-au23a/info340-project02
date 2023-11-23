@@ -22,7 +22,7 @@ export function HomeCard(props) {
     <a href={props.cardLink} className="card-link">
       <div className="card">
         <img src={props.imgLink} alt={props.imgAltText} />
-        <p>{props.cardText}</p>
+        <h2>{props.cardText}</h2>
       </div>
     </a>
   );

@@ -11,8 +11,8 @@ export function QuizPage(props) {
       </header>
       <main>
         <div>
-            <h1>Word Quiz</h1>
-            <h2>How many can you answer correctly?</h2>
+          <h1>Word Quiz</h1>
+          <h2>How many can you answer correctly?</h2>
         </div>
         <QuizComponent data={props.wordList} />
       </main>

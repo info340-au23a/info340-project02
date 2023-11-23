@@ -3,31 +3,31 @@ import React from "react";
 export function NavBar(props) {
   return (
     <nav>
-      <a href="index.html" className="navbar-logo">
+      <a href="#/" className="navbar-logo">
         <img src="/img/logo.png" alt="Spelling Adventures" />
       </a>
       <ul>
         <li>
-          <a href="index.html">Home</a>
+          <a href="#/">Home</a>
         </li>
         <li>
-          <a href="./flip-cards.html">Flip Cards</a>
+          <a href="#/">Flip Cards</a>
         </li>
         <li>
-          <a href="./quiz.html">Quiz</a>
+          <a href="#/">Quiz</a>
         </li>
         <li>
-          <a href="./wordlists.html">Create</a>
+          <a href="#/">Create</a>
         </li>
         <li>
-          <a href="./search.html">
+          <a href="#/">
             <span className="material-icons" aria-label="Search">
               search
             </span>
           </a>
         </li>
         <li>
-          <a href="./account.html">
+          <a href="#/">
             <span className="material-icons" aria-label="Account">
               person
             </span>

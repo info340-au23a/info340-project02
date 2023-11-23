@@ -16,7 +16,7 @@ export function FlipCardPage(props) {
         </div>
         <FlipCardList flipCards={props.wordsData} />
       </main>
-      <Footer />
+      <Footer imageRef="Flipcard sample photos originally from Pexels.com" />
     </div>
   );
 }
