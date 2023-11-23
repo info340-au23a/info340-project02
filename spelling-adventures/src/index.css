@@ -116,7 +116,6 @@ nav img:hover {
 
 .card-container .card {
   flex: 1;
-  /* margin: 1em; */
   padding: 1.5em;
   background: linear-gradient(to bottom, #f0f0f0 0%, #d4d4d4 100%);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -144,11 +143,13 @@ nav img:hover {
   height: auto;
   max-height: 10em;
   object-fit: cover;
+  padding-bottom: 10px;
 }
 
 .card-container .card p {
+  padding-top: 10px;
   font-size: 1.2rem;
-  font-weight: 400;
+  font-weight: 200;
 }
 
 .card-link {
@@ -183,15 +184,6 @@ nav img:hover {
 
 /* flip card css */
 
-.flip-card-front {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  transform-origin: center;
-  backface-visibility: hidden;
-}
-
 .flip-card {
   text-align: center;
   background-color: white;
@@ -200,36 +192,69 @@ nav img:hover {
   padding: 40px;
   border-radius: 5px;
   max-width: 400px;
-  min-width: 200px;
   perspective: 1000px;
   transform-style: preserve-3d;
   transition: transform 0.6s;
   transform-origin: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.flip-card-front,
+.flip-card-back {
+  width: 100%;
+  height: 100%;
+  height: auto;
+  position: inherit;
+  box-sizing: border-box;
+  backface-visibility: hidden;
+  display: none;
+  transition: opacity 0.6s, visibility 0.6s;
+}
+
+.flip-card-front {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.flip-card-back {
+  flex-direction: column;
+  transform: rotateY(180deg);
 }
 
 .flip-card img {
   max-width: 100%;
   max-height: 20em;
   object-fit: cover;
-  object-position: top;
-  display: block;
+  border-radius: 15%;
 }
 
 .flipped {
   transform: rotateY(180deg);
 }
 
+.flipped .flip-card-front {
+  visibility: hidden;
+  opacity: 0;
+  z-index: -1;
+}
+
+.flipped .flip-card-back {
+  display: flex;
+  z-index: 2;
+}
+
 .flip-card-back p {
   text-align: center;
 }
 
-.flip-card-back {
-  backface-visibility: hidden;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transform: rotateY(180deg);
+.flip-card:not(.flipped) .soundButton {
+  padding-top: 20px;
 }
 
 .speech-type,

@@ -46,7 +46,7 @@ export function FlipCardList(props) {
 }
 
 export function FlipCard(props) {
-  const flipCard = props.flipCard;
+  const wordData = props.flipCard;
   const isFlipped = props.isFlipped;
 
   let cardClassName = "flip-card";
@@ -54,14 +54,28 @@ export function FlipCard(props) {
     cardClassName += " flipped";
   }
 
-  const handleSoundClick = (id) => {
-
+  const handleSoundClick = (id, event) => {
+    event.stopPropagation();
+    if (wordData.pronunciationAudio) {
+      const audio = new Audio(wordData.pronunciationAudio);
+      audio.play();
+    }
   };
 
   return (
     <div className={cardClassName} onClick={props.onCardFlip}>
       <div className="flip-card-front">
-        {!isFlipped && <img src={flipCard.imgSrc} alt={flipCard.imgAlt} />}
+        {!isFlipped && <img src={wordData.imgSrc} alt={wordData.imgAlt} />}
+        <div className="soundButton">
+          <button
+            id="sound-button"
+            className="fas"
+            aria-label="Play Sound"
+            onClick={(e) => handleSoundClick(wordData.id, e)}
+          >
+            &#xf028;
+          </button>
+        </div>
       </div>
 
       <div className="flip-card-back">
@@ -69,17 +83,17 @@ export function FlipCard(props) {
           id="sound-button"
           className="fas"
           aria-label="Play Sound"
-          onClick={() => handleSoundClick(flipCard.id)}
+          onClick={(e) => handleSoundClick(wordData.id, e)}
         >
           &#xf028;
         </button>
 
-        <p>{flipCard.word}</p>
-        <p>{flipCard.sentence}</p>
+        <p>{wordData.word}</p>
+        <p>{wordData.sentence}</p>
         <p>
           {" "}
-          <span className="speech-type">{flipCard.tags[0]}</span>{" "}
-          <span className="object-type">{flipCard.tags[1]}</span>{" "}
+          <span className="speech-type">{wordData.tags[0]}</span>{" "}
+          <span className="object-type">{wordData.tags[1]}</span>{" "}
         </p>
       </div>
     </div>

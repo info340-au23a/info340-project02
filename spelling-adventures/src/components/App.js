@@ -27,11 +27,11 @@ export function App(props) {
   return (
     <div>
       <HomePage />
-      <FlipCardPage wordsData={props.wordsData} />
-      <QuizPage wordList={props.wordsData} />
-      <ListBuilderPage tagsData={props.tagsData}/>
-      <SearchFilterPage applyFilterCallback={handleFilterApply} wordSets={props.wordSets} tagsData={props.tagsData}/>
-      <AccountPage currentUser={currentUser} changeUserFunction={changeUser} />
+      {/* <FlipCardPage wordsData={props.wordsData} /> */}
+      {/* <QuizPage wordList={props.wordsData} /> */}
+      {/* <ListBuilderPage tagsData={props.tagsData}/> */}
+      {/* <SearchFilterPage applyFilterCallback={handleFilterApply} wordSets={props.wordSets} tagsData={props.tagsData}/> */}
+      {/* <AccountPage currentUser={currentUser} changeUserFunction={changeUser} /> */}
     </div>
   );
 }

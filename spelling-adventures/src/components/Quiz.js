@@ -9,7 +9,7 @@ function GenerateQuizCard(props) {
   const setMessage = props.setMessage;
 
   const handleSoundClick = () => {
-    if (wordListData && wordListData.pronunciationAudio) {
+    if (wordListData.pronunciationAudio) {
       const audio = new Audio(wordListData.pronunciationAudio);
       audio.play();
     }
