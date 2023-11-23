@@ -11,7 +11,7 @@ export function HomePage(props) {
       <main>
         <div className="welcome">
           <h1>
-            Welcome to <img src="./img/logo.png" alt="Spelling Adventures" />
+            Welcome to <img src="/img/logo.png" alt="Spelling Adventures" />
           </h1>
         </div>
         <HomeCardList />
