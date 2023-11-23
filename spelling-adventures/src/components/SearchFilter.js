@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import WORDSET_DATA from "./data/word-list.json";
-import TAGS_DATA from "./data/tags.json";
+// import TAGS_DATA from "./data/tags.json";
 import Dropdown from "react-bootstrap/Dropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -123,7 +123,7 @@ export default function SearchFilter(props) {
           onSearchChange={handleSearchChange}
         />
         <TagFilter
-          tagsData={TAGS_DATA}
+          tagsData={props.tagsData}
           selectedTags={selectedTags}
           onTagChange={handleTagChange}
           isFilterOpen={isFilterOpen}

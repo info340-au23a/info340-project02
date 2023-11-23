@@ -16,7 +16,7 @@ export function AccountSettings(props) {
   const handleEditProfile = () => {
     // Logic to open modal or navigate to edit page
   };
-  
+
   // toggles darkmode
   const handleDarkModeToggle = () => {
     setDarkMode(!darkMode);
@@ -24,7 +24,7 @@ export function AccountSettings(props) {
 
   // toggles notifications
   const handleNotificationToggle = () => {
-    setNotifications(!notifications)
+    setNotifications(!notifications);
   };
 
   return (
@@ -37,7 +37,8 @@ export function AccountSettings(props) {
         />
         <h2>Profile Details</h2>
         <p>Username: {currentUser.userName}</p>
-        <button onClick={handleEditProfile}>Edit Profile</button>      </div>
+        <button onClick={handleEditProfile}>Edit Profile</button>{" "}
+      </div>
       <div className="account-settings">
         <h2>Settings</h2>
         <p>
@@ -59,8 +60,8 @@ export function AccountSettings(props) {
             aria-label="Toggle Dark Mode"
           />
         </p>
-        <button onClick={handleUpdateSettings}>Update Settings</button>      </div>
-        </>
-
+        <button onClick={handleUpdateSettings}>Update Settings</button>{" "}
+      </div>
+    </>
   );
 }
