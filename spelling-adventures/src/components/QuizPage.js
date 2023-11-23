@@ -12,7 +12,7 @@ export function QuizPage(props) {
       <main>
         <div>
             <h1>Word Quiz</h1>
-            <p>How many can you guess correctly?</p>
+            <h2>How many can you guess correctly?</h2>
         </div>
         <QuizComponent data={props.wordList} />
       </main>

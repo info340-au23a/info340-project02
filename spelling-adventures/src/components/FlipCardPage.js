@@ -12,7 +12,7 @@ export function FlipCardPage(props) {
       <main>
         <div>
           <h1>Flip Cards</h1>
-          <p>Practice your skills</p>
+          <h2>Practice your skills</h2>
         </div>
         <FlipCardList flipCards={props.wordsData} />
       </main>

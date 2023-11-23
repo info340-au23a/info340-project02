@@ -4,8 +4,9 @@ import { HomePage } from "./HomePage.js";
 import { ListBuilderPage } from "./ListBuilderPage.js";
 import { FlipCardPage } from "./FlipCardPage.js";
 import { AccountPage } from "./AccountPage.js"
-import SearchFilter from "./SearchFilter.js";
 import { QuizPage } from "./QuizPage.js";
+import { SearchFilterPage } from "./SearchFilterPage.js";
+import { AccountSettings } from "./AccountSettings.js";
 
 export function App(props) {
   const [currentUser, setCurrentUser] = useState(props.accountsData[1]);
@@ -26,12 +27,12 @@ export function App(props) {
 
   return (
     <div>
-      {/* <HomePage /> */}
-      {/* <FlipCardPage wordsData={props.wordsData} /> */}
-      {/* <QuizPage wordList={props.wordsData} /> */}
+      <HomePage />
+      <FlipCardPage wordsData={props.wordsData} />
+      <QuizPage wordList={props.wordsData} />
       <ListBuilderPage tagsData={props.tagsData}/>
-      {/* <SearchFilter applyFilterCallback={handleFilterApply} /> */}
-      {/* <AccountPage currentUser={currentUser} changeUserFunction={changeUser} /> */}
+      <SearchFilterPage applyFilterCallback={handleFilterApply} wordSets={props.wordSets} tagsData={props.tagsData}/>
+      <AccountPage currentUser={currentUser} changeUserFunction={changeUser} />
     </div>
   );
 }
