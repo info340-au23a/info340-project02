@@ -1,5 +1,4 @@
 * {
-
   box-sizing: content-box;
   font-family: "Inter", sans-serif;
 }
@@ -120,7 +119,7 @@ nav .material-icons {
   text-align: center;
   transition: transform 0.3s ease;
   margin: 20px auto;
-  width: calc(100% - 40px)
+  width: calc(100% - 40px);
 }
 
 .card-container .card:hover {
