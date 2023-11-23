@@ -40,7 +40,7 @@
     "word": "joyful",
     "sentence": "The children were joyful as they played in the park.",
     "tags": ["adjective", "emotion"],
-    "imgSrc": "./img/flipcard/",
+    "imgSrc": "./img/flipcard/pexels-spora-weddings-19113546.jpg",
     "imgAlt": "Children playing joyfully in a park",
     "pronunciationAudio": "./audio/joyful.mp3"
   },
@@ -67,7 +67,7 @@
     "word": "concert",
     "sentence": "They attended a lively concert featuring their favorite band.",
     "tags": ["noun", "event"],
-    "imgSrc": "./img/flipcard/",
+    "imgSrc": "./img/flipcard/pexels-picjumbocom-196652.jpg",
     "imgAlt": "A lively concert with a band performing on stage",
     "pronunciationAudio": "./audio/concert.mp3"
   },
