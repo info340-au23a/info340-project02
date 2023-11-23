@@ -2,57 +2,66 @@ import React, { useState } from "react";
 
 export function FlipCardList(props) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isCardFlipped, setIsCardFlipped] = useState(false);
 
   const flipCards = props.flipCards;
 
   const handleNext = () => {
     if (currentIndex < flipCards.length - 1) {
       setCurrentIndex(currentIndex + 1);
+      setIsCardFlipped(false);
     }
   };
 
   const handleLast = () => {
     if (currentIndex > 0) {
       setCurrentIndex(currentIndex - 1);
+      setIsCardFlipped(false);
     }
   };
 
+  const handleCardFlip = () => {
+    setIsCardFlipped(!isCardFlipped);
+  };
+
   return (
-      <div>
-        {flipCards.length > 0 && (
-          <FlipCard flipCard={flipCards[currentIndex]} />
-        )}
-        <div className="quiz-buttons-container">
-          <div className="quiz-last">
-            <button onClick={handleLast}>&#8592; Last</button>
-          </div>
-          <div className="quiz-next">
-            <button onClick={handleNext}>&#8594; Next</button>
-          </div>
+    <div>
+      {flipCards.length > 0 && (
+        <FlipCard
+          flipCard={flipCards[currentIndex]}
+          isFlipped={isCardFlipped}
+          onCardFlip={handleCardFlip}
+        />
+      )}
+      <div className="quiz-buttons-container">
+        <div className="quiz-last">
+          <button onClick={handleLast}>&#8592; Last</button>
+        </div>
+        <div className="quiz-next">
+          <button onClick={handleNext}>&#8594; Next</button>
         </div>
       </div>
+    </div>
   );
 }
 
 export function FlipCard(props) {
   const flipCard = props.flipCard;
-  const [flip, setFlip] = useState(false);
-
-  const handleFlip = () => {
-    setFlip(!flip);
-  };
+  const isFlipped = props.isFlipped;
 
   let cardClassName = "flip-card";
-  if (flip) {
+  if (isFlipped) {
     cardClassName += " flipped";
   }
 
-  const handleSoundClick = (id) => {};
+  const handleSoundClick = (id) => {
+
+  };
 
   return (
-    <div className={cardClassName} onClick={handleFlip}>
+    <div className={cardClassName} onClick={props.onCardFlip}>
       <div className="flip-card-front">
-        {!flip && <img src={flipCard.imgSrc} alt={flipCard.imgAlt} />}
+        {!isFlipped && <img src={flipCard.imgSrc} alt={flipCard.imgAlt} />}
       </div>
 
       <div className="flip-card-back">

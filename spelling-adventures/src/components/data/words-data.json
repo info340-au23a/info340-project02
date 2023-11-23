@@ -75,7 +75,7 @@
     "id": 9,
     "word": "effervescent",
     "sentence": "The effervescent drink bubbled in the glass.",
-    "tags": ["adjective", "physical property"],
+    "tags": ["adjective", "physical"],
     "imgSrc": "./img/flipcard/pexels-cottonbro-studio-5722880.jpg",
     "imgAlt": "Bubbles rising in a glass of effervescent drink",
     "pronunciationAudio": "./audio/effervescent.mp3"
