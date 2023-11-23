@@ -24,10 +24,10 @@ export function FlipCardList(props) {
         )}
         <div className="quiz-buttons-container">
           <div className="quiz-last">
-            <button onClick={handleLast}>&#8592; Last</button>
+            <button onClick={handleLast}>&#8592; </button>
           </div>
           <div className="quiz-next">
-            <button onClick={handleNext}>&#8594; Next</button>
+            <button onClick={handleNext}>&#8594; </button>
           </div>
         </div>
       </div>
