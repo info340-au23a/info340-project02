@@ -48,7 +48,7 @@ function TagFilter(props) {
 // SearchInput Component
 function SearchInput(props) {
   return (
-    <div className="input-bar" style={{ textAlign: "center" }}>
+    <div className="input-bar">
       <span className="material-icons search-icon" aria-hidden="true">
         search
       </span>
