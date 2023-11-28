@@ -68,7 +68,6 @@ export function FlipCard(props) {
         {!isFlipped && <img src={wordData.imgSrc} alt={wordData.imgAlt} />}
         <div className="soundButton">
           <button
-            id="sound-button"
             className="fas"
             aria-label="Play Sound"
             onClick={(e) => handleSoundClick(wordData.id, e)}

@@ -69,7 +69,7 @@ function WordCard(props) {
   return (
     <div className="card">
       <div className="card-body">
-        <h5 className="card-title">{dataObj.Title}</h5>
+        <p className="card-title">{dataObj.Title}</p>
         <ul>
           {dataObj.tags.map((tag, index) => (
             <li key={index}>{tag}</li>

@@ -31,7 +31,6 @@ function GenerateQuizCard(props) {
         <h2 style={{ fontSize: "24px" }}>
           <label htmlFor="word-input">
             <button
-              id="sound-button"
               className="fas"
               aria-label="Play Sound"
               onClick={() => handleSoundClick(wordListData.id)}
