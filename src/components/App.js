@@ -6,6 +6,7 @@ import { FlipCardPage } from "./FlipCardPage.js";
 import { AccountPage } from "./AccountPage.js"
 import { QuizPage } from "./QuizPage.js";
 import { SearchFilterPage } from "./SearchFilterPage.js";
+import { Routes, Route, Navigate } from "react-router";
 
 export function App(props) {
   const [currentUser, setCurrentUser] = useState(props.accountsData[1]);
@@ -26,12 +27,15 @@ export function App(props) {
 
   return (
     <div>
-      <HomePage />
-      <FlipCardPage wordsData={props.wordsData} />
-      <QuizPage wordList={props.wordsData} />
-      <ListBuilderPage tagsData={props.tagsData}/>
-      <SearchFilterPage applyFilterCallback={handleFilterApply} wordSets={props.wordSets} tagsData={props.tagsData}/>
-      <AccountPage currentUser={currentUser} changeUserFunction={changeUser} />
+      <Routes>
+        <Route path="home" element={<HomePage />}/>
+        <Route path="flipcard" element={<FlipCardPage wordsData={props.wordsData} />}/>
+        <Route path="quiz" element={<QuizPage wordList={props.wordsData} />}/>
+        <Route path="create" element={<ListBuilderPage tagsData={props.tagsData}/>}/>
+        <Route path="search-filter" element={<SearchFilterPage applyFilterCallback={handleFilterApply} wordSets={props.wordSets} tagsData={props.tagsData}/>}/>
+        <Route path="account" element={<AccountPage currentUser={currentUser} changeUserFunction={changeUser} />}/>
+        <Route path="*" element={<Navigate to="/home"/>}/>
+      </Routes>
     </div>
   );
 }

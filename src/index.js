@@ -4,6 +4,7 @@ import WORD_LIST_DATA from "./components/data/word-list.json";
 import WORD_SETS from "./components/data/word-lists-set.json";
 import SAMPLE_ACCOUNTS from "./components/data/sample-accounts.json";
 import TAGS_DATA from "./components/data/tags.json";
+import { BrowserRouter } from "react-router-dom";
 
 import { initializeApp } from "firebase/app";
 
@@ -27,10 +28,12 @@ const app = initializeApp(firebaseConfig);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
+  <BrowserRouter>
   <App
     wordsData={WORD_LIST_DATA}
     accountsData={SAMPLE_ACCOUNTS}
     tagsData={TAGS_DATA}
     wordSets={WORD_SETS}
   />
+  </BrowserRouter>
 );

@@ -1,5 +1,6 @@
 import React from "react";
 import homeCardData from "./data/homecard-data.json";
+import { Link } from "react-router-dom";
 
 export function HomeCardList(props) {
   const cardArray = homeCardData.map((card, index) => (
@@ -19,11 +20,11 @@ export function HomeCardList(props) {
 
 export function HomeCard(props) {
   return (
-    <a href={props.cardLink} className="card-link">
+    <Link to={props.cardLink} className="card-link">
       <div className="card">
         <img src={props.imgLink} alt={props.imgAltText} />
         <h2>{props.cardText}</h2>
       </div>
-    </a>
+    </Link>
   );
 }
