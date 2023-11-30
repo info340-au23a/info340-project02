@@ -113,6 +113,10 @@ export default function SearchFilter(props) {
     );
   });
 
+  const filteredWordsArray = filteredWords.map((dataObj) => {
+    return <WordCard key={dataObj.id} dataObj={dataObj} />
+  });
+
   return (
     <form onSubmit={handleClick}>
       <div className="searchFilter">
@@ -129,9 +133,7 @@ export default function SearchFilter(props) {
           toggleFilter={toggleFilter}
         />
         <div className="cardsDisplay">
-          {filteredWords.map((dataObj) => (
-            <WordCard key={dataObj.id} dataObj={dataObj} />
-          ))}
+          {filteredWordsArray}
         </div>
       </div>
     </form>
