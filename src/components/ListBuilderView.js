@@ -17,41 +17,59 @@ export function ListBuilderView(props) {
   // GETs a list of words from the MW API
   // note that the data that is passed into the search component is just a list a words that has no other data
   // we will have to reidentify the word with MW's api to pull more data
-  useEffect(() => {
-    const queryTerm = searchTerm + "*";
-    const url = DICTIONARY_API_TEMPLATE.replace("{word}", queryTerm).replace(
-      "{apiKey}",
-      apiKey
-    );
-
+  // this is due to MW API returning an array of Objs for >3 char searchs
+  // and an array of strings for <3 char searchs
+useEffect(() => {
+  if (searchTerm) {
+    const queryTerm = searchTerm + '*'; 
+    const url = DICTIONARY_API_TEMPLATE.replace("{word}", queryTerm).replace("{apiKey}", apiKey);
+  
     fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        if (Array.isArray(data) && data.length > 0) {
-          if (typeof data[0] === "string") {
-            const firstLetter = searchTerm.charAt(0).toLowerCase();
-            const suggestions = data.filter(
-              (word) =>
-                word.toLowerCase().startsWith(firstLetter) &&
-                !word.includes(" ")
-            );
-            if (suggestions.length > 0) {
-              setSearchData(
-                suggestions.map((word) => ({ word, isSuggestion: true }))
-              );
-            } else {
-              setSearchData([]); // No matching suggestions
-            }
+      .then(response => response.json())
+      .then(data => {
+        if (Array.isArray(data)) {
+          if (typeof data[0] === 'string') {
+            // Handling array of strings
+            const processedSuggestions = processSuggestions(data, searchTerm);
+            setSearchData(processedSuggestions);
+          } else {
+            // Handling array of objects
+            const processedEntries = processDetailedEntries(data, searchTerm);
+            setSearchData(processedEntries);
           }
         } else {
-          setSearchData([]); // No results
+          setSearchData([]); // no results
         }
       })
-      .catch((error) => {
+      .catch(error => {
         console.error("Fetch error:", error);
         setSearchData([]);
       });
-  }, [searchTerm]);
+  } else {
+    setSearchData([]); // reset when search term is cleared
+  }
+}, [searchTerm]);
+
+const processSuggestions = (suggestions, searchTerm) => {
+  const uniqueWords = new Set(
+    suggestions.map(word => word.toLowerCase().replace(/\.$/, ''))
+  );
+  return Array.from(uniqueWords)
+    .filter(word => word.startsWith(searchTerm.toLowerCase()) && !word.includes(" "))
+    .map(word => ({ word, isSuggestion: true }));
+};
+
+const processDetailedEntries = (entries, searchTerm) => {
+  const uniqueEntries = new Set(
+    entries.map(item => item.meta.id.split(':')[0].toLowerCase().replace(/\.$/, ''))
+  );
+  return Array.from(uniqueEntries)
+    .map(wordId => entries.find(item => item.meta.id.split(':')[0].toLowerCase().replace(/\.$/, '') === wordId))
+    .filter(item => item.meta.id.split(':')[0].toLowerCase().startsWith(searchTerm.toLowerCase()) && !item.meta.id.split(':')[0].includes(" "));
+};
+
+          
+  
 
   // handles adding a word to the list when clicked
   const onWordClick = (word) => {
