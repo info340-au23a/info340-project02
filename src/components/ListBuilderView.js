@@ -53,7 +53,6 @@ export function ListBuilderView(props) {
       });
   }, [searchTerm]);
 
-
   // handles adding a word to the list when clicked
   const onWordClick = (word) => {
     const url = DICTIONARY_API_TEMPLATE.replace("{word}", word).replace(
