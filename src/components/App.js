@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import "whatwg-fetch";
 
 import { HomePage } from "./HomePage.js";
 import { ListBuilderPage } from "./ListBuilderPage.js";
 import { FlipCardPage } from "./FlipCardPage.js";
-import { AccountPage } from "./AccountPage.js"
+import { AccountPage } from "./AccountPage.js";
 import { QuizPage } from "./QuizPage.js";
 import { SearchFilterPage } from "./SearchFilterPage.js";
 import { Routes, Route, Navigate } from "react-router";
@@ -13,7 +14,7 @@ export function App(props) {
 
   const changeUser = (newUserObj) => {
     setCurrentUser(newUserObj);
-  }
+  };
 
   // for SearchFilter
   const [filteredData, setFilteredData] = useState([]);
@@ -28,13 +29,40 @@ export function App(props) {
   return (
     <div>
       <Routes>
-        <Route path="home" element={<HomePage />}/>
-        <Route path="flipcard" element={<FlipCardPage wordsData={props.wordsData} />}/>
-        <Route path="quiz" element={<QuizPage wordList={props.wordsData} />}/>
-        <Route path="create" element={<ListBuilderPage tagsData={props.tagsData}/>}/>
-        <Route path="search-filter" element={<SearchFilterPage applyFilterCallback={handleFilterApply} wordSets={props.wordSets} tagsData={props.tagsData}/>}/>
-        <Route path="account" element={<AccountPage currentUser={currentUser} changeUserFunction={changeUser} />}/>
-        <Route path="*" element={<Navigate to="/home"/>}/>
+        <Route path="home" element={<HomePage />} />
+        <Route
+          path="flipcard"
+          element={<FlipCardPage wordsData={props.wordsData} />}
+        />
+        <Route path="quiz" element={<QuizPage wordList={props.wordsData} />} />
+        <Route
+          path="create"
+          element={
+            <ListBuilderPage
+              tagsData={props.tagsData}
+            />
+          }
+        />
+        <Route
+          path="search-filter"
+          element={
+            <SearchFilterPage
+              applyFilterCallback={handleFilterApply}
+              wordSets={props.wordSets}
+              tagsData={props.tagsData}
+            />
+          }
+        />
+        <Route
+          path="account"
+          element={
+            <AccountPage
+              currentUser={currentUser}
+              changeUserFunction={changeUser}
+            />
+          }
+        />
+        <Route path="*" element={<Navigate to="/home" />} />
       </Routes>
     </div>
   );

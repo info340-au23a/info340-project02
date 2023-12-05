@@ -4,6 +4,7 @@ import { Footer } from "./Footer.js";
 import { ListBuilderView } from "./ListBuilderView.js";
 
 export function ListBuilderPage(props) {
+
   return (
     <div>
       <header>
@@ -13,7 +14,9 @@ export function ListBuilderPage(props) {
         <div>
           <h1>Word List Builder</h1>
         </div>
-        <ListBuilderView tagsData={props.tagsData} />
+        <ListBuilderView
+          tagsData={props.tagsData}
+        />
       </main>
       <Footer />
     </div>

@@ -73,11 +73,13 @@ nav li {
 nav li:hover {
   background-color: #c6d885;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 nav img:hover {
   animation: smoothRotate 1s ease-in-out infinite;
   transform: scale(1.1);
+  cursor: pointer;
 }
 
 nav .material-icons {
@@ -319,7 +321,6 @@ button:hover,
   border: 2px solid #ccc;
   margin: 20px auto;
   padding: 40px;
-  /* Adjust padding for better spacing */
   border-radius: 5px;
   max-width: 400px;
   min-width: 200px;
@@ -333,6 +334,13 @@ button:hover,
 }
 
 /* List Builder CSS */
+
+.searchResultWord:hover {
+  background-color: #c6d885;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 
 .top-nav {
   display: flex;

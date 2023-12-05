@@ -1,4 +1,6 @@
 import ReactDOM from "react-dom/client";
+import 'whatwg-fetch';
+
 import { App } from "./components/App";
 import WORD_LIST_DATA from "./components/data/word-list.json";
 import WORD_SETS from "./components/data/word-lists-set.json";
@@ -24,7 +26,7 @@ const firebaseConfig = {
   appId: "1:613274105813:web:71305ec8c8ee61a2b52f5c",
 };
 
-const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
