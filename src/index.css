@@ -302,6 +302,20 @@ button:hover,
 
 /* Quiz CSS */
 
+.quiz {
+  margin-top: 30px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.searchTitle {
+  margin-top: 30px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
 .quiz-card label {
   display: block;
   font-size: 16px;
