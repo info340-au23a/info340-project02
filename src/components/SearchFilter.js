@@ -47,6 +47,12 @@ function TagFilter(props) {
 
 // SearchInput Component
 function SearchInput(props) {
+
+  const onChange = (e) => { 
+    e.preventDefault();
+    props.onSearchChange(e.target.value);
+  };
+
   return (
     <div className="input-bar">
       <span className="material-icons search-icon" aria-hidden="true">
@@ -57,7 +63,7 @@ function SearchInput(props) {
         placeholder="Search Title"
         aria-label="Search"
         value={props.searchTerm}
-        onChange={(e) => props.onSearchChange(e.target.value)}
+        onChange={onChange}
       />
     </div>
   );

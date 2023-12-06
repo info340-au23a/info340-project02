@@ -9,6 +9,8 @@ const apiKey = "02dd1fc4-e12f-4d44-9c1c-c8526cfd6ef4";
 export function ListBuilderView(props) {
   const [searchData, setSearchData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [chosenWords, setChosenWords] = useState([]);
+  const [selectedWord, setSelectedWord] = useState(null);
 
   const onSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -68,24 +70,43 @@ const processDetailedEntries = (entries, searchTerm) => {
     .filter(item => item.meta.id.split(':')[0].toLowerCase().startsWith(searchTerm.toLowerCase()) && !item.meta.id.split(':')[0].includes(" "));
 };
 
-          
-  
-
+    
   // handles adding a word to the list when clicked
-  const onWordClick = (word) => {
-    const url = DICTIONARY_API_TEMPLATE.replace("{word}", word).replace(
-      "{apiKey}",
-      apiKey
-    );
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        // TODO: implement word click functionality for adding words to lists
-      })
-      .catch((error) => {
-        console.error("Fetch error:", error);
-      });
-  };
+const onWordClick = (word) => {
+  const url = DICTIONARY_API_TEMPLATE.replace("{word}", word).replace(
+    "{apiKey}",
+    apiKey
+  );
+
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Data", data);
+
+      
+        setSelectedWord(word);
+        console.log(selectedWord)
+    })
+    .catch((error) => {
+      console.error("Fetch error:", error);
+    });
+};
+
+const onAddClick = (word) => {
+  if(selectedWord && !chosenWords.includes(word)) {
+    setChosenWords([...chosenWords, selectedWord])
+  }
+  setSelectedWord(null);
+}
+
+//once a chosen word is selected and remove button is clicked the word is removed
+const onRemoveClick = (word) => {
+  const updatedChosenWords = chosenWords.filter((chosenWord) => {
+    return chosenWord !== word;
+  })
+  setChosenWords(updatedChosenWords);
+  setSelectedWord(null);
+}
 
   return (
     <>
@@ -113,10 +134,14 @@ const processDetailedEntries = (entries, searchTerm) => {
           searchData={searchData}
           searchTerm={searchTerm}
           onWordClick={onWordClick}
+          chosenWords={chosenWords}
+          onRemoveClick={onRemoveClick}
         />
         <div className="word-buttons">
-          <button>Remove</button>
-          <button>Add</button>
+          <button onClick={() =>  onRemoveClick(selectedWord)}>Remove</button>
+          <button onClick={() =>  onAddClick(selectedWord)}>
+            Add
+          </button>
           <button>Submit</button>
         </div>
         <SearchTag tagsData={props.tagsData} />
