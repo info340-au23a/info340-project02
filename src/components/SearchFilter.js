@@ -18,14 +18,7 @@ export function TagFilter(props) {
   ));
 
   return (
-    <div
-      className="filter"
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        marginTop: "10px",
-      }}
-    >
+    <div className="filterBar">
       <Dropdown
         show={props.isFilterOpen}
         onClose={() => props.setIsFilterOpen(false)}

@@ -510,6 +510,12 @@ footer p {
   align-items: center;
 }
 
+.filterBar {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
 /* Media Queries  */
 @media (min-width: 598px) {
   .card {
