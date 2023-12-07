@@ -68,9 +68,10 @@ function WordCard(props) {
         <div className="card">
           <div className="card-body">
             <Link to={cardLink} className="card-link">
-              <h1 className="card-title">{dataObj.Title}</h1>
+              <h1 className="card-title">Title: {dataObj.Title}</h1>
             </Link>
-            <ul>
+            <ul className="tagNames">
+              <p>- Labeled by tags -</p>
               {dataObj.tags.map((tag, index) => (
                 <li key={index}>{tag}</li>
               ))}

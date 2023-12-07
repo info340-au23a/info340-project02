@@ -88,7 +88,6 @@ nav .material-icons {
 
 /* for logo hover effect */
 @keyframes smoothRotate {
-
   0%,
   100% {
     transform: rotate(0deg);
@@ -504,7 +503,7 @@ footer p {
 
 .filter .card {
   width: 20em;
-  height: 10em;
+  height: 15em;
   margin: 1em;
   box-sizing: border-box;
   overflow: hidden;
@@ -515,6 +514,13 @@ footer p {
   display: flex;
   justify-content: center;
   margin-top: 10px;
+}
+
+.tagNames {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
 }
 
 /* Media Queries  */
