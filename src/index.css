@@ -507,6 +507,7 @@ footer p {
   margin: 1em;
   box-sizing: border-box;
   overflow: hidden;
+  align-items: center;
 }
 
 /* Media Queries  */

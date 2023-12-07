@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
 
 // TagFilter Component
 export function TagFilter(props) {
@@ -66,12 +67,16 @@ export function SearchInput(props) {
 // WordCard Component
 function WordCard(props) {
   const { dataObj } = props;
+  const cardLink = `/quiz/`;
+
   return (
     <div className="filter">
-    <div className="card-deck">
+      <div className="card-deck">
         <div className="card">
           <div className="card-body">
-            <p className="card-title">{dataObj.Title}</p>
+            <Link to={cardLink} className="card-link">
+              <h1 className="card-title">{dataObj.Title}</h1>
+            </Link>
             <ul>
               {dataObj.tags.map((tag, index) => (
                 <li key={index}>{tag}</li>
@@ -83,6 +88,7 @@ function WordCard(props) {
     </div>
   );
 }
+
 
 // SearchFilter Component
 export default function SearchFilter(props) {
