@@ -60,7 +60,7 @@ export function SearchInput(props) {
 // WordCard Component
 function WordCard(props) {
   const { dataObj } = props;
-  const cardLink = `/quiz/`;
+  const cardLink = `/flipcard/`;
 
   return (
     <div className="filter">
