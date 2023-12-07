@@ -73,7 +73,7 @@ function WordCard(props) {
             <ul className="tagNames">
               <p>- Labeled by tags -</p>
               {dataObj.tags.map((tag, index) => (
-                <li key={index}>{tag}</li>
+                <li key={index}>{index + 1}. {tag}</li>
               ))}
             </ul>
           </div>
