@@ -11,7 +11,8 @@ import { Routes, Route, Navigate } from "react-router";
 
 export function App(props) {
   const [currentUser, setCurrentUser] = useState(props.accountsData[1]);
-
+  const [wordSets, setWordSets] = useState(props.wordSets);
+  console.log(wordSets);
   const changeUser = (newUserObj) => {
     setCurrentUser(newUserObj);
   };
@@ -40,6 +41,8 @@ export function App(props) {
           element={
             <ListBuilderPage
               tagsData={props.tagsData}
+              wordSets={wordSets}
+              setWordSets={setWordSets}
             />
           }
         />
@@ -48,7 +51,7 @@ export function App(props) {
           element={
             <SearchFilterPage
               applyFilterCallback={handleFilterApply}
-              wordSets={props.wordSets}
+              wordSets={wordSets}
               tagsData={props.tagsData}
             />
           }

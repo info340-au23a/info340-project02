@@ -3,7 +3,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // TagFilter Component
-function TagFilter(props) {
+export function TagFilter(props) {
   const tagsArray = props.tagsData.map((tagObj) => (
     <p key={tagObj.id} onClick={() => props.onTagChange(tagObj.word)}>
       <input
@@ -46,13 +46,7 @@ function TagFilter(props) {
 }
 
 // SearchInput Component
-function SearchInput(props) {
-
-  const onChange = (e) => { 
-    e.preventDefault();
-    props.onSearchChange(e.target.value);
-  };
-
+export function SearchInput(props) {
   return (
     <div className="input-bar">
       <span className="material-icons search-icon" aria-hidden="true">
@@ -63,7 +57,7 @@ function SearchInput(props) {
         placeholder="Search Title"
         aria-label="Search"
         value={props.searchTerm}
-        onChange={onChange}
+        onChange={(e) => props.onSearchChange(e.target.value)}
       />
     </div>
   );
@@ -144,4 +138,5 @@ export default function SearchFilter(props) {
       </div>
     </form>
   );
+
 }

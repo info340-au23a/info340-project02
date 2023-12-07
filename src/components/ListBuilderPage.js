@@ -16,6 +16,9 @@ export function ListBuilderPage(props) {
         </div>
         <ListBuilderView
           tagsData={props.tagsData}
+          wordLists={props.wordLists}
+          wordSets={props.wordSets}
+          setWordSets={props.setWordSets}
         />
       </main>
       <Footer />
