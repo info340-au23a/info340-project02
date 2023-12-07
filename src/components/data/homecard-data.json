@@ -12,7 +12,7 @@
         "imgAltText": "A blue box with the letters 'abc' and an outlined checkmark"
     },
     {
-        "cardText": "Word Lists",
+        "cardText": "List Builder",
         "cardLink": "/create",
         "imgLink": "/img/home/wordlist.png",
         "imgAltText": "3 bullet points that resemble a list"

@@ -68,8 +68,6 @@ const processDetailedEntries = (entries, searchTerm) => {
     .filter(item => item.meta.id.split(':')[0].toLowerCase().startsWith(searchTerm.toLowerCase()) && !item.meta.id.split(':')[0].includes(" "));
 };
 
-          
-  
 
   // handles adding a word to the list when clicked
   const onWordClick = (word) => {
@@ -101,7 +99,7 @@ const processDetailedEntries = (entries, searchTerm) => {
           <input
             type="text"
             id="search-word"
-            placeholder="Search"
+            placeholder="Search here"
             value={searchTerm}
             onChange={onSearchChange}
           />{" "}
