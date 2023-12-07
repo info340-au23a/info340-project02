@@ -488,6 +488,26 @@ footer p {
   margin-bottom: 0;
 }
 
+/* Search & Filter */
+
+.filter .card-deck:hover {
+  transform: scale(1.15);
+}
+
+.filter .card-deck {
+  display: flexbox;
+  flex-wrap: wrap;
+  width: 20em;
+  height: 10em;
+  margin: 1em;
+  justify-content: space-around;
+}
+
+.filter .card {
+  width: 100%;
+  height: 100%;
+}
+
 /* Media Queries  */
 @media (min-width: 598px) {
   .card {

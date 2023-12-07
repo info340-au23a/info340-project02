@@ -67,14 +67,18 @@ export function SearchInput(props) {
 function WordCard(props) {
   const { dataObj } = props;
   return (
-    <div className="card">
-      <div className="card-body">
-        <p className="card-title">{dataObj.Title}</p>
-        <ul>
-          {dataObj.tags.map((tag, index) => (
-            <li key={index}>{tag}</li>
-          ))}
-        </ul>
+    <div className="filter">
+    <div className="card-deck">
+        <div className="card">
+          <div className="card-body">
+            <p className="card-title">{dataObj.Title}</p>
+            <ul>
+              {dataObj.tags.map((tag, index) => (
+                <li key={index}>{tag}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   );
