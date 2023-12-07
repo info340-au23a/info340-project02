@@ -7,11 +7,29 @@ const DICTIONARY_API_TEMPLATE =
 const apiKey = "02dd1fc4-e12f-4d44-9c1c-c8526cfd6ef4";
 
 export function ListBuilderView(props) {
+  const {wordSets, setWordSets, setAlertMessage} = props;
+  const [listTitle, setListTitle] = useState("");
   const [searchData, setSearchData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [chosenWords, setChosenWords] = useState([]);
+  const [selectedWord, setSelectedWord] = useState(null);
+  const [selectedTags, setSelectedTags] = useState([]);
+
 
   const onSearchChange = (event) => {
     setSearchTerm(event.target.value);
+  };
+
+  const onTitleChange = (event) => {
+    setListTitle(event.target.value);
+  }
+
+  const onTagChange = (event) => {
+    const tag = event.target.id
+    const updatedTags = selectedTags.includes(tag)
+      ? selectedTags.filter((selectedTag) => selectedTag !== tag)
+      : [...selectedTags, tag];
+    setSelectedTags(updatedTags);
   };
 
   // GETs a list of words from the MW API
@@ -68,28 +86,75 @@ const processDetailedEntries = (entries, searchTerm) => {
     .filter(item => item.meta.id.split(':')[0].toLowerCase().startsWith(searchTerm.toLowerCase()) && !item.meta.id.split(':')[0].includes(" "));
 };
 
-
+    
   // handles adding a word to the list when clicked
-  const onWordClick = (word) => {
-    const url = DICTIONARY_API_TEMPLATE.replace("{word}", word).replace(
-      "{apiKey}",
-      apiKey
-    );
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        // TODO: implement word click functionality for adding words to lists
-      })
-      .catch((error) => {
-        console.error("Fetch error:", error);
-      });
-  };
+const onWordClick = (word) => {
+  const url = DICTIONARY_API_TEMPLATE.replace("{word}", word).replace(
+    "{apiKey}",
+    apiKey
+  );
+
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Data", data);
+
+      
+        setSelectedWord(word);
+        console.log(selectedWord)
+    })
+    .catch((error) => {
+      console.error("Fetch error:", error);
+    });
+};
+
+const onAddClick = (word) => {
+  if(selectedWord && !chosenWords.includes(word)) {
+    setChosenWords([...chosenWords, selectedWord])
+  }
+  setSelectedWord(null);
+}
+
+//once a chosen word is selected and remove button is clicked the word is removed
+const onRemoveClick = (word) => {
+  const updatedChosenWords = chosenWords.filter((chosenWord) => {
+    return chosenWord !== word;
+  })
+  setChosenWords(updatedChosenWords);
+  setSelectedWord(null);
+}
+
+const newWordList = {
+  id: wordSets.length + 1,
+  Title: listTitle,
+  words: chosenWords,
+  tags: selectedTags,
+};
+
+const onSubmitClick = () => {
+  if (selectedTags.length === 0) {
+    setAlertMessage("No selected Tags");
+  } else if (chosenWords.length === 0) {
+    setAlertMessage("No selected words");
+  } else {
+  setWordSets([...wordSets, newWordList]);
+  setListTitle("");
+  setChosenWords([]);
+  setSelectedTags([]);
+  setSearchTerm("");
+  }
+}
 
   return (
     <>
       <div className="input-bar">
         <label htmlFor="list-title">
-          <input type="text" id="list-title" placeholder="List Title" />
+          <input 
+          type="text" 
+          id="list-title" 
+          placeholder="List Title"
+          value={listTitle}
+          onChange={onTitleChange} />
         </label>
       </div>
 
@@ -111,13 +176,17 @@ const processDetailedEntries = (entries, searchTerm) => {
           searchData={searchData}
           searchTerm={searchTerm}
           onWordClick={onWordClick}
+          chosenWords={chosenWords}
+          onRemoveClick={onRemoveClick}
         />
         <div className="word-buttons">
-          <button>Remove</button>
-          <button>Add</button>
-          <button>Submit</button>
+          <button onClick={() =>  onRemoveClick(selectedWord)}>Remove</button>
+          <button onClick={() =>  onAddClick(selectedWord)}>
+            Add
+          </button>
+          <button onClick={onSubmitClick}>Submit</button>
         </div>
-        <SearchTag tagsData={props.tagsData} />
+        <SearchTag tagsData={props.tagsData} selectedTags={selectedTags} onTagChange={onTagChange}/>
       </div>
     </>
   );

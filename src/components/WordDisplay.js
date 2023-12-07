@@ -1,7 +1,7 @@
 import React from "react";
 
 export function WordDisplay(props) {
-  const { searchData, searchTerm } = props;
+  const { searchData, searchTerm, onWordClick, chosenWords } = props;
 
   console.log(searchData[1]);
 
@@ -16,7 +16,7 @@ export function WordDisplay(props) {
           ? entry.word
           : entry.meta?.id.split(":")[0];
         return (
-          <div key={index} className="searchResultWord">
+          <div key={index} onClick={() => props.onWordClick(word)} className="searchResultWord">
             <p>{word}</p>
           </div>
         );
@@ -24,10 +24,20 @@ export function WordDisplay(props) {
     }
   }
 
+  const chosenWordDisplay = chosenWords.map((word, index) => {
+    return <div key={index}  onClick={() => props.onWordClick(word)} className="searchRsultWord">
+      <p>{word}</p>
+    </div>
+  })
+
   return (
     <div className="list">
       <h2>Search Results</h2>
       {content}
+      <div className="chosen-words">
+        <h2>Chosen Words</h2>
+        {chosenWordDisplay}
+      </div>
     </div>
   );
 }
