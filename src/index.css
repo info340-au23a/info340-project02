@@ -88,6 +88,7 @@ nav .material-icons {
 
 /* for logo hover effect */
 @keyframes smoothRotate {
+
   0%,
   100% {
     transform: rotate(0deg);
