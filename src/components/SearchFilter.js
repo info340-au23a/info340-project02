@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
 
 // TagFilter Component
 export function TagFilter(props) {
@@ -17,14 +18,7 @@ export function TagFilter(props) {
   ));
 
   return (
-    <div
-      className="filter"
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        marginTop: "10px",
-      }}
-    >
+    <div className="filterBar">
       <Dropdown
         show={props.isFilterOpen}
         onClose={() => props.setIsFilterOpen(false)}
@@ -66,19 +60,29 @@ export function SearchInput(props) {
 // WordCard Component
 function WordCard(props) {
   const { dataObj } = props;
+  const cardLink = `/quiz/`;
+
   return (
-    <div className="card">
-      <div className="card-body">
-        <p className="card-title">{dataObj.Title}</p>
-        <ul>
-          {dataObj.tags.map((tag, index) => (
-            <li key={index}>{tag}</li>
-          ))}
-        </ul>
+    <div className="filter">
+      <div className="card-deck">
+        <div className="card">
+          <div className="card-body">
+            <Link to={cardLink} className="card-link">
+              <h1 className="card-title">Title: {dataObj.Title}</h1>
+            </Link>
+            <ul className="tagNames">
+              <p>- Labeled by tags -</p>
+              {dataObj.tags.map((tag, index) => (
+                <li key={index}>{index + 1}. {tag}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   );
 }
+
 
 // SearchFilter Component
 export default function SearchFilter(props) {

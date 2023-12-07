@@ -488,6 +488,41 @@ footer p {
   margin-bottom: 0;
 }
 
+/* Search & Filter */
+.filter .card-deck:hover {
+  transform: scale(1.15);
+}
+
+.filter .card-deck {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 1em;
+  justify-content: space-around;
+}
+
+.filter .card {
+  width: 20em;
+  height: 15em;
+  margin: 1em;
+  box-sizing: border-box;
+  overflow: hidden;
+  align-items: center;
+}
+
+.filterBar {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.tagNames {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
 /* Media Queries  */
 @media (min-width: 598px) {
   .card {

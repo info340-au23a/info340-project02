@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "whatwg-fetch";
-
+import { Alert } from 'react-bootstrap';
 import { HomePage } from "./HomePage.js";
 import { ListBuilderPage } from "./ListBuilderPage.js";
 import { FlipCardPage } from "./FlipCardPage.js";
@@ -12,6 +12,8 @@ import { Routes, Route, Navigate } from "react-router";
 export function App(props) {
   const [currentUser, setCurrentUser] = useState(props.accountsData[1]);
   const [wordSets, setWordSets] = useState(props.wordSets);
+  const [alertMessage, setAlertMessage] = useState(null);
+
   console.log(wordSets);
   const changeUser = (newUserObj) => {
     setCurrentUser(newUserObj);
@@ -29,6 +31,9 @@ export function App(props) {
 
   return (
     <div>
+       {alertMessage &&
+        <Alert variant="light" dismissible onClose={() => setAlertMessage(null)}>{alertMessage}</Alert>
+      }
       <Routes>
         <Route path="home" element={<HomePage />} />
         <Route
@@ -43,6 +48,7 @@ export function App(props) {
               tagsData={props.tagsData}
               wordSets={wordSets}
               setWordSets={setWordSets}
+              setAlertMessage={setAlertMessage}
             />
           }
         />

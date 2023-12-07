@@ -7,7 +7,7 @@ const DICTIONARY_API_TEMPLATE =
 const apiKey = "02dd1fc4-e12f-4d44-9c1c-c8526cfd6ef4";
 
 export function ListBuilderView(props) {
-  const {wordSets, setWordSets} = props;
+  const {wordSets, setWordSets, setAlertMessage} = props;
   const [listTitle, setListTitle] = useState("");
   const [searchData, setSearchData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -132,10 +132,17 @@ const newWordList = {
 };
 
 const onSubmitClick = () => {
+  if (selectedTags.length === 0) {
+    setAlertMessage("No selected Tags");
+  } else if (chosenWords.length === 0) {
+    setAlertMessage("No selected words");
+  } else {
   setWordSets([...wordSets, newWordList]);
   setListTitle("");
   setChosenWords([]);
   setSelectedTags([]);
+  setSearchTerm("");
+  }
 }
 
   return (
@@ -157,7 +164,7 @@ const onSubmitClick = () => {
           <input
             type="text"
             id="search-word"
-            placeholder="Search"
+            placeholder="Search here"
             value={searchTerm}
             onChange={onSearchChange}
           />{" "}

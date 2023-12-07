@@ -13,12 +13,13 @@ export function ListBuilderPage(props) {
       <main>
         <div>
           <h1>Word List Builder</h1>
+          <h2>Build your own wordlist!</h2>
         </div>
         <ListBuilderView
           tagsData={props.tagsData}
-          wordLists={props.wordLists}
           wordSets={props.wordSets}
           setWordSets={props.setWordSets}
+          setAlertMessage={props.setAlertMessage}
         />
       </main>
       <Footer />
