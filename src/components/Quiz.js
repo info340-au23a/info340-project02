@@ -60,6 +60,17 @@ export function QuizComponent(props) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [inputValue, setInputValue] = useState("");
   const [message, setMessage] = useState("");
+  const [correctCount, setCorrectCount] = useState(0);
+  const [wrongCount, setWrongCount] = useState(0);
+
+  const handleFinishQuiz = () => {
+    if (props.input === data[currentIndex].word) {
+      setCorrectCount(correctCount + 1);
+    } else {
+      setWrongCount(wrongCount + 1);
+    }
+    alert(`Quiz Finished!\nCorrect Answers: ${correctCount}\nWrong Answers: ${wrongCount}`);
+  };
 
   const handlePrevious = () => {
     if (currentIndex > 0) {
@@ -94,8 +105,11 @@ export function QuizComponent(props) {
         </div>
         <div className="quiz-next">
           {currentIndex < data.length - 1 && (
-            <button onClick={handleNext}>&#8594;</button>
-          )}
+              <button onClick={handleNext}>&#8594;</button>
+            )}
+            {currentIndex === data.length - 1 && (
+              <button onClick={handleFinishQuiz}>Finish</button>
+            )}
         </div>
       </div>
     </div>
