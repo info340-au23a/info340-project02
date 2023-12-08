@@ -9,7 +9,7 @@ export function SearchTag(props) {
   const tagArray = tagsData.map((tagObj) => {
     const transform = (
       <p key={tagObj.id}>
-        <input type="checkbox" id={tagObj.word} onChange={onTagChange} checked={selectedTags.includes(tagObj.id)}/>
+        <input type="checkbox" id={tagObj.word} onChange={onTagChange} checked={selectedTags.includes(tagObj.word)}/>
         <label htmlFor={tagObj.id}> {tagObj.word}</label>
       </p>
     );

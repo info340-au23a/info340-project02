@@ -1,19 +1,21 @@
 import { useEffect, useState } from "react";
 import { SearchTag } from "./SearchTag.js";
 import { WordDisplay } from "./WordDisplay.js";
+import { Alert } from 'react-bootstrap';
 
 const DICTIONARY_API_TEMPLATE =
   "https://www.dictionaryapi.com/api/v3/references/sd2/json/{word}?key={apiKey}";
 const apiKey = "02dd1fc4-e12f-4d44-9c1c-c8526cfd6ef4";
 
 export function ListBuilderView(props) {
-  const {wordSets, setWordSets, setAlertMessage} = props;
+  const {wordSets, setWordSets} = props;
   const [listTitle, setListTitle] = useState("");
   const [searchData, setSearchData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [chosenWords, setChosenWords] = useState([]);
   const [selectedWord, setSelectedWord] = useState(null);
   const [selectedTags, setSelectedTags] = useState([]);
+  const [alertMessage, setAlertMessage] = useState(null);
 
 
   const onSearchChange = (event) => {
@@ -136,6 +138,8 @@ const onSubmitClick = () => {
     setAlertMessage("No selected Tags");
   } else if (chosenWords.length === 0) {
     setAlertMessage("No selected words");
+  } else if (listTitle.trim() === "") { 
+    setAlertMessage("Must have Title");
   } else {
   setWordSets([...wordSets, newWordList]);
   setListTitle("");
@@ -147,6 +151,9 @@ const onSubmitClick = () => {
 
   return (
     <>
+    {alertMessage &&
+        <Alert variant="light" dismissible onClose={() => setAlertMessage(null)}>{alertMessage}</Alert>
+      }
       <div className="input-bar">
         <label htmlFor="list-title">
           <input 

@@ -19,7 +19,6 @@ export function ListBuilderPage(props) {
           tagsData={props.tagsData}
           wordSets={props.wordSets}
           setWordSets={props.setWordSets}
-          setAlertMessage={props.setAlertMessage}
         />
       </main>
       <Footer />

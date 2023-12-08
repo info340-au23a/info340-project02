@@ -25,7 +25,7 @@ export function WordDisplay(props) {
   }
 
   const chosenWordDisplay = chosenWords.map((word, index) => {
-    return <div key={index}  onClick={() => props.onWordClick(word)} className="searchRsultWord">
+    return <div key={index}  onClick={() => props.onWordClick(word)} className="searchResultWord">
       <p>{word}</p>
     </div>
   })
