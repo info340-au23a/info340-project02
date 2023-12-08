@@ -119,10 +119,8 @@
                 "id": 2,
                 "word": "quintessential",
                 "sentence": "The old bookstore was the quintessential place for book lovers.",
-                "tags": [
-                    "adjective"
-                ],
-                "imgSrc": "/img/flipcard/",
+                "tags": ["adjective"],
+                "imgSrc": "/img/flipcard/pexels-vishnu-r-nair-1105666.jpg",
                 "imgAlt": "An old, cozy bookstore filled with shelves of books",
                 "pronunciationAudio": "/audio/quintessential.mp3"
             }

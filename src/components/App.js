@@ -33,7 +33,7 @@ export function App(props) {
         <Route path="home" element={<HomePage />} />
         <Route
           path="flipcard"
-          element={<FlipCardPage wordsData={props.wordsData} />}
+          element={<FlipCardPage data={props.wordsData} />}
         />
         <Route path="quiz" element={<QuizPage data={props.wordsData} />} />
         <Route
