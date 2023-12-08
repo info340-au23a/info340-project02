@@ -35,7 +35,7 @@ export function App(props) {
           path="flipcard"
           element={<FlipCardPage wordsData={props.wordsData} />}
         />
-        <Route path="quiz" element={<QuizPage wordList={props.wordsData} />} />
+        <Route path="quiz" element={<QuizPage data={props.wordsData} />} />
         <Route
           path="create"
           element={
