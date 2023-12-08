@@ -72,7 +72,7 @@
     "pronunciationAudio": "/audio/concert.mp3"
   },
   {
-    "id": 1,
+    "id": 9,
     "word": "effervescent",
     "sentence": "The effervescent drink bubbled in the glass.",
     "tags": ["adjective", "physical"],
@@ -81,7 +81,7 @@
     "pronunciationAudio": "/audio/effervescent.mp3"
   },
   {
-    "id": 2,
+    "id": 10,
     "word": "quintessential",
     "sentence": "The old bookstore was the quintessential place for book lovers.",
     "tags": ["adjective"],

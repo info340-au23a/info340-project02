@@ -12,7 +12,7 @@ export function SearchFilterPage(props) {
         </header>
         <main>
           <div>
-            <h2>Start your adventures from: </h2>
+            <h1>Start your adventures from: </h1>
           </div>
           <SearchFilter applyFilterCallback={props.handleFilterApply} wordSets={props.wordSets} tagsData={props.tagsData} />
         </main>
