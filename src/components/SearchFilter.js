@@ -60,7 +60,7 @@ export function SearchInput(props) {
 // WordCard Component
 function WordCard(props) {
   const { dataObj } = props;
-  const cardLink = `/flipcard/`;
+  const cardLink = `/quiz/`;
 
   return (
     <div className="filter">
@@ -93,7 +93,6 @@ export default function SearchFilter(props) {
   const [filteredWordSets, setFilteredWordSets] = useState([]);
 
   useEffect(() => {
-    // Filter the word sets based on tags and search term
     const filteredSets = wordSets.filter((set) => {
       const titleLowerCase = set.title ? set.title.toLowerCase() : '';
       const tagsLowerCase = set.tags ? set.tags.map(tag => tag.toLowerCase()) : [];
@@ -121,25 +120,32 @@ export default function SearchFilter(props) {
     setSearchTerm(newSearchTerm);
   };
 
+  const handleClick = (event) => {
+    event.preventDefault();
+    props.applyFilterCallback(selectedTags);
+  };
+
   return (
-    <div className="searchFilter">
-      <SearchInput
-        searchTerm={searchTerm}
-        onSearchChange={handleSearchChange}
-      />
-      <TagFilter
-        tagsData={props.tagsData}
-        selectedTags={selectedTags}
-        onTagChange={handleTagChange}
-        isFilterOpen={isFilterOpen}
-        setIsFilterOpen={setIsFilterOpen}
-        toggleFilter={toggleFilter}
-      />
-      <div className="cardsDisplay">
-        {filteredWordSets.map((set) => (
-          <WordCard key={set.id} dataObj={set} />
-        ))}
+    <form onSubmit={handleClick}>
+      <div className="searchFilter">
+        <SearchInput
+          searchTerm={searchTerm}
+          onSearchChange={handleSearchChange}
+        />
+        <TagFilter
+          tagsData={props.tagsData}
+          selectedTags={selectedTags}
+          onTagChange={handleTagChange}
+          isFilterOpen={isFilterOpen}
+          setIsFilterOpen={setIsFilterOpen}
+          toggleFilter={toggleFilter}
+        />
+        <div className="cardsDisplay">
+          {filteredWordSets.map((set) => (
+            <WordCard key={set.id} dataObj={set} />
+          ))}
+        </div>
       </div>
-    </div>
+    </form>
   );
 }
