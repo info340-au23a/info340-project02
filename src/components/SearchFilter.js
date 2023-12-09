@@ -83,7 +83,6 @@ function WordCard(props) {
   );
 }
 
-
 // SearchFilter Component
 export default function SearchFilter(props) {
   const { wordSets } = props;
@@ -141,8 +140,8 @@ export default function SearchFilter(props) {
           toggleFilter={toggleFilter}
         />
         <div className="cardsDisplay">
-          {filteredWordSets.map((set) => (
-            <WordCard key={set.id} dataObj={set} />
+          {filteredWordSets.map((set, index) => (
+            <WordCard key={set.id || index} dataObj={set} />
           ))}
         </div>
       </div>
