@@ -13,6 +13,7 @@ export function Footer(props) {
           </p>
         )}
         <p>&copy; 2023 Spelling Adventures</p>
+        <p>Author: Lewis Going, Munir Emam, Yizhou Ding (Erica), Junna Cao</p>
       </div>
     </footer>
   );
