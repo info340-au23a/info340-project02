@@ -6,7 +6,6 @@ import WORD_LIST_DATA from "./components/data/demo-word-set.json";
 import WORD_SETS from "./components/data/word-lists-set.json";
 import SAMPLE_ACCOUNTS from "./components/data/sample-accounts.json";
 import TAGS_DATA from "./components/data/tags.json";
-// import DEMO_WORD_SET from "./components/data/demo-word-set.json";
 import { BrowserRouter } from "react-router-dom";
 
 import { initializeApp } from "firebase/app";

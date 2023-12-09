@@ -12,7 +12,7 @@ import {getDatabase, ref, onValue} from 'firebase/database';
 
 export function App(props) {
   const [currentUser, setCurrentUser] = useState(props.accountsData[1]);
-  const [wordSets, setWordSets] = useState(props.wordSets);
+  const [wordSets, setWordSets] = useState(null);
 
   useEffect(() => {
     const db = getDatabase();
@@ -57,9 +57,9 @@ export function App(props) {
         <Route path="home" element={<HomePage />} />
         <Route
           path="flipcard"
-          element={<FlipCardPage data={props.wordsData} />}
+          element={<FlipCardPage data={wordSets} />}
         />
-        <Route path="quiz" element={<QuizPage data={props.wordsData} />} />
+        <Route path="quiz" element={<QuizPage data={wordSets} />} />
         <Route
           path="create"
           element={
