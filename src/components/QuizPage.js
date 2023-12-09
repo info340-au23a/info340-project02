@@ -11,6 +11,10 @@ export function QuizPage(props) {
     setSelectedWordList(wordList.words);
   };
 
+  const goBack = () => {
+    setSelectedWordList(null);
+  };
+
   return (
     <div>
       <header>
@@ -19,20 +23,27 @@ export function QuizPage(props) {
       <main>
         <div>
           <h1>Word Quiz</h1>
-          <h2>How many correct answer could you get?</h2>
+          <h2>How many correct answers could you get?</h2>
         </div>
-        <div>
-          <p className = "searchTitle">Select a wordlist to test your knowledge
+        {selectedWordList ? (
+          <div>
+            <button className = "exitButton"onClick={goBack}>Exit Quiz</button>
+            <QuizComponent data={selectedWordList} />
+          </div>
+        ) : (
+          <div className="selector">
+            <div className="searchTitle">
+              Select a wordlist to test your knowledge
               {wordListData.map((wordList) => (
-                <div className="quiz-buttons-container">
-                <button onClick={() => handleSelect(wordList)}
-                key={wordList.wordSetTitle}>{wordList.wordSetTitle}
-                </button>
+                <div className="quiz-buttons-container" key={wordList.wordSetTitle}>
+                  <button onClick={() => handleSelect(wordList)}>
+                    {wordList.wordSetTitle}
+                  </button>
                 </div>
               ))}
-          </p>
-        </div>
-        {selectedWordList && <QuizComponent data={selectedWordList} />}
+            </div>
+          </div>
+        )}
       </main>
       <Footer imageRef="Audio pronunciations provided by Brittanica.com" />
     </div>
