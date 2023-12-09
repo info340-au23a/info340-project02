@@ -301,7 +301,6 @@ button:hover,
 }
 
 /* Quiz CSS */
-
 .quiz {
   margin-top: 30px;
   align-items: center;
@@ -345,6 +344,11 @@ button:hover,
   background-color: #ffc6c7;
   text-align: center;
   display: block;
+}
+
+.goBackButton {
+  padding-left: 30px;
+  position: absolute;
 }
 
 /* List Builder CSS */
@@ -394,7 +398,7 @@ button:hover,
   margin-left: 5%;
   margin-right: 5%;
   background-color: #def193;
-  padding: 5px;
+  padding: 10px;
   border-radius: 10px;
   text-align: center;
 }
@@ -404,7 +408,7 @@ button:hover,
   margin-left: 5%;
   margin-right: 5%;
   background-color: #def193;
-  padding: 5px;
+  padding: 10px;
   border-radius: 10px;
   text-align: center;
 }

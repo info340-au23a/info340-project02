@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // result array that stores the answered questions
 let resultArr = [];
@@ -30,6 +30,7 @@ function GenerateQuizCard(props) {
       <div key={wordListData.id} className="quiz-card">
         <h2 style={{ fontSize: "24px" }}>
           <label htmlFor="word-input">
+          <p>Question {wordListData.id}: Listen to the audio and spell the word</p>
             <button
               className="fas"
               aria-label="Play Sound"
@@ -37,6 +38,7 @@ function GenerateQuizCard(props) {
             >
               &#xf028;
             </button>
+            
           </label>
           <input
             value={props.input}
@@ -60,17 +62,6 @@ export function QuizComponent(props) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [inputValue, setInputValue] = useState("");
   const [message, setMessage] = useState("");
-  const [correctCount, setCorrectCount] = useState(0);
-  const [wrongCount, setWrongCount] = useState(0);
-
-  const handleFinishQuiz = () => {
-    if (props.input === data[currentIndex].word) {
-      setCorrectCount(correctCount + 1);
-    } else {
-      setWrongCount(wrongCount + 1);
-    }
-    alert(`Quiz Finished!\nCorrect Answers: ${correctCount}\nWrong Answers: ${wrongCount}`);
-  };
 
   const handlePrevious = () => {
     if (currentIndex > 0) {
@@ -87,6 +78,11 @@ export function QuizComponent(props) {
       setMessage("");
     }
   };
+
+  const handleFinishQuiz = () => {
+    alert("Quiz Finished!");
+  };
+
 
   return (
     <div>
