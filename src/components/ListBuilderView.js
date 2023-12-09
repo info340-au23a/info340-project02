@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { SearchTag } from "./SearchTag.js";
 import { WordDisplay } from "./WordDisplay.js";
 import { Alert } from 'react-bootstrap';
+import {getDatabase, ref as firebaseRef, push as firebasePush} from 'firebase/database';
 
 const DICTIONARY_API_TEMPLATE =
   "https://www.dictionaryapi.com/api/v3/references/sd2/json/{word}?key={apiKey}";
@@ -69,6 +70,8 @@ useEffect(() => {
     setSearchData([]); // reset when search term is cleared
   }
 }, [searchTerm]);
+
+console.log("search",searchData);
 
 const processSuggestions = (suggestions, searchTerm) => {
   const uniqueWords = new Set(
@@ -141,11 +144,28 @@ const onSubmitClick = () => {
   } else if (listTitle.trim() === "") { 
     setAlertMessage("Must have Title");
   } else {
-  setWordSets([...wordSets, newWordList]);
-  setListTitle("");
-  setChosenWords([]);
-  setSelectedTags([]);
-  setSearchTerm("");
+    const newWordList = {
+      title: listTitle,
+      tags: selectedTags,
+      words: chosenWords.map(word => ({ word })),
+    };
+
+    const db = getDatabase();
+    const wordSetsRef = firebaseRef(db, 'wordSets'); // Reference to a specific word set using the title
+
+    // Push the new word list to the specified word set
+    firebasePush(wordSetsRef, newWordList)
+      .then(() => {
+        // Clear the form after successfully pushing to the database
+        setWordSets([...wordSets, newWordList]);
+        setListTitle("");
+        setChosenWords([]);
+        setSelectedTags([]);
+        setSearchTerm("");
+      })
+      .catch(error => {
+        console.error("Error pushing data to Firebase:", error);
+      });
   }
 }
 
