@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
@@ -68,7 +68,7 @@ function WordCard(props) {
         <div className="card">
           <div className="card-body">
             <Link to={cardLink} className="card-link">
-              <h1 className="card-title">Title: {dataObj.Title}</h1>
+              <h1 className="card-title">Title: {dataObj.title}</h1>
             </Link>
             <ul className="tagNames">
               <p>- Labeled by tags -</p>
@@ -90,6 +90,23 @@ export default function SearchFilter(props) {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [selectedTags, setSelectedTags] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [filteredWordSets, setFilteredWordSets] = useState([]);
+
+  useEffect(() => {
+    // Filter the word sets based on tags and search term
+    const filteredSets = wordSets.filter((set) => {
+      const titleLowerCase = set.title ? set.title.toLowerCase() : '';
+      const tagsLowerCase = set.tags ? set.tags.map(tag => tag.toLowerCase()) : [];
+
+      return (
+        titleLowerCase.includes(searchTerm.toLowerCase()) &&
+        (selectedTags.length === 0 ||
+          selectedTags.every((tag) => tagsLowerCase.includes(tag.toLowerCase())))
+      );
+    });
+
+    setFilteredWordSets(filteredSets);
+  }, [wordSets, selectedTags, searchTerm]);
 
   const toggleFilter = () => setIsFilterOpen(!isFilterOpen);
 
@@ -104,43 +121,25 @@ export default function SearchFilter(props) {
     setSearchTerm(newSearchTerm);
   };
 
-  const handleClick = (event) => {
-    event.preventDefault();
-    props.applyFilterCallback(selectedTags);
-  };
-
-  const filteredWords = wordSets.filter((dataObj) => {
-    return (
-      dataObj.Title.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      (selectedTags.length === 0 ||
-        selectedTags.every((tag) => dataObj.tags.includes(tag)))
-    );
-  });
-
-  const filteredWordsArray = filteredWords.map((dataObj) => {
-    return <WordCard key={dataObj.id} dataObj={dataObj} />
-  });
-
   return (
-    <form onSubmit={handleClick}>
-      <div className="searchFilter">
-        <SearchInput
-          searchTerm={searchTerm}
-          onSearchChange={handleSearchChange}
-        />
-        <TagFilter
-          tagsData={props.tagsData}
-          selectedTags={selectedTags}
-          onTagChange={handleTagChange}
-          isFilterOpen={isFilterOpen}
-          setIsFilterOpen={setIsFilterOpen}
-          toggleFilter={toggleFilter}
-        />
-        <div className="cardsDisplay">
-          {filteredWordsArray}
-        </div>
+    <div className="searchFilter">
+      <SearchInput
+        searchTerm={searchTerm}
+        onSearchChange={handleSearchChange}
+      />
+      <TagFilter
+        tagsData={props.tagsData}
+        selectedTags={selectedTags}
+        onTagChange={handleTagChange}
+        isFilterOpen={isFilterOpen}
+        setIsFilterOpen={setIsFilterOpen}
+        toggleFilter={toggleFilter}
+      />
+      <div className="cardsDisplay">
+        {filteredWordSets.map((set) => (
+          <WordCard key={set.id} dataObj={set} />
+        ))}
       </div>
-    </form>
+    </div>
   );
-
 }
