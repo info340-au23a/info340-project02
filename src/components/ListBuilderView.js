@@ -71,8 +71,6 @@ useEffect(() => {
   }
 }, [searchTerm]);
 
-console.log("search",searchData);
-
 const processSuggestions = (suggestions, searchTerm) => {
   const uniqueWords = new Set(
     suggestions.map(word => word.toLowerCase().replace(/\.$/, ''))
@@ -111,6 +109,7 @@ const onWordClick = (word) => {
     .catch((error) => {
       console.error("Fetch error:", error);
     });
+    console.log("search",searchData);
 };
 
 const onAddClick = (word) => {
