@@ -17,6 +17,14 @@ export function ListBuilderView(props) {
   const [selectedTags, setSelectedTags] = useState([]);
   const [alertMessage, setAlertMessage] = useState(null);
 
+  const fetchData = (term) => {
+    const url = DICTIONARY_API_TEMPLATE.replace("{word}", term).replace(
+      "{apiKey}",
+      apiKey
+    );
+    return fetch(url).then((response) => response.json());
+  };
+
 
   const onSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -39,92 +47,123 @@ export function ListBuilderView(props) {
   // we will have to reidentify the word with MW's api to pull more data
   // this is due to MW API returning an array of Objs for >3 char searchs
   // and an array of strings for <3 char searchs
-useEffect(() => {
-  if (searchTerm) {
-    const queryTerm = searchTerm + '*'; 
-    const url = DICTIONARY_API_TEMPLATE.replace("{word}", queryTerm).replace("{apiKey}", apiKey);
-  
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        if (Array.isArray(data)) {
-          if (typeof data[0] === 'string') {
-            // Handling array of strings
-            const processedSuggestions = processSuggestions(data, searchTerm);
-            setSearchData(processedSuggestions);
-          } else {
-            // Handling array of objects
-            const processedEntries = processDetailedEntries(data, searchTerm);
-            setSearchData(processedEntries);
-          }
+  useEffect(() => {
+    if (!searchTerm) {
+      setSearchData([]);
+      return;
+    }
+
+    fetchData(searchTerm + "*")
+      .then((data) => {
+        if (typeof data[0] === "string") {
+          setSearchData(processSuggestions(data, searchTerm));
         } else {
-          setSearchData([]); // no results
+          setSearchData(processDetailedEntries(data));
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Fetch error:", error);
         setSearchData([]);
       });
-  } else {
-    setSearchData([]); // reset when search term is cleared
-  }
-}, [searchTerm]);
+  }, [searchTerm]);
 
-const processSuggestions = (suggestions, searchTerm) => {
-  const uniqueWords = new Set(
-    suggestions.map(word => word.toLowerCase().replace(/\.$/, ''))
-  );
-  return Array.from(uniqueWords)
-    .filter(word => word.startsWith(searchTerm.toLowerCase()) && !word.includes(" "))
-    .map(word => ({ word, isSuggestion: true }));
-};
+  const processSuggestions = (suggestions, searchTerm) => {
+    const uniqueWords = new Set(
+      suggestions.map((word) => word.toLowerCase().replace(/\.$/, ""))
+    );
 
-const processDetailedEntries = (entries, searchTerm) => {
-  const uniqueEntries = new Set(
-    entries.map(item => item.meta.id.split(':')[0].toLowerCase().replace(/\.$/, ''))
-  );
-  return Array.from(uniqueEntries)
-    .map(wordId => entries.find(item => item.meta.id.split(':')[0].toLowerCase().replace(/\.$/, '') === wordId))
-    .filter(item => item.meta.id.split(':')[0].toLowerCase().startsWith(searchTerm.toLowerCase()) && !item.meta.id.split(':')[0].includes(" "));
-};
+    return Array.from(uniqueWords)
+      .filter(
+        (word) =>
+          word.startsWith(searchTerm.toLowerCase()) && !word.includes(" ")
+      )
+      .map((word) => ({ word, isSuggestion: true }));
+  };
+
+
+  const processDetailedEntries = (entries) => {
+    return entries
+      .map((entry) => {
+        let audioLink =
+          entry.hwi.prs && entry.hwi.prs[0]?.sound?.audio
+            ? `https://media.merriam-webster.com/audio/prons/en/us/mp3/${entry.hwi.prs[0].sound.audio[0]}/${entry.hwi.prs[0].sound.audio}.mp3`
+            : null;
+
+        // If audioLink is not found, look for related words that might have the audio
+        if (!audioLink && entry.meta.stems) {
+          const relatedWord = entries.find(
+            (e) => e.meta.id === entry.meta.stems[0] && e.hwi.prs
+          );
+          if (relatedWord) {
+            audioLink = relatedWord.hwi.prs[0]?.sound?.audio
+              ? `https://media.merriam-webster.com/audio/prons/en/us/mp3/${relatedWord.hwi.prs[0].sound.audio[0]}/${relatedWord.hwi.prs[0].sound.audio}.mp3`
+              : null;
+          }
+        }
+
+        return {
+          word: entry.hwi.hw.replace(/\*/g, ""),
+          audio: audioLink,
+          wordClass: entry.fl,
+          isSuggestion: false,
+        };
+      })
+      .filter((entry) => entry.audio); // Filter out entries without audio
+  };
+
+  useEffect(() => {
+    console.log("Chosen Words List:", chosenWords);
+  }, [chosenWords]);
 
     
   // handles adding a word to the list when clicked
-const onWordClick = (word) => {
-  const url = DICTIONARY_API_TEMPLATE.replace("{word}", word).replace(
-    "{apiKey}",
-    apiKey
-  );
+  const onWordClick = (wordObject) => {
+    setSelectedWord(wordObject);
+    console.log("Word Selected:", wordObject); 
+  };
+  const onAddClick = () => {
+    if (!selectedWord) return;
 
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Data", data);
+    const isWordInList = chosenWords.some(
+      (wordObj) => wordObj.word === selectedWord.word
+    );
+    if (isWordInList) {
+      console.log("Word is already in the list");
+      return;
+    }
 
-      
-        setSelectedWord(word);
-        console.log(selectedWord)
-    })
-    .catch((error) => {
-      console.error("Fetch error:", error);
-    });
-};
+    const handleWordAddition = (wordDetails) => {
+      setChosenWords((prevChosenWords) => [...prevChosenWords, wordDetails]);
+    };
 
-const onAddClick = (word) => {
-  if(selectedWord && !chosenWords.includes(word)) {
-    setChosenWords([...chosenWords, selectedWord])
-  }
-  setSelectedWord(null);
-}
+    if (selectedWord.isSuggestion) {
+      fetchData(selectedWord.word)
+        .then((data) => {
+          if (
+            Array.isArray(data) &&
+            data.length > 0 &&
+            typeof data[0] !== "string"
+          ) {
+            handleWordAddition(processDetailedEntries([data[0]])[0]);
+          } else {
+            console.log("API did not return a detailed entry");
+          }
+        })
+        .catch((error) => console.error("Fetch error:", error));
+    } else {
+      handleWordAddition(selectedWord);
+    }
+
+    setSelectedWord(null);
+  };
 
 //once a chosen word is selected and remove button is clicked the word is removed
-const onRemoveClick = (word) => {
-  const updatedChosenWords = chosenWords.filter((chosenWord) => {
-    return chosenWord !== word;
-  })
-  setChosenWords(updatedChosenWords);
+const onRemoveClick = (wordToRemove) => {
+  setChosenWords(
+    chosenWords.filter((wordObj) => wordObj.word !== wordToRemove.word)
+  );
   setSelectedWord(null);
-}
+};
 
 const newWordList = {
   id: wordSets.length + 1,
@@ -138,16 +177,16 @@ const onSubmitClick = () => {
     setAlertMessage("No selected Tags");
   } else if (chosenWords.length === 0) {
     setAlertMessage("No selected words");
-  } else if (listTitle.trim() === "") { 
+  } else if (listTitle.trim() === "") {
     setAlertMessage("Must have Title");
   } else {
-  setWordSets([...wordSets, newWordList]);
-  setListTitle("");
-  setChosenWords([]);
-  setSelectedTags([]);
-  setSearchTerm("");
+    setWordSets([...wordSets, newWordList]);
+    setListTitle("");
+    setChosenWords([]);
+    setSelectedTags([]);
+    setSearchTerm("");
   }
-}
+};
 
   return (
     <>
