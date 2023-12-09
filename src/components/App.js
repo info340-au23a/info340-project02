@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "whatwg-fetch";
 import { HomePage } from "./HomePage.js";
 import { ListBuilderPage } from "./ListBuilderPage.js";
@@ -7,12 +7,36 @@ import { AccountPage } from "./AccountPage.js";
 import { QuizPage } from "./QuizPage.js";
 import { SearchFilterPage } from "./SearchFilterPage.js";
 import { Routes, Route, Navigate } from "react-router";
+import {getDatabase, ref, onValue} from 'firebase/database';
+
 
 export function App(props) {
   const [currentUser, setCurrentUser] = useState(props.accountsData[1]);
   const [wordSets, setWordSets] = useState(props.wordSets);
 
-  console.log(wordSets);
+  useEffect(() => {
+    const db = getDatabase();
+    const allWordSetsRef = ref(db, "wordSets");
+  
+    onValue(allWordSetsRef, (snapshot) => {
+      const allWordSetsObj = snapshot.val();
+
+      if(allWordSetsObj === null){
+        setWordSets([]); //no content
+        return; //break;
+      }
+      
+      const keyArray = Object.keys(allWordSetsObj);
+      const allWordSetsArray = keyArray.map((keyString) => {
+        const wordSetObj = allWordSetsObj[keyString];
+        wordSetObj.firebaseKey = keyString;
+        return wordSetObj;        
+      })
+      setWordSets(allWordSetsArray); //update state & rerender
+    });
+  }, [])
+
+  console.log("wordset",wordSets);
   const changeUser = (newUserObj) => {
     setCurrentUser(newUserObj);
   };

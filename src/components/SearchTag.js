@@ -18,7 +18,7 @@ export function SearchTag(props) {
 
   return (
     <div className="tags">
-      <h2>Select Tags</h2>
+      <h2>Select Tags for your wordlist!</h2>
       <form>{tagArray}</form>
     </div>
   );
