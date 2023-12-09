@@ -12,7 +12,7 @@ import {getDatabase, ref, onValue} from 'firebase/database';
 
 export function App(props) {
   const [currentUser, setCurrentUser] = useState(props.accountsData[1]);
-  const [wordSets, setWordSets] = useState(props.wordSets);
+  const [wordSets, setWordSets] = useState(null);
 
   useEffect(() => {
     const db = getDatabase();

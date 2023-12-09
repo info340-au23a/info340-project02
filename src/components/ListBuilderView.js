@@ -70,7 +70,7 @@ useEffect(() => {
     setSearchData([]); // reset when search term is cleared
   }
 }, [searchTerm]);
-
+console.log("search result", searchData)
 const processSuggestions = (suggestions, searchTerm) => {
   const uniqueWords = new Set(
     suggestions.map(word => word.toLowerCase().replace(/\.$/, ''))
