@@ -7,10 +7,11 @@ function GenerateQuizCard(props) {
   const wordListData = props.data;
   const setInputValue = props.setInput;
   const setMessage = props.setMessage;
+  const index = props.index;
 
   const handleSoundClick = () => {
-    if (wordListData.pronunciationAudio) {
-      const audio = new Audio(wordListData.pronunciationAudio);
+    if (wordListData.audio) {
+      const audio = new Audio(wordListData.audio);
       audio.play();
     }
   };
@@ -27,14 +28,14 @@ function GenerateQuizCard(props) {
 
   return (
     <div className="quiz">
-      <div key={wordListData.id} className="quiz-card">
+      <div key={index} className="quiz-card">
         <h2 style={{ fontSize: "24px" }}>
           <label htmlFor="word-input">
-          <p>Question {wordListData.id}: Listen to the audio and spell the word</p>
+          <p>Question {index + 1}: Listen to the audio and spell the word</p>
             <button
               className="fas"
               aria-label="Play Sound"
-              onClick={() => handleSoundClick(wordListData.id)}
+              onClick={() => handleSoundClick(index)}
             >
               &#xf028;
             </button>
@@ -92,6 +93,7 @@ export function QuizComponent(props) {
         setInput={setInputValue}
         message={message}
         setMessage={setMessage}
+        index={currentIndex}
       />
       <div className="quiz-buttons-container">
         <div className="quiz-last">

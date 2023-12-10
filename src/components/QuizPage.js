@@ -35,9 +35,9 @@ export function QuizPage(props) {
             <div className="searchTitle">
               Select a wordlist to test your knowledge
               {wordListData.map((wordList) => (
-                <div className="quiz-buttons-container" key={wordList.wordSetTitle}>
+                <div className="quiz-buttons-container" key={wordList.title}>
                   <button onClick={() => handleSelect(wordList)}>
-                    {wordList.wordSetTitle}
+                    {wordList.title}
                   </button>
                 </div>
               ))}
