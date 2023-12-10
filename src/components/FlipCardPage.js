@@ -23,7 +23,7 @@ export function FlipCardPage(props) {
           <h2>Practice your skills</h2>
         </div>
         <div>
-          <p className = "searchTitle">Select a wordlist to learning with filpcards
+          <div className = "searchTitle">Select a wordlist to learning with filpcards
               {wordListData.map((wordList) => (
                 <div className="quiz-buttons-container">
                 <button onClick={() => handleSelect(wordList)}
@@ -31,7 +31,7 @@ export function FlipCardPage(props) {
                 </button>
                 </div>
               ))}
-          </p>
+          </div>
         </div>
         {selectedWordList && <FlipCardList data={selectedWordList} />}
       </main>
