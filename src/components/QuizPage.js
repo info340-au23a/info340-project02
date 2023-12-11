@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { QuizComponent } from "./Quiz";
-import { NavBar } from "./NavBar";
 import { Footer } from "./Footer";
 
 export function QuizPage(props) {
@@ -16,10 +15,7 @@ export function QuizPage(props) {
   };
 
   return (
-    <div>
-      <header>
-        <NavBar />
-      </header>
+    <>
       <main>
         <div>
           <h1>Word Quiz</h1>
@@ -46,6 +42,6 @@ export function QuizPage(props) {
         )}
       </main>
       <Footer imageRef="Audio pronunciations provided by Brittanica.com" />
-    </div>
+    </>
   );
 }

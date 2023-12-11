@@ -7,7 +7,7 @@ export function HomePage(props) {
   return (
     <div>
       <header>
-        <NavBar />
+        <NavBar currentUser={props.currentUser}/>
       </header>
       <main>
         <div className="welcome">
