@@ -54,7 +54,6 @@ export function NavBar(props) {
                 <NavLink
                   className="nav-link"
                   to="/account"
-                  className="nav-link"
                 >
                   <img
                     className="userImg"

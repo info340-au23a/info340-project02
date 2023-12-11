@@ -15,6 +15,7 @@ export function ListBuilderPage(props) {
           tagsData={props.tagsData}
           wordSets={props.wordSets}
           setWordSets={props.setWordSets}
+          currentUser={props.currentUser}
         />
       </main>
       <Footer />

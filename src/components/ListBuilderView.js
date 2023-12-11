@@ -9,7 +9,7 @@ const DICTIONARY_API_TEMPLATE =
 const apiKey = "02dd1fc4-e12f-4d44-9c1c-c8526cfd6ef4";
 
 export function ListBuilderView(props) {
-  const {wordSets, setWordSets} = props;
+  const {wordSets, setWordSets, currentUser} = props;
   const [listTitle, setListTitle] = useState("");
   const [searchData, setSearchData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -18,6 +18,7 @@ export function ListBuilderView(props) {
   const [selectedTags, setSelectedTags] = useState([]);
   const [alertMessage, setAlertMessage] = useState(null);
 
+  console.log("user", currentUser);
   const fetchData = (term) => {
     const url = DICTIONARY_API_TEMPLATE.replace("{word}", term).replace(
       "{apiKey}",
@@ -214,6 +215,17 @@ const newWordList = {
 
   return (
     <>
+    { currentUser.userId ? (
+      <>
+      {alertMessage && (
+            <Alert
+              variant="light"
+              dismissible
+              onClose={() => setAlertMessage(null)}
+            >
+              {alertMessage}
+            </Alert>
+          )}
     {alertMessage &&
         <Alert variant="light" dismissible onClose={() => setAlertMessage(null)}>{alertMessage}</Alert>
       }
@@ -258,6 +270,12 @@ const newWordList = {
         </div>
         <SearchTag tagsData={props.tagsData} selectedTags={selectedTags} onTagChange={onTagChange}/>
       </div>
+      </>
+    ) : (
+      <div>
+        <p>Please log in to use the list builder.</p>
+      </div>
+    )}
     </>
   );
 }
