@@ -5,8 +5,8 @@
 
 main {
   font-size: 20px;
-  margin-top: 20em;
-  margin-bottom: 30px;
+  margin-top: 13em;
+  /* margin-bottom: 30px; */
 }
 
 h1,
@@ -34,9 +34,7 @@ header {
 }
 
 .auth-btn {
-  background-color: #2c6a79 !important; /* Force override */
-  color: #f0f0f0;
-  /* Additional styles for the button if needed */
+  background-color: #9bb47f !important;
 }
 
 .sidebar {
@@ -199,7 +197,7 @@ header .nav-item {
 /* Welcome CSS */
 
 .welcome {
-  padding-top: 2em;
+  padding-top: 0em;
   text-align: center;
 }
 
@@ -567,6 +565,9 @@ footer p {
 
 /* Media Queries  */
 @media (min-width: 598px) {
+  main {
+    margin-top: 10em;
+  }
   .card {
     margin: 20px 10px;
   }
@@ -594,16 +595,12 @@ footer p {
 
   @media (min-width: 768px) {
     main {
-      margin-top: 8em;
-    }
-
-    .welcome {
-      margin-bottom: 0;
+      margin-top: 10em;
     }
 
     .card-container {
       flex-direction: row;
-      margin: 100px auto;
+      /* margin: 100px auto; */
       padding: 0 1em;
       max-width: 768px;
     }
@@ -623,11 +620,11 @@ footer p {
 
   @media (min-width: 992px) {
     main {
-      margin-top: 10em;
+      margin-top: 8em;
     }
 
     .welcome {
-      margin-bottom: 4em;
+      margin-bottom: 2em;
     }
 
     header {
@@ -638,14 +635,14 @@ footer p {
     }
 
     nav {
-      margin-left: auto; /* Push the nav to the right */
+      margin-left: auto;
     }
   
     nav ul {
       flex-direction: row;
-      justify-content: flex-end; /* Align the nav items to the right */
+      justify-content: flex-end;
       padding: 0;
-      gap: 10px; /* Adjust the gap as needed */
+      gap: 10px;
       padding-right: 20px;
     }
 

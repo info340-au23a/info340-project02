@@ -68,7 +68,7 @@ export function NavBar(props) {
               </li>
               <li className="nav-item nav-btn">
                 <button
-                  className="btn btn-secondary ms-2"
+                  className="btn auth-btn ms-2"
                   onClick={handleSignOut}
                 >
                   Sign Out
@@ -80,7 +80,7 @@ export function NavBar(props) {
             <li className="nav-item">
               <NavLink className="nav-link" to="/signin">
                 <button
-                  className="btn btn-secondary ms-2"
+                  className="btn auth-btn ms-2"
                 >
                   Sign In
                 </button>
