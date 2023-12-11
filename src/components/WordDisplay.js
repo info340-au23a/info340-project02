@@ -18,8 +18,8 @@ export function WordDisplay(props) {
   // Function to render the list of chosen words
   const renderChosenWords = () => {
     return chosenWords.map((wordObj, index) => (
-      <div key={index} className="chosenWord">
-        <p>{wordObj.word}</p>
+      <div key={index} className="searchResultWord" onClick={() => onWordClick(wordObj)}>
+        <p>{wordObj && wordObj.word}</p>
       </div>
     ));
   };

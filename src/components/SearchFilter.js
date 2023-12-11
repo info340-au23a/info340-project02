@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
@@ -60,7 +60,7 @@ export function SearchInput(props) {
 // WordCard Component
 function WordCard(props) {
   const { dataObj } = props;
-  const cardLink = `/flipcard/`;
+  const cardLink = `/quiz/`;
 
   return (
     <div className="filter">
@@ -68,7 +68,7 @@ function WordCard(props) {
         <div className="card">
           <div className="card-body">
             <Link to={cardLink} className="card-link">
-              <h1 className="card-title">Title: {dataObj.Title}</h1>
+              <h1 className="card-title">Title: {dataObj.title}</h1>
             </Link>
             <ul className="tagNames">
               <p>- Labeled by tags -</p>
@@ -83,13 +83,28 @@ function WordCard(props) {
   );
 }
 
-
 // SearchFilter Component
 export default function SearchFilter(props) {
   const { wordSets } = props;
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [selectedTags, setSelectedTags] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [filteredWordSets, setFilteredWordSets] = useState([]);
+
+  useEffect(() => {
+    const filteredSets = wordSets.filter((set) => {
+      const titleLowerCase = set.title ? set.title.toLowerCase() : '';
+      const tagsLowerCase = set.tags ? set.tags.map(tag => tag.toLowerCase()) : [];
+
+      return (
+        titleLowerCase.includes(searchTerm.toLowerCase()) &&
+        (selectedTags.length === 0 ||
+          selectedTags.every((tag) => tagsLowerCase.includes(tag.toLowerCase())))
+      );
+    });
+
+    setFilteredWordSets(filteredSets);
+  }, [wordSets, selectedTags, searchTerm]);
 
   const toggleFilter = () => setIsFilterOpen(!isFilterOpen);
 
@@ -109,18 +124,6 @@ export default function SearchFilter(props) {
     props.applyFilterCallback(selectedTags);
   };
 
-  const filteredWords = wordSets.filter((dataObj) => {
-    return (
-      dataObj.Title.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      (selectedTags.length === 0 ||
-        selectedTags.every((tag) => dataObj.tags.includes(tag)))
-    );
-  });
-
-  const filteredWordsArray = filteredWords.map((dataObj) => {
-    return <WordCard key={dataObj.id} dataObj={dataObj} />
-  });
-
   return (
     <form onSubmit={handleClick}>
       <div className="searchFilter">
@@ -137,10 +140,11 @@ export default function SearchFilter(props) {
           toggleFilter={toggleFilter}
         />
         <div className="cardsDisplay">
-          {filteredWordsArray}
+          {filteredWordSets.map((set, index) => (
+            <WordCard key={set.id || index} dataObj={set} />
+          ))}
         </div>
       </div>
     </form>
   );
-
 }

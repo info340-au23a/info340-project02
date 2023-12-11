@@ -15,8 +15,8 @@ import SignInPage from './SignInPage.js';
 import DEFAULT_USERS from "./data/sample-accounts.json";
 
 export function App(props) {
-  const [currentUser, setCurrentUser] = useState(DEFAULT_USERS[0]);
-  const [wordSets, setWordSets] = useState(props.wordSets);
+  const [currentUser, setCurrentUser] = useState(props.accountsData[0]);
+  const [wordSets, setWordSets] = useState(null);
 
   const { wordsData, tagsData } = props;
 
@@ -94,10 +94,7 @@ export function App(props) {
           path="flipcard"
           element={<FlipCardPage data={wordsData} currentUser={currentUser} />}
         />
-        <Route
-          path="quiz"
-          element={<QuizPage data={wordsData} currentUser={currentUser} />}
-        />
+        <Route path="quiz" element={<QuizPage data={props.wordsData} />} />
         <Route
           path="create"
           element={

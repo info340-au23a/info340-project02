@@ -8,6 +8,7 @@ export function FlipCardPage(props) {
   const [selectedWordList, setSelectedWordList] = useState(null);
 
   const handleSelect = (wordList) => {
+    console.log("current", wordList)
     setSelectedWordList(wordList.words);
   };
 
@@ -27,7 +28,7 @@ export function FlipCardPage(props) {
                 </button>
                 </div>
               ))}
-          </p>
+          </div>
         </div>
         {selectedWordList && <FlipCardList data={selectedWordList} />}
       </main>

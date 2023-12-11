@@ -160,18 +160,17 @@ export function ListBuilderView(props) {
 
 //once a chosen word is selected and remove button is clicked the word is removed
 const onRemoveClick = (wordToRemove) => {
+  if (!wordToRemove) {
+    console.error("No word to remove");
+    return;
+  }
   setChosenWords(
     chosenWords.filter((wordObj) => wordObj.word !== wordToRemove.word)
   );
   setSelectedWord(null);
 };
 
-const newWordList = {
-  id: wordSets.length + 1,
-  Title: listTitle,
-  words: chosenWords,
-  tags: selectedTags,
-};
+
 
 const onSubmitClick = () => {
   if (selectedTags.length === 0) {
@@ -181,11 +180,18 @@ const onSubmitClick = () => {
   } else if (listTitle.trim() === "") {
     setAlertMessage("Must have Title");
   } else {
-    const newWordList = {
-      title: listTitle,
-      tags: selectedTags,
-      words: chosenWords.map(word => ({ word })),
-    };
+
+const newWordList = {
+  title: listTitle,
+  tags: selectedTags,
+  words: chosenWords.map(({ word, audio, wordClass, isSuggestion }) => ({
+    word,
+    audio,
+    wordClass: wordClass || "",
+    isSuggestion,
+  })),
+};
+
 
     const db = getDatabase();
     const wordSetsRef = firebaseRef(db, 'wordSets'); // Reference to a specific word set using the title
