@@ -16,7 +16,7 @@ import DEFAULT_USERS from "./data/sample-accounts.json";
 
 export function App(props) {
   const [currentUser, setCurrentUser] = useState(props.accountsData[0]);
-  const [wordSets, setWordSets] = useState(null);
+  const [wordSets, setWordSets] = useState([]);
 
   const { wordsData, tagsData } = props;
 
@@ -107,6 +107,7 @@ export function App(props) {
           path="flipcard"
           element={<FlipCardPage data={wordsData} currentUser={currentUser} />}
         />
+        <Route path="/quiz/:wordListId" element={<QuizPage data={wordSets} currentUser={currentUser} />} />{/* currentUser={currentUser} */}
         <Route path="quiz" element={<QuizPage data={wordSets} currentUser={currentUser} />} />
         <Route
           path="create"

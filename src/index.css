@@ -38,12 +38,6 @@ header {
   transform: translateY(-10%);
 }
 
-.sidebar {
-  width: 80%;
-  padding-left: 0;
-  margin-left: 0;
-}
-
 /* nav bar */
 header .logoImg {
   height: 40px;
@@ -58,14 +52,6 @@ nav a {
 }
 
 nav {
-  /* overflow: hidden;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  text-align: center;
-  color: #2d334a; */
   width: 100%;
 }
 
@@ -303,12 +289,15 @@ header .nav-item {
 
 /* Quiz CSS */
 
+
 .quiz-container {
+  padding-top: 13em;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center; 
   height: 100%; 
+  box-sizing: border-box;
 }
 
 .quiz-content {
@@ -316,8 +305,10 @@ header .nav-item {
 }
 
 .quiz-sidebar {
-  width: 100%; 
-  margin-top: 1rem; 
+  margin-top: 4em;
+  width: 80%; 
+  top: 330px;
+  /* position: absolute; */
 }
 
 button,
@@ -358,7 +349,6 @@ button:hover,
   color: #2d334a;
 }
 
-/* Quiz CSS */
 .quiz {
   margin-top: 30px;
   align-items: center;
@@ -383,8 +373,13 @@ button:hover,
   border: none;
   border-bottom: 2px solid #000;
   font-size: 24px;
-  width: 100px;
+  width: 200px;
+  text-align: center;
 }
+
+/* .quiz-card #word-input {
+  width: 100px !important;
+} */
 
 .quiz-card {
   text-align: center;
@@ -393,9 +388,10 @@ button:hover,
   margin: 20px auto;
   padding: 40px;
   border-radius: 5px;
-  max-width: 400px;
+  max-width: 360px;
   width: 100%; 
   box-sizing: border-box; 
+  flex-shrink: 0;
 }
 
 
@@ -649,7 +645,7 @@ footer p {
 /* Media Queries  */
 @media (min-width: 598px) {
   .quiz-container {
-    width: calc(70% - 1rem); 
+    /* width: calc(70% - 1rem);  */
   }
 
   main {
@@ -673,7 +669,7 @@ footer p {
   }
 
   .quiz-card {
-    width: calc(70% - 1rem); 
+    /* width: calc(70% - 1rem);  */
   }
 }
 
@@ -761,8 +757,8 @@ footer p {
     }    
     
     .quiz-container {
-      flex-direction: row; 
-      justify-content: space-between; 
+      /* flex-direction: row; 
+      justify-content: space-between;  */
     }
   
     .quiz-sidebar {

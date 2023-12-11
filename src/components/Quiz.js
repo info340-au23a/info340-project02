@@ -1,23 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getDatabase, ref as firebaseRef, onValue } from "firebase/database";
 
-function QuizSidebar({
-  wordListName,
-  authorName,
-  currentQuestion,
-  totalQuestions,
-}) {
-  return (
-    <div className="sidebar">
-      <h3>{wordListName}</h3>
-      <p>Author: {authorName}</p>
-      <p>
-        Progress: {currentQuestion + 1} / {totalQuestions}
-      </p>
-    </div>
-  );
-}
-
 // result array that stores the answered questions
 let resultArr = [];
 
@@ -48,7 +31,7 @@ function GenerateQuizCard(props) {
     <div className="quiz">
       <div key={index} className="quiz-card">
         <h2 style={{ fontSize: "24px" }}>
-          <label htmlFor="word-input">
+          <label htmlFor="">
             <p>Question {index + 1}: Listen to the audio and spell the word</p>
             <button
               className="fas"
@@ -58,7 +41,7 @@ function GenerateQuizCard(props) {
               &#xf028;
             </button>
           </label>
-          <input
+          <input id="word-input"
             value={props.input}
             onChange={(e) => setInputValue(e.target.value)}
             maxLength={words.word.length}
@@ -77,14 +60,14 @@ function GenerateQuizCard(props) {
 
 export function QuizComponent(props) {
   const { wordList } = props;
-  const { words, wordListName, authorUID } = wordList;
+  const { words, title, authorUID } = wordList;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [inputValue, setInputValue] = useState("");
   const [message, setMessage] = useState("");
   const [authorName, setAuthorName] = useState("Loading...");
 
   console.log("props.data");
-  console.log(props.data);
+  console.log(wordList);
 
   console.log(authorUID);
 
@@ -99,7 +82,7 @@ export function QuizComponent(props) {
         (snapshot) => {
           const userData = snapshot.val();
           if (userData && userData.displayName) {
-
+  
             setAuthorName(userData.displayName);
           } else {
 
@@ -138,7 +121,15 @@ export function QuizComponent(props) {
   };
 
   return (
-    <div className="quizContainer">
+    <div className="quiz-container">
+            <div className="quiz-sidebar">
+        <QuizSidebar
+          wordListTitle={title}
+          authorName={authorName}
+          currentQuestion={currentIndex}
+          totalQuestions={words.length}
+        />
+      </div>
       <GenerateQuizCard
         words={words[currentIndex]}
         input={inputValue}
@@ -162,14 +153,21 @@ export function QuizComponent(props) {
           )}
         </div>
       </div>
-      <div className="quiz-sidebar">
-        <QuizSidebar
-          wordListName={wordListName}
-          authorName={authorName}
-          currentQuestion={currentIndex}
-          totalQuestions={words.length}
-        />
-      </div>
+
+
+    </div>
+  );
+}
+
+function QuizSidebar({ wordListTitle, authorName, currentQuestion, totalQuestions}) {
+  console.log("wordlistname: " + wordListTitle)
+  return (
+    <div className="sidebar">
+      <h3>Quiz: {wordListTitle}</h3>
+      <p>Author: {authorName}</p>
+      <p>
+        Progress: {currentQuestion + 1} / {totalQuestions}
+      </p>
     </div>
   );
 }
