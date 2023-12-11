@@ -35,6 +35,7 @@ header {
 
 .auth-btn {
   background-color: #9bb47f !important;
+  transform: translateY(-10%);
 }
 
 .sidebar {
@@ -105,8 +106,11 @@ nav .material-icons {
 }
 
 nav .userImg {
-  max-height: 2.5em;
-  border-radius: 25px;
+  transform: translateY(10%);
+  width: 40px;
+  height: 40px; 
+  object-fit: cover; 
+  border-radius: 50%;
 }
 
 header .nav-item {
@@ -298,6 +302,25 @@ header .nav-item {
   margin: 10px;
 }
 
+/* Quiz CSS */
+
+.quiz-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center children horizontally */
+  height: 100%; /* Ensure it takes full container height */
+}
+
+.quiz-content {
+  width: 100%; /* Take full width on mobile */
+}
+
+.quiz-sidebar {
+  width: 100%; /* Take full width on mobile */
+  margin-top: 1rem; /* Add some space between the quiz and sidebar on mobile */
+}
+
 button,
 .quiz button {
   background-color: #def193;
@@ -372,8 +395,10 @@ button:hover,
   padding: 40px;
   border-radius: 5px;
   max-width: 400px;
-  min-width: 200px;
+  width: 100%; 
+  box-sizing: border-box; /* Ensures padding does not add to the width */
 }
+
 
 .quiz-submit button {
   margin: 0 auto;
@@ -382,8 +407,12 @@ button:hover,
   display: block;
 }
 
-.goBackButton {
-  padding-left: 30px;
+.exitButtonContainer {
+  padding-left: 20px;
+}
+
+.exitButton {
+  /* padding-left: 30px; */
   position: absolute;
 }
 
@@ -563,8 +592,68 @@ footer p {
   text-align: center;
 }
 
+/* AccountPage CSS */
+
+
+.account-container {
+  margin-top: 18em;
+}
+
+.account-container .card {
+  max-width: 340px;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+
+.userImg {
+  width: 150px; /* Adjust to your preference */
+  height: 150px; /* Keep equal to width for a square image */
+  object-fit: cover;
+  border-radius: 50%; /* Circle image */
+  margin: 0 auto 1rem; /* Center the image with margin at the bottom */
+}
+
+.image-upload-form {
+  display: flex;
+  align-items: center;
+  justify-content: start; /* Align items to the start of the flex container */
+  gap: 0.5rem; /* Space between elements */
+}
+
+.displayNameSettings {
+  margin-top: 1rem; /* Spacing at the top */
+}
+
+.displayNameSettings form {
+  display: flex;
+  align-items: center;
+  justify-content: start; /* Align items to the start of the flex container */
+  gap: 0.5rem; /* Space between elements */
+}
+
+.displayNameSettings input {
+  flex-grow: 1; /* Allow the input to grow and fill available space */
+  max-width: 250px; /* Maximum width of the input */
+}
+
+.profilePhotoSettings {
+  margin-bottom: 1rem; /* Spacing at the bottom */
+}
+
+
+.image-upload-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /* Media Queries  */
 @media (min-width: 598px) {
+  .quiz-container {
+    width: calc(70% - 1rem); /* Take up 70% of the container width, adjust as needed */
+  }
+
   main {
     margin-top: 10em;
   }
@@ -578,17 +667,15 @@ footer p {
   }
 
   .account-container {
-    margin-top: 10em;
-    width: auto;
+    margin-top: 14em;
   }
-
-  .account-details,
-  .account-settings {
-    text-align: center;
-  } 
 
   .sign-in {
     margin-top: 11em;
+  }
+
+  .quiz-card {
+    width: calc(70% - 1rem); 
   }
 }
 
@@ -596,6 +683,10 @@ footer p {
   @media (min-width: 768px) {
     main {
       margin-top: 10em;
+    }
+
+    .account-container {
+      margin-top: 13em;
     }
 
     .card-container {
@@ -612,13 +703,14 @@ footer p {
     .sign-in {
       margin-top: 11em;
     }    
-
-    .account-container {
-      /* margin-top: 40em; */
-    }  
   }
 
   @media (min-width: 992px) {
+
+    .account-container {
+      margin-top: 10em;
+    }
+
     main {
       margin-top: 8em;
     }
@@ -669,4 +761,15 @@ footer p {
     .sign-in {
       margin-top: 8em;
     }    
+    
+    .quiz-container {
+      flex-direction: row; /* Place content and sidebar side by side on larger screens */
+      justify-content: space-between; /* Add space between the content and sidebar */
+    }
+  
+    .quiz-sidebar {
+      width: 30%; /* Sidebar takes up the remaining space */
+      margin-top: 0; /* Reset the margin-top */
+
+    }
   }

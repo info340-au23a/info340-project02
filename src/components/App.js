@@ -22,26 +22,37 @@ export function App(props) {
 
   const navigateTo = useNavigate();
 
+  const handleImageUpdate = (newImageUrl) => {
+    setCurrentUser((prevUser) => ({ ...prevUser, userImg: newImageUrl }));
+  };
+
+  const handleDisplayNameUpdate = (newDisplayName) => {
+    setCurrentUser((prevUser) => ({ ...prevUser, userName: newDisplayName }));
+  };
+
   // Handles User Auth
   useEffect(() => {
     const auth = getAuth();
-    onAuthStateChanged(auth, function (firebaseUser) {
-      console.log("login status changed");
-      console.log(firebaseUser);
-
-      if (firebaseUser === null) {
-        console.log("logged out");
-        setCurrentUser(DEFAULT_USERS[0]);
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      if (firebaseUser) {
+        // User is signed in, construct the user object from the auth data
+        const userToSet = {
+          userId: firebaseUser.uid,
+          userName: firebaseUser.displayName || 'No name', // Fallback to 'No name' if displayName is null
+          userImg: firebaseUser.photoURL || "/img/profile-pictures/null.png", // Fallback to a default image if photoURL is null
+        };
+        setCurrentUser(userToSet);
       } else {
-        console.log("logged in as ", firebaseUser.displayName);
-        firebaseUser.userId = firebaseUser.uid;
-        firebaseUser.userName = firebaseUser.displayName;
-        firebaseUser.userImg = firebaseUser.photoURL || "img/null.png";
-
-        setCurrentUser(firebaseUser);
+        // No user is signed in, redirect or set to null user
+        setCurrentUser(DEFAULT_USERS[0]); // or simply setCurrentUser(null);
       }
     });
+
+    // Cleanup subscription on unmount
+    return () => unsubscribe();
   }, []);
+
+
 
   // Pulls from MW API (Arrays of Objs & Arrays of Strings)
   useEffect(() => {
@@ -74,6 +85,8 @@ export function App(props) {
       navigateTo("/home"); //go to chat after login
     }
   };
+
+
 
   // for SearchFilter
   const [filteredData, setFilteredData] = useState([]);
@@ -123,6 +136,8 @@ export function App(props) {
             <AccountPage
               currentUser={currentUser}
               changeUserFunction={changeUser}
+              onImageUpdate={handleImageUpdate}
+              onDisplayNameUpdate={handleDisplayNameUpdate}
             />
           }
         />

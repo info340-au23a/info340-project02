@@ -1,16 +1,20 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import { signOut, getAuth } from "firebase/auth";
 
 export function NavBar(props) {
   const { currentUser } = props;
+  const navigate = useNavigate();
 
-  const handleSignOut = (event) => {
-    console.log("signing out");
-    signOut(getAuth());
+  const handleSignOut = async (event) => {
+    try {
+      await signOut(getAuth()); // Wait for sign out to complete
+      navigate('/home'); // Redirect to homepage after sign out
+    } catch (error) {
+      console.error("Sign out failed", error);
+    }
   };
-
   return (
     <header className="text-light px-1 d-flex justify-content-between">
       <NavLink to="/home" className="navbar-logo">

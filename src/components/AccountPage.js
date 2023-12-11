@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { NavLink, Navigate } from "react-router-dom";
 
 import {
   getStorage,
@@ -7,19 +8,53 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { getDatabase, ref, set as firebaseSet } from "firebase/database";
-import { updateProfile } from "firebase/auth";
+import { getAuth, updateProfile } from "firebase/auth";
 
 import { Footer } from "./Footer.js";
 
 export default function AccountPage(props) {
-  const displayName = props.currentUser.userName;
-
   const [imageFile, setImageFile] = useState(undefined);
-  let initialURL = props.currentUser.userImg || 'img/profile-pictures/null.png';
+  const [displayName, setDisplayName] = useState(props.currentUser.userName); 
+  const [newDisplayName, setNewDisplayName] = useState(props.currentUser.userName); 
+  let initialURL = props.currentUser.userImg;
   const [imageUrl, setImageUrl] = useState(initialURL);
 
-  //image uploading!
-  const handleChange = (event) => {
+  console.log("initialURL: " + initialURL);
+  console.log("imageURL: " + imageUrl);
+
+  const handleDisplayNameChange = (event) => {
+    setNewDisplayName(event.target.value); 
+  };
+
+  const handleDisplayNameUpdate = async (event) => {
+    event.preventDefault();
+
+    if (!newDisplayName) {
+      console.log("Display name cannot be empty!");
+      return;
+    }
+
+    try {
+      const auth = getAuth();
+      await updateProfile(auth.currentUser, { displayName: newDisplayName });
+
+      const db = getDatabase();
+      const userDisplayNameRef = ref(db, "users/" + auth.currentUser.uid + "/displayName");
+      await firebaseSet(userDisplayNameRef, newDisplayName);
+
+      setDisplayName(newDisplayName);
+
+      props.onDisplayNameUpdate({
+        ...props.currentUser,
+        userName: newDisplayName,
+      });
+
+    } catch (error) {
+      console.error("Error updating display name: ", error);
+    }
+  };
+
+  const handleImageChange = (event) => {
     if (event.target.files.length > 0 && event.target.files[0]) {
       const imageFile = event.target.files[0];
       setImageFile(imageFile);
@@ -28,55 +63,98 @@ export default function AccountPage(props) {
   };
 
   const handleImageUpload = async (event) => {
-    console.log("Uploading", imageFile);
-    console.log("currentuser: ");
-    console.log(props.currentUser);
+    event.preventDefault();
 
-    const storage = getStorage();
-    const imageRef = storageRef(
-      storage,
-      "userImages/" + props.currentUser.uid + ".png"
-    );
+    if (!imageFile) {
+      console.log("No file selected!");
+      return;
+    }
 
-    await uploadBytes(imageRef, imageFile);
-    const url = await getDownloadURL(imageRef);
-    console.log(url);
-    updateProfile(props.currentUser, { photoURL: url }); //update the profile
+    try {
+      const storage = getStorage();
+      const imageRef = storageRef(
+        storage,
+        "userImages/" + props.currentUser.uid + ".png"
+      );
 
-    //example
-    const userImgRef = ref(
-      getDatabase(),
-      "userData/" + props.currentUser.uid / +"img"
-    );
-    firebaseSet(userImgRef, { url: url, alt: "text" });
+      await uploadBytes(imageRef, imageFile);
+      const url = await getDownloadURL(imageRef);
+
+      const auth = getAuth();
+      await updateProfile(auth.currentUser, { photoURL: url });
+      console.log("Profile updated!");
+
+      const db = getDatabase();
+      const userImgRef = ref(db, "users/" + auth.currentUser.uid + "/userImg");
+      await firebaseSet(userImgRef, url);
+
+      setImageUrl(url);
+
+      props.onImageUpdate(url);
+    } catch (error) {
+      console.error("Error uploading image: ", error);
+    }
   };
 
+  if (!props.currentUser || props.currentUser.userId === null) {
+    // If currentUser is null or userId is null, don't render the page content
+    return <Navigate to="/signin" />; // or any other component to indicate the user is not logged in
+  }
   return (
     <>
       <div className="account-container">
-        <h2>{props.currentUser.userName && displayName + "'s"} Account</h2>
+        <div className="card bg-light">
+          <div className="card-body">
+            <h2 className="card-title">
+              {props.currentUser.userName && displayName + "'s"} Account
+            </h2>
 
-        <div className="mb-5 image-upload-form">
-          <img src={imageUrl} alt="user avatar preview" className="mb-2" />
-          <label
-            htmlFor="imageUploadInput"
-            className="btn btn-sm btn-secondary me-2"
-          >
-            Choose Image
-          </label>
-          <button
-            className="btn btn-sm btn-success"
-            onClick={handleImageUpload}
-          >
-            Save to Profile
-          </button>
-          <input
-            type="file"
-            name="image"
-            id="imageUploadInput"
-            className="d-none"
-            onChange={handleChange}
-          />
+            <div className="profilePhotoSettings">
+              <h3>Profile Picture</h3>
+              <div>
+                <img
+                  src={imageUrl}
+                  alt="user avatar preview"
+                  className="mb-2 userImg card-img-top"
+                />
+              </div>
+              <div className="image-upload-form mb-5">
+                <input
+                  type="file"
+                  name="image"
+                  id="imageUploadInput"
+                  className="d-none"
+                  onChange={handleImageChange}
+                />
+                <label
+                  htmlFor="imageUploadInput"
+                  className="btn btn-sm btn-secondary mt-2"
+                >
+                  Choose Image
+                </label>
+                <button
+                  className="btn btn-sm btn-success"
+                  onClick={handleImageUpload}
+                >
+                  Save to Profile
+                </button>
+              </div>
+            </div>
+            <div className="displayNameSettings">
+              <h3>Display Name</h3>
+              <form onSubmit={handleDisplayNameUpdate}>
+                <input
+                  type="text"
+                  value={newDisplayName}
+                  onChange={handleDisplayNameChange}
+                  className="form-control mb-2" // Bootstrap class for styling
+                />
+                <button type="submit" className="btn btn-primary">
+                  Update Display Name
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
       <Footer imageRef="" />
