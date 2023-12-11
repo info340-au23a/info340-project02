@@ -83,7 +83,6 @@ nav li {
   display: inline-block;
   box-sizing: border-box;
   padding: 10px;
-  /* width: 100%; */
   text-align: center;
   text-decoration: none;
   color: black;
@@ -308,17 +307,17 @@ header .nav-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* Center children horizontally */
-  height: 100%; /* Ensure it takes full container height */
+  justify-content: center; 
+  height: 100%; 
 }
 
 .quiz-content {
-  width: 100%; /* Take full width on mobile */
+  width: 100%;
 }
 
 .quiz-sidebar {
-  width: 100%; /* Take full width on mobile */
-  margin-top: 1rem; /* Add some space between the quiz and sidebar on mobile */
+  width: 100%; 
+  margin-top: 1rem; 
 }
 
 button,
@@ -396,7 +395,7 @@ button:hover,
   border-radius: 5px;
   max-width: 400px;
   width: 100%; 
-  box-sizing: border-box; /* Ensures padding does not add to the width */
+  box-sizing: border-box; 
 }
 
 
@@ -412,7 +411,6 @@ button:hover,
 }
 
 .exitButton {
-  /* padding-left: 30px; */
   position: absolute;
 }
 
@@ -607,38 +605,38 @@ footer p {
 
 
 .userImg {
-  width: 150px; /* Adjust to your preference */
-  height: 150px; /* Keep equal to width for a square image */
+  width: 150px;
+  height: 150px; 
   object-fit: cover;
-  border-radius: 50%; /* Circle image */
-  margin: 0 auto 1rem; /* Center the image with margin at the bottom */
+  border-radius: 50%; 
+  margin: 0 auto 1rem;
 }
 
 .image-upload-form {
   display: flex;
   align-items: center;
-  justify-content: start; /* Align items to the start of the flex container */
-  gap: 0.5rem; /* Space between elements */
+  justify-content: start; 
+  gap: 0.5rem; 
 }
 
 .displayNameSettings {
-  margin-top: 1rem; /* Spacing at the top */
+  margin-top: 1rem; 
 }
 
 .displayNameSettings form {
   display: flex;
   align-items: center;
-  justify-content: start; /* Align items to the start of the flex container */
-  gap: 0.5rem; /* Space between elements */
+  justify-content: start; 
+  gap: 0.5rem; 
 }
 
 .displayNameSettings input {
-  flex-grow: 1; /* Allow the input to grow and fill available space */
-  max-width: 250px; /* Maximum width of the input */
+  flex-grow: 1; 
+  max-width: 250px; 
 }
 
 .profilePhotoSettings {
-  margin-bottom: 1rem; /* Spacing at the bottom */
+  margin-bottom: 1rem; 
 }
 
 
@@ -651,7 +649,7 @@ footer p {
 /* Media Queries  */
 @media (min-width: 598px) {
   .quiz-container {
-    width: calc(70% - 1rem); /* Take up 70% of the container width, adjust as needed */
+    width: calc(70% - 1rem); 
   }
 
   main {
@@ -763,13 +761,12 @@ footer p {
     }    
     
     .quiz-container {
-      flex-direction: row; /* Place content and sidebar side by side on larger screens */
-      justify-content: space-between; /* Add space between the content and sidebar */
+      flex-direction: row; 
+      justify-content: space-between; 
     }
   
     .quiz-sidebar {
-      width: 30%; /* Sidebar takes up the remaining space */
-      margin-top: 0; /* Reset the margin-top */
-
+      width: 30%; 
+      margin-top: 0; 
     }
   }

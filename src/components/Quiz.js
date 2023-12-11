@@ -89,22 +89,20 @@ export function QuizComponent(props) {
   console.log(authorUID);
 
   useEffect(() => {
-    // Ensure authorUID is not undefined or null
     if (authorUID) {
       const db = getDatabase();
       const authorRef = firebaseRef(db, `users/${authorUID}`);
       console.log("authorRef: " + authorRef);
 
-      // Fetch the author's name once using the provided UID
       onValue(
         authorRef,
         (snapshot) => {
           const userData = snapshot.val();
           if (userData && userData.displayName) {
-            // If a displayName is found, use it
+
             setAuthorName(userData.displayName);
           } else {
-            // If no displayName is found, set to "Unknown"
+
             setAuthorName("Unknown");
           }
         },
@@ -113,10 +111,8 @@ export function QuizComponent(props) {
         }
       );
 
-      // Since we're using onlyOnce: true, there's no need to unsubscribe
-      // as the listener is automatically removed after the initial trigger
     } else {
-      // If no authorUID is provided, set the author name to "Unknown"
+
       setAuthorName("Unknown");
     }
   }, [authorUID]);
