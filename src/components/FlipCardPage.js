@@ -3,13 +3,22 @@ import { FlipCardList } from "./FlipCardList.js";
 import { Footer } from "./Footer.js";
 
 export function FlipCardPage(props) {
-  
   const wordListData = props.data;
   const [selectedWordList, setSelectedWordList] = useState(null);
 
   const handleSelect = (wordList) => {
-    console.log("current", wordList)
+    console.log("current", wordList);
     setSelectedWordList(wordList.words);
+  };
+
+  const renderWordLists = () => {
+    return wordListData.map((wordList) => (
+      <div className="quiz-buttons-container" key={wordList.wordSetTitle}>
+        <button onClick={() => handleSelect(wordList)}>
+          {wordList.wordSetTitle}
+        </button>
+      </div>
+    ));
   };
 
   return (
@@ -19,21 +28,18 @@ export function FlipCardPage(props) {
           <h1>Flip Cards</h1>
           <h2>Practice your skills</h2>
         </div>
-        <div> {/* TODO: Remove map from component return jsx */}
-          <p className = "searchTitle">Select a wordlist to learning with filpcards
-              {wordListData.map((wordList) => (
-                <div className="quiz-buttons-container">
-                <button onClick={() => handleSelect(wordList)}
-                key={wordList.wordSetTitle}>{wordList.wordSetTitle}
-                </button>
-                </div>
-              ))}
-              </p>
+        <div>
+          <div className="searchTitle">
+            Select a wordlist to learning with flipcards
+            {renderWordLists()}
+          </div>
         </div>
         {selectedWordList && <FlipCardList data={selectedWordList} />}
       </main>
-      <Footer imageRef="Flipcard sample photos originally from Pexels.com | 
-      Audio pronunciations created by Brittanica.com" />
+      <Footer
+        imageRef="Flipcard sample photos originally from Pexels.com | 
+      Audio pronunciations created by Brittanica.com"
+      />
     </>
   );
 }
