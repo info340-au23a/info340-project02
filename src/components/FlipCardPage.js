@@ -28,7 +28,7 @@ export function FlipCardPage(props) {
                 </button>
                 </div>
               ))}
-          </div>
+              </p>
         </div>
         {selectedWordList && <FlipCardList data={selectedWordList} />}
       </main>
