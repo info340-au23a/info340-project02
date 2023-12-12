@@ -38,13 +38,6 @@ export function NavBar(props) {
           <li className="nav-item">
             <NavLink to="/create">Create</NavLink>
           </li>
-          <li className="nav-item">
-            <NavLink to="/search-filter">
-              <span className="material-icons" aria-label="Search">
-                search
-              </span>
-            </NavLink>
-          </li>
           {/* <li>
             <NavLink to="/account">
               <span className="material-icons" aria-label="Account">

@@ -63,6 +63,9 @@ function WordCard(props) {
   const { dataObj } = props;
   const cardLink = `/quiz/`;
 
+  const dataObjTags = dataObj.tags.map((tag, index) => (
+    <li key={index}>{index + 1}. {tag}</li>
+  ));
   return (
     <div className="filter">
       <div className="card-deck">
@@ -73,9 +76,7 @@ function WordCard(props) {
             </Link>           
              <ul className="tagNames">
               <p>- Labeled by tags -</p>
-              {dataObj.tags.map((tag, index) => (
-                <li key={index}>{index + 1}. {tag}</li>
-              ))}
+              {dataObjTags}
             </ul>
           </div>
         </div>
@@ -127,6 +128,9 @@ export default function SearchFilter(props) {
     props.applyFilterCallback(selectedTags);
   };
 
+  const filteredWordSetsArray = filteredWordSets.map((set, index) => (
+    <WordCard key={set.id || index} dataObj={set} />
+  ));
   return (
     <form onSubmit={handleClick}>
       <div className="searchFilter">
@@ -143,9 +147,7 @@ export default function SearchFilter(props) {
           toggleFilter={toggleFilter}
         />
         <div className="cardsDisplay">
-          {filteredWordSets.map((set, index) => (
-            <WordCard key={set.id || index} dataObj={set} />
-          ))}
+          {filteredWordSetsArray}
         </div>
       </div>
     </form>
