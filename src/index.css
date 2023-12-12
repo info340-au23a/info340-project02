@@ -711,7 +711,9 @@ footer p {
     margin-top: 11em;
   }
 
-
+  .flipcard-container {
+    margin-top: 15em;
+  }
   }
 
 
@@ -814,6 +816,10 @@ footer p {
 
     .tags label {
       font-size: 20px;
+    }
+
+    .flipcard-container {
+      margin-top: 10em;
     }
 
   }
