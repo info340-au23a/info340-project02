@@ -60,7 +60,7 @@ export function SearchInput(props) {
 
 // WordCard Component
 function WordCard(props) {
-  const { dataObj } = props;
+  const { dataObj, basePath } = props;
   const cardLink = `/quiz/`;
 
   const dataObjTags = dataObj.tags.map((tag, index) => (
@@ -71,7 +71,7 @@ function WordCard(props) {
       <div className="card-deck">
         <div className="card">
           <div className="card-body">
-          <Link to={`/quiz/${dataObj.firebaseKey}`} className="card-link">
+          <Link to={`${basePath}/${dataObj.firebaseKey}`} className="card-link">
               <h1 className="card-title">{dataObj.title}</h1>
             </Link>           
              <ul className="tagNames">
@@ -129,7 +129,7 @@ export default function SearchFilter(props) {
   };
 
   const filteredWordSetsArray = filteredWordSets.map((set, index) => (
-    <WordCard key={set.id || index} dataObj={set} />
+    <WordCard key={set.id || index} dataObj={set} basePath={props.basePath} />
   ));
   return (
     <form onSubmit={handleClick}>

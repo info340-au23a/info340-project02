@@ -50,8 +50,8 @@ export function ListBuilderView(props) {
   // GETs a list of words from the MW API
   // note that the data that is passed into the search component is just a list a words that has no other data
   // we will have to reidentify the word with MW's api to pull more data
-  // this is due to MW API returning an array of Objs for >3 char searchs
-  // and an array of strings for <3 char searchs
+  // this is due to MW API returning an array of Objs if the search term is a defined word
+  // and an array of strings for search terms that are not defined as a word
   useEffect(() => {
     if (!searchTerm) {
       setSearchData([]);
@@ -86,33 +86,21 @@ export function ListBuilderView(props) {
   };
 
   const processDetailedEntries = (entries) => {
-    return entries
-      .map((entry) => {
-        let audioLink =
-          entry.hwi.prs && entry.hwi.prs[0]?.sound?.audio
-            ? `https://media.merriam-webster.com/audio/prons/en/us/mp3/${entry.hwi.prs[0].sound.audio[0]}/${entry.hwi.prs[0].sound.audio}.mp3`
-            : null;
 
-        // If audioLink is not found, look for related words that might have the audio
-        if (!audioLink && entry.meta.stems) {
-          const relatedWord = entries.find(
-            (e) => e.meta.id === entry.meta.stems[0] && e.hwi.prs
-          );
-          if (relatedWord) {
-            audioLink = relatedWord.hwi.prs[0]?.sound?.audio
-              ? `https://media.merriam-webster.com/audio/prons/en/us/mp3/${relatedWord.hwi.prs[0].sound.audio[0]}/${relatedWord.hwi.prs[0].sound.audio}.mp3`
-              : null;
-          }
-        }
-
-        return {
-          word: entry.hwi.hw.replace(/\*/g, ""),
-          audio: audioLink,
-          wordClass: entry.fl,
-          isSuggestion: false,
-        };
-      })
-      .filter((entry) => entry.audio); // Filter out entries without audio
+    console.log("ENTRIES", entries)
+    return entries.map((entry) => {
+      let audioLink =
+        entry.hwi.prs && entry.hwi.prs[0]?.sound?.audio
+          ? `https://media.merriam-webster.com/audio/prons/en/us/mp3/${entry.hwi.prs[0].sound.audio[0]}/${entry.hwi.prs[0].sound.audio}.mp3`
+          : null;
+          
+      return {
+        word: entry.hwi.hw.replace(/\*/g, ""),
+        audio: audioLink,
+        wordClass: entry.fl,
+        isSuggestion: false
+      };
+    });
   };
 
   useEffect(() => {
@@ -273,7 +261,7 @@ export function ListBuilderView(props) {
                 Remove
               </button>
               <button onClick={() => onAddClick(selectedWord)}>Add</button>
-              <button onClick={onSubmitClick}>Submit</button>
+              <button onClick={onSubmitClick}>Save</button>
             </div>
             <SearchTag
               tagsData={props.tagsData}

@@ -103,9 +103,10 @@ export function App(props) {
       <NavBar currentUser={currentUser} changeUserFunction={changeUser} />
       <Routes>
         <Route path="home" element={<HomePage currentUser={currentUser} />} />
+        <Route path="/flipcard/:wordListId" element={<FlipCardPage wordSets={wordSets} currentUser={currentUser} applyFilterCallback={handleFilterApply} tagsData={tagsData} />} />
         <Route
           path="flipcard"
-          element={<FlipCardPage data={wordsData} currentUser={currentUser} />}
+          element={<FlipCardPage wordSets={wordSets} currentUser={currentUser} applyFilterCallback={handleFilterApply} tagsData={tagsData} />}
         />
         
         <Route path="/quiz/:wordListId" element={<QuizPage wordSets={wordSets} currentUser={currentUser} applyFilterCallback={handleFilterApply} tagsData={tagsData} />} />

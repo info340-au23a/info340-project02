@@ -5,6 +5,11 @@ export function FlipCardList(props) {
   const [isCardFlipped, setIsCardFlipped] = useState(false);
   const { data } = props;
 
+  console.log("Current Index:", currentIndex);
+  console.log("Data at Current Index:", data[currentIndex]);
+
+  
+
   const handlePrevious = () => {
     if (currentIndex > 0) {
       setCurrentIndex(currentIndex - 1);
@@ -54,7 +59,9 @@ export function FlipCardList(props) {
 }
 
 export function FlipCard(props) {
-  const wordListData = props.data;
+
+  const wordData = props.data;
+  console.log('wordData', wordData)
   const isFlipped = props.isFlipped;
 
   let cardClassName = "flip-card";
@@ -62,45 +69,37 @@ export function FlipCard(props) {
     cardClassName += " flipped";
   }
 
-  const handleSoundClick = (id, event) => {
+  const handleSoundClick = (event) => {
     event.stopPropagation();
-    if (wordListData.pronunciationAudio) {
-      const audio = new Audio(wordListData.pronunciationAudio);
+    if (wordData.audio) {
+      const audio = new Audio(wordData.audio);
       audio.play();
     }
   };
 
+  const sentence = wordData.sentence || "No example sentence available.";
+  const wordClass = wordData.wordClass || ["No tags available"];
+
+
   return (
     <div className={cardClassName} onClick={props.onCardFlip}>
       <div className="flip-card-front">
-        {!isFlipped && <img src={wordListData.imgSrc} alt={wordListData.imgAlt} />}
+        {/* {!isFlipped && <img src={imgSrc} alt={wordData.word || 'Default Image'} />} */}
         <div className="soundButton">
-          <button
-            className="fas"
-            aria-label="Play Sound"
-            onClick={(e) => handleSoundClick(wordListData.id, e)}
-          >
+          <button className="fas" aria-label="Play Sound" onClick={handleSoundClick}>
             &#xf028;
           </button>
         </div>
       </div>
 
       <div className="flip-card-back">
-        <button
-          id="sound-button"
-          className="fas"
-          aria-label="Play Sound"
-          onClick={(e) => handleSoundClick(wordListData.id, e)}
-        >
+        <button className="fas" aria-label="Play Sound" onClick={handleSoundClick}>
           &#xf028;
         </button>
-
-        <p>{wordListData.word}</p>
-        <p>{wordListData.sentence}</p>
+        <p>{wordData.word}</p>
+        <p>{sentence}</p>
         <p>
-          {" "}
-          <span className="speech-type">{wordListData.tags[0]}</span>{" "}
-          <span className="object-type">{wordListData.tags[1]}</span>{" "}
+        <span className="speech-type">{wordClass}</span>
         </p>
       </div>
     </div>

@@ -1,45 +1,65 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FlipCardList } from "./FlipCardList.js";
 import { Footer } from "./Footer.js";
+import SearchFilter from "./SearchFilter.js";
+import { useParams, useNavigate } from "react-router";
+import { getDatabase, ref, onValue } from "firebase/database";
 
 export function FlipCardPage(props) {
-  const wordListData = props.data;
-  const [selectedWordList, setSelectedWordList] = useState(null);
+  const [wordListData, setWordListData] = useState([]);
+  console.log('test', props.wordSets);
+  const { wordListId } = useParams(); 
+  const navigate = useNavigate();
 
-  const handleSelect = (wordList) => {
-    console.log("current", wordList);
-    setSelectedWordList(wordList.words);
-  };
+  useEffect(() => {
+    const db = getDatabase();
+    const wordSetsRef = ref(db, "wordSets"); 
 
-  const renderWordLists = () => {
-    return wordListData.map((wordList) => (
-      <div className="quiz-buttons-container" key={wordList.wordSetTitle}>
-        <button onClick={() => handleSelect(wordList)}>
-          {wordList.wordSetTitle}
-        </button>
-      </div>
-    ));
-  };
+    onValue(wordSetsRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        const transformedData = Object.keys(data).map(key => ({
+          ...data[key],
+          firebaseKey: key
+        }));
+        setWordListData(transformedData);
+      }
+    });
+  }, []);
 
-  return (
-    <>
-      <main>
-        <div>
-          <h1>Flip Cards</h1>
-          <h2>Practice your skills</h2>
-        </div>
-        <div>
-          <div className="searchTitle">
-            Select a wordlist to learning with flipcards
-            {renderWordLists()}
+
+  if (wordListId) {
+    const selectedWordList = wordListData.find(list => list.firebaseKey === wordListId);
+    if (!selectedWordList) {
+      return <div>Word list not found. Please select a different list.</div>;
+    }
+    const transformedWords = selectedWordList.words.map(word => ({
+      ...word,
+      imgSrc: word.imgSrc || 'flipcard/apple.jpg', // Provide default values
+      sentence: word.sentence || "No example sentence available."
+    }));
+    return (
+      <div className="flipcard-container">
+    <FlipCardList data={transformedWords} />
+    </div>
+    );
+  } else {
+    return (
+      <>
+        <main>
+          <div>
+            <h1>Flip Cards</h1>
+            <h2>Practice your skills</h2>
           </div>
-        </div>
-        {selectedWordList && <FlipCardList data={selectedWordList} />}
-      </main>
-      <Footer
-        imageRef="Flipcard sample photos originally from Pexels.com | 
-      Audio pronunciations created by Brittanica.com"
-      />
-    </>
-  );
-}
+          <SearchFilter
+            wordSets={wordListData}
+            tagsData={props.tagsData}
+            basePath="/flipcard"
+          />
+        </main>
+        <Footer imageRef="Flipcard sample photos originally from Pexels.com | 
+        Audio pronunciations created by Brittanica.com" />
+      </>
+    );
+  }
+};

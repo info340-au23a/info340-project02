@@ -37,12 +37,13 @@ export function QuizPage(props) {
       <main>
         <div className="quizHeader">
           <h1>Word Quiz</h1>
-          <h2>How many correct answers could you get?</h2>
+          <h2>How many correct answers can you get?</h2>
         </div>
         <SearchFilter
           wordSets={props.wordSets}
           tagsData={props.tagsData}
           applyFilterCallback={props.handleFilterApply}
+          basePath="/flipcard"
         />
         {/* <div className="selector">
           <div className="searchTitle">

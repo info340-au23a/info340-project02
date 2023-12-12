@@ -81,13 +81,7 @@ export function QuizComponent(props) {
         authorRef,
         (snapshot) => {
           const userData = snapshot.val();
-          if (userData && userData.displayName) {
-  
-            setAuthorName(userData.displayName);
-          } else {
-
-            setAuthorName("Unknown");
-          }
+          setAuthorName(userData?.displayName || "Unknown");
         },
         {
           onlyOnce: true,

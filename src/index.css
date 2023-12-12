@@ -205,6 +205,18 @@ header .nav-item {
 
 /* flip card css */
 
+.flipcard-container {
+  margin-top: 10em;
+}
+
+.cardClassName {
+  margin-top: 20em;
+}
+
+/* .flipcard-container {
+  padding-top: 16em;
+} */
+
 .flip-card {
   text-align: center;
   background-color: white;
