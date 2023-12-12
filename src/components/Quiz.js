@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { getDatabase, ref as firebaseRef, onValue } from "firebase/database";
 
-// result array that stores the answered questions
-let resultArr = [];
-
 function GenerateQuizCard(props) {
-  const words = props.words;
-  const setInputValue = props.setInput;
-  const setMessage = props.setMessage;
-  const index = props.index;
+  const { words, index, input, setInput,
+    submitAnswer, showSummary, correctWords, incorrectWords, percentageRight } = props;
+
 
   const handleSoundClick = () => {
     if (words.audio) {
@@ -19,43 +15,65 @@ function GenerateQuizCard(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (props.input === words.word) {
-      resultArr.push(words.word);
-      setMessage("You are awesome, keep going!");
+    const isCorrect = input.trim().toLowerCase() === words.word.toLowerCase();
+    submitAnswer(input, isCorrect);
+
+    console.log('tqs', props.totalQuestions)
+
+    if (index < props.totalQuestions - 1) {
+      props.setCurrentIndex(index + 1);
+      setInput("");
     } else {
-      setMessage("Oops, try it again.");
+      props.finishQuiz(); 
     }
   };
-
-  return (
-    <div className="quiz">
-      <div key={index} className="quiz-card">
-        <h2 style={{ fontSize: "24px" }}>
-          <label htmlFor="">
-            <p>Question {index + 1}: Listen to the audio and spell the word</p>
-            <button
-              className="fas"
-              aria-label="Play Sound"
-              onClick={() => handleSoundClick(index)}
-            >
-              &#xf028;
-            </button>
-          </label>
-          <input id="word-input"
-            value={props.input}
-            onChange={(e) => setInputValue(e.target.value)}
-            maxLength={words.word.length}
-            aria-label="sound-button"
-          />
-        </h2>
+  
+  if (showSummary) {
+    return (
+      <div className="quiz-card">
+        <h2>Quiz Summary</h2>
+        <p>You got {correctWords.length} out of {props.totalQuestions} correct ({percentageRight}%).</p>
+        <div>
+          <strong>Words Correct:</strong>
+          <ul>{correctWords.map((word, i) => <li key={i}>{word}</li>)}</ul>
+        </div>
+        <div>
+          <strong>Words Incorrect:</strong>
+          <ul>{incorrectWords.map((word, i) => <li key={i}>{word}</li>)}</ul>
+        </div>
       </div>
-
-      <div className="quiz-submit">
-        <button onClick={handleSubmit}>Submit</button>
-        {props.message && <p>{props.message}</p>}
+    )
+  } else {
+    return (
+      <div className="quiz">
+        <div key={index} className="quiz-card">
+          <h2>
+            <label>
+              <p>Question {index + 1}: Listen to the audio and spell the word</p>
+              <button
+                className="fas"
+                aria-label="Play Sound"
+                onClick={() => handleSoundClick(index)}
+              >
+                &#xf028;
+              </button>
+            </label>
+            <input id="word-input"
+              value={props.input}
+              onChange={(e) => setInput(e.target.value)}
+              maxLength={words.word.length}
+              aria-label="sound-button"
+            />
+          </h2>
+        </div>
+  
+        <div className="quiz-submit">
+          <button onClick={handleSubmit}>Submit</button>
+          {props.message && <p>{props.message}</p>}
+        </div>
       </div>
-    </div>
-  );
+    );  
+  }
 }
 
 export function QuizComponent(props) {
@@ -65,11 +83,8 @@ export function QuizComponent(props) {
   const [inputValue, setInputValue] = useState("");
   const [message, setMessage] = useState("");
   const [authorName, setAuthorName] = useState("Loading...");
-
-  console.log("props.data");
-  console.log(wordList);
-
-  console.log(authorUID);
+  const [answers, setAnswers] = useState(new Array(words.length).fill(null));
+  const [showSummary, setShowSummary] = useState(false);
 
   useEffect(() => {
     if (authorUID) {
@@ -94,13 +109,23 @@ export function QuizComponent(props) {
     }
   }, [authorUID]);
 
-  const handlePrevious = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-      setInputValue("");
-      setMessage("");
-    }
+  const submitAnswer = (answer, isCorrect) => {
+    setAnswers((prevAnswers) => {
+      const newAnswers = [...prevAnswers];
+      newAnswers[currentIndex] = { answer, isCorrect };
+      return newAnswers;
+    });
   };
+
+  const allAnswered = answers.every((answer) => answer !== null);
+  const correctAnswers = answers.filter((ans) => ans?.isCorrect);
+  const correctCount = correctAnswers.length;
+  const percentageRight = ((correctCount / words.length) * 100).toFixed(2);
+
+  const correctWords = correctAnswers.map((ans, index) => words[index].word);
+  const incorrectWords = answers
+    .map((ans, index) => (!ans?.isCorrect ? words[index].word : null))
+    .filter((word) => word !== null);
 
   const handleNext = () => {
     if (currentIndex < words.length - 1) {
@@ -110,12 +135,48 @@ export function QuizComponent(props) {
     }
   };
 
-  const handleFinishQuiz = () => {
-    alert("Quiz Finished!");
+  const handlePrevious = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+      setInputValue("");
+      setMessage("");
+    }
   };
 
-  return (
-    <div className="quiz-container">
+
+
+  const handleFinishQuiz = () => {
+    if (allAnswered) {
+      setShowSummary(true);
+    } else {
+      setMessage("Please answer all questions before finishing the quiz.");
+    }
+  };
+
+  if (showSummary) {
+    return (
+      <div className="quiz-container">
+        <div className="quiz-card summary-card">
+          <h2 className="summary-title">Quiz Summary</h2>
+          <p className="summary-result">You got {correctWords.length} out of {props.totalQuestions} correct ({percentageRight}%).</p>
+          <div className="summary-section">
+            <strong className="summary-heading">Words Correct:</strong>
+            <ul className="summary-list">
+              {correctWords.map((word, i) => <li key={i} className="summary-word">{word}</li>)}
+            </ul>
+          </div>
+          <div className="summary-section">
+            <strong className="summary-heading">Words Incorrect:</strong>
+            <ul className="summary-list">
+              {incorrectWords.map((word, i) => <li key={i} className="summary-word">{word}</li>)}
+            </ul>
+          </div>
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div className="quiz-container">
       <h2>Spelling Quiz</h2>
             <div className="quiz-sidebar">
         <QuizSidebar
@@ -129,9 +190,12 @@ export function QuizComponent(props) {
         words={words[currentIndex]}
         input={inputValue}
         setInput={setInputValue}
-        message={message}
-        setMessage={setMessage}
         index={currentIndex}
+        submitAnswer={submitAnswer}
+        setCurrentIndex={setCurrentIndex}
+        totalQuestions={words.length}
+        finishQuiz={handleFinishQuiz}
+        totalQuestions={words.length}
       />
       <div className="quiz-buttons-container">
         <div className="quiz-last">
@@ -148,10 +212,9 @@ export function QuizComponent(props) {
           )}
         </div>
       </div>
-
-
     </div>
-  );
+    );
+  }
 }
 
 function QuizSidebar({ wordListTitle, authorName, currentQuestion, totalQuestions}) {

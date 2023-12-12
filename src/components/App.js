@@ -35,16 +35,14 @@ export function App(props) {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
-        // User is signed in, construct the user object from the auth data
         const userToSet = {
           userId: firebaseUser.uid,
-          userName: firebaseUser.displayName || 'No name', // Fallback to 'No name' if displayName is null
-          userImg: firebaseUser.photoURL || "/img/profile-pictures/null.png", // Fallback to a default image if photoURL is null
-        };
+          userName: firebaseUser.displayName || 'No name', 
+          userImg: firebaseUser.photoURL || "/img/profile-pictures/null.png",
+                };
         setCurrentUser(userToSet);
       } else {
-        // No user is signed in, redirect or set to null user
-        setCurrentUser(DEFAULT_USERS[0]); // or simply setCurrentUser(null);
+        setCurrentUser(DEFAULT_USERS[0]); 
       }
     });
 
