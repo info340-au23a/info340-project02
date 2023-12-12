@@ -117,20 +117,6 @@ export default function SearchFilter(props) {
     });
   };
 
-  // const filterWordSets = (wordSets) => {
-  //   return wordSets.filter((set) => {
-  //     const titleLowerCase = set.title ? set.title.toLowerCase() : '';
-  //     const tagsLowerCase = set.tags ? set.tags.map(tag => tag.toLowerCase()) : [];
-
-  //     return (
-  //       titleLowerCase.includes(searchTerm.toLowerCase()) &&
-  //       (selectedTags.length === 0 ||
-  //         selectedTags.every((tag) => tagsLowerCase.includes(tag.toLowerCase())))
-  //     );
-  //   });
-  // };
-
-  // can't have .map in return
   const mapTagsToLowerCase = (tags) => tags ? tags.map(tag => tag.toLowerCase()) : [];
 
   const filterWordSets = (wordSets) => {
@@ -140,13 +126,15 @@ export default function SearchFilter(props) {
 
       return (
         titleLowerCase.includes(searchTerm.toLowerCase()) &&
-        (selectedTags.length === 0 || selectedTags.every((tag) => tagsLowerCase.includes(tag.toLowerCase())))
+        (selectedTags.length === 0 ||
+          selectedTags.every((tag) => tagsLowerCase.includes(tag.toLowerCase())))
       );
     });
   };
 
   useEffect(() => {
     const filteredSets = filterWordSets(wordSets);
+
     setFilteredWordSets(filteredSets);
   }, [wordSets, selectedTags, searchTerm]);
 
@@ -157,22 +145,6 @@ export default function SearchFilter(props) {
   useEffect(() => {
     setFilteredWordSets(filterWordSets(filteredWordSets));
   }, [selectedTags, searchTerm]);
-
-
-  useEffect(() => {
-    const filteredSets = wordSets.filter((set) => {
-      const titleLowerCase = set.title ? set.title.toLowerCase() : '';
-      const tagsLowerCase = set.tags ? set.tags.map(tag => tag.toLowerCase()) : [];
-
-      return (
-        titleLowerCase.includes(searchTerm.toLowerCase()) &&
-        (selectedTags.length === 0 ||
-          selectedTags.every((tag) => tagsLowerCase.includes(tag.toLowerCase())))
-      );
-    });
-
-    setFilteredWordSets(filteredSets);
-  }, [wordSets, selectedTags, searchTerm]);
 
   const toggleFilter = () => setIsFilterOpen(!isFilterOpen);
 
