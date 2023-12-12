@@ -32,7 +32,7 @@ export function FlipCardList(props) {
   };
 
   return (
-    <div>
+    <div className="flipcard-container">
       {data.length > 0 && (
         <FlipCard
           data={data[currentIndex]}
