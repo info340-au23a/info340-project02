@@ -182,24 +182,10 @@ export function ListBuilderView(props) {
 
       const db = getDatabase();
       const wordSetsRef = firebaseRef(db, "wordSets"); 
-      
-      // try {
-      //   await firebasePush(wordSetsRef, newWordList);
-
-      //   setWordSets([...wordSets, newWordList]);
-
-      //   setListTitle("");
-      //   setChosenWords([]);
-      //   setSelectedTags([]);
-      //   setSearchTerm("");
-      //   setAlertMessage("List created successfully!");
-      // } catch (error) {
-      //   console.error("Error pushing data to Firebase:", error);
-      //   setAlertMessage("Error creating list");
-      // }
+    
 
       // Push the new word list to the specified word set
-      firebasePush(wordSetsRef, newWordList) 
+      firebasePush(wordSetsRef, newWordList)
         .then(() => {
           // Clear the form after successfully pushing to the database
           setWordSets([...wordSets, newWordList]);
