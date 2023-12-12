@@ -509,6 +509,11 @@ button:hover,
   text-align: center;
 }
 
+.search-icon {
+  padding-top: 15px;
+  padding-right: 10px;
+}
+
 .tags {
   flex: 1 1;
   margin-left: 5%;
