@@ -6,7 +6,6 @@
 main {
   font-size: 20px;
   margin-top: 13em;
-  /* margin-bottom: 30px; */
 }
 
 h1,
@@ -34,7 +33,7 @@ header {
 }
 
 .auth-btn {
-  background-color: #9bb47f !important;
+  background-color: #34c8ff !important;
   transform: translateY(-10%);
 }
 
@@ -208,12 +207,12 @@ header .nav-item {
 /* flip card css */
 
 .flipcard-container {
-  margin-top: 20em;
+  margin-top: 16em;
 }
 
-.cardClassName {
-  margin-top: 20em;
-}
+/* .cardClassName {
+  margin-top: 25em;
+} */
 
 
 .flip-card {
@@ -316,7 +315,7 @@ header .nav-item {
 }
 
 .quiz-sidebar {
-  margin-top: 4em;
+  margin-top: 1em;
   width: 30%; 
 }
 
@@ -378,7 +377,7 @@ button:hover,
   margin-bottom: 8px;
 }
 
-.quiz-card #word-input {
+.quiz-card .word-input {
   border: none;
   border-bottom: 2px solid #000;
   font-size: 24px;
@@ -546,9 +545,6 @@ button:hover,
   background-color: #def1936c;
   border: 1px solid #d9ec89;
   border-radius: 10%;
-  padding-left: 0;
-  margin-left: 0;
-  margin-top: 0%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -710,7 +706,10 @@ footer p {
   .sign-in {
     margin-top: 11em;
   }
-
+  .flipcard-container {
+    margin-top: 13em;
+  }
+  
 
   }
 
@@ -726,7 +725,6 @@ footer p {
 
     .card-container {
       flex-direction: row;
-      /* margin: 100px auto; */
       padding: 0 1em;
       max-width: 768px;
     }
@@ -744,6 +742,9 @@ footer p {
       padding: 2%;
     }
 
+    
+
+
   }
 
   @media (min-width: 992px) {
@@ -757,7 +758,8 @@ footer p {
     }
 
     .welcome {
-      margin-bottom: 2em;
+      padding-top: 1.5em;
+      padding-bottom: 1.5em;
     }
 
     header {
@@ -799,15 +801,14 @@ footer p {
       width: calc(100% - 10px);
     }
 
+    .flipcard-container {
+      margin-top: 10em;
+    }
+    
+
     .sign-in {
       margin-top: 8em;
     }    
-    
-    /* .quiz-container { */
-      /* flex-direction: row; 
-      justify-content: space-between;  */
-    /* } */
-
     .list p{
       font-size: 20px;
     }
