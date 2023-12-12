@@ -6,7 +6,6 @@ import { ListBuilderPage } from "./ListBuilderPage.js";
 import { FlipCardPage } from "./FlipCardPage.js";
 import AccountPage from "./AccountPage.js";
 import { QuizPage } from "./QuizPage.js";
-import { SearchFilterPage } from "./SearchFilterPage.js";
 import { Routes, Route, Navigate, useNavigate } from "react-router";
 import { getDatabase, ref, onValue } from "firebase/database";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -35,22 +34,22 @@ export function App(props) {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
+        // User is signed in, construct the user object from the auth data
         const userToSet = {
           userId: firebaseUser.uid,
-          userName: firebaseUser.displayName || 'No name', 
-          userImg: firebaseUser.photoURL || "/img/profile-pictures/null.png",
-                };
+          userName: firebaseUser.displayName || 'No name', // Fallback to 'No name' if displayName is null
+          userImg: firebaseUser.photoURL || "/img/profile-pictures/null.png", // Fallback to a default image if photoURL is null
+        };
         setCurrentUser(userToSet);
       } else {
-        setCurrentUser(DEFAULT_USERS[0]); 
+        // No user is signed in, redirect or set to null user
+        setCurrentUser(DEFAULT_USERS[0]); // or simply setCurrentUser(null);
       }
     });
 
     // Cleanup subscription on unmount
     return () => unsubscribe();
   }, []);
-
-
 
   // Pulls from MW API (Arrays of Objs & Arrays of Strings)
   useEffect(() => {
@@ -82,8 +81,6 @@ export function App(props) {
       navigateTo("/home"); //go to chat after login
     }
   };
-
-
 
   // for SearchFilter
   const [filteredData, setFilteredData] = useState([]);
@@ -120,17 +117,6 @@ export function App(props) {
             />
           }
         />
-        {/* <Route
-          path="search-filter"
-          element={
-            <SearchFilterPage
-              currentUser={currentUser}
-              applyFilterCallback={handleFilterApply}
-              wordSets={wordSets}
-              tagsData={tagsData}
-            />
-          }
-        /> */}
         <Route
           path="account"
           element={
