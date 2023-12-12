@@ -72,10 +72,10 @@ function WordCard(props) {
       <div className="card-deck">
         <div className="card">
           <div className="card-body">
-          <Link to={`${basePath}/${dataObj.firebaseKey}`} className="card-link">
+            <Link to={`${basePath}/${dataObj.firebaseKey}`} className="card-link">
               <h1 className="card-title">{dataObj.title}</h1>
-            </Link>           
-             <ul className="tagNames">
+            </Link>
+            <ul className="tagNames">
               <p>- Labeled by tags -</p>
               {dataObjTags}
             </ul>
@@ -117,18 +117,38 @@ export default function SearchFilter(props) {
     });
   };
 
+  // const filterWordSets = (wordSets) => {
+  //   return wordSets.filter((set) => {
+  //     const titleLowerCase = set.title ? set.title.toLowerCase() : '';
+  //     const tagsLowerCase = set.tags ? set.tags.map(tag => tag.toLowerCase()) : [];
+
+  //     return (
+  //       titleLowerCase.includes(searchTerm.toLowerCase()) &&
+  //       (selectedTags.length === 0 ||
+  //         selectedTags.every((tag) => tagsLowerCase.includes(tag.toLowerCase())))
+  //     );
+  //   });
+  // };
+
+  // can't have .map in return
+  const mapTagsToLowerCase = (tags) => tags ? tags.map(tag => tag.toLowerCase()) : [];
+
   const filterWordSets = (wordSets) => {
     return wordSets.filter((set) => {
       const titleLowerCase = set.title ? set.title.toLowerCase() : '';
-      const tagsLowerCase = set.tags ? set.tags.map(tag => tag.toLowerCase()) : [];
+      const tagsLowerCase = mapTagsToLowerCase(set.tags);
 
       return (
         titleLowerCase.includes(searchTerm.toLowerCase()) &&
-        (selectedTags.length === 0 ||
-          selectedTags.every((tag) => tagsLowerCase.includes(tag.toLowerCase())))
+        (selectedTags.length === 0 || selectedTags.every((tag) => tagsLowerCase.includes(tag.toLowerCase())))
       );
     });
   };
+
+  useEffect(() => {
+    const filteredSets = filterWordSets(wordSets);
+    setFilteredWordSets(filteredSets);
+  }, [wordSets, selectedTags, searchTerm]);
 
   useEffect(() => {
     fetchWordSets();
