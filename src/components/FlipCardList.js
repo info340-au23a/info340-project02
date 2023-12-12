@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {BackButton} from './BackButton.js'
 
 export function FlipCardList(props) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -33,6 +34,7 @@ export function FlipCardList(props) {
 
   return (
     <div>
+      <BackButton type="/flipcard"/>
       {data.length > 0 && (
         <FlipCard
           data={data[currentIndex]}

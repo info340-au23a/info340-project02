@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getDatabase, ref as firebaseRef, onValue } from "firebase/database";
+import {BackButton} from './BackButton.js'
 
 function GenerateQuizCard(props) {
   const { words, index, input, setInput,
@@ -156,6 +157,7 @@ export function QuizComponent(props) {
   if (showSummary) {
     return (
       <div className="quiz-container">
+          <BackButton type="/quiz"/>
         <div className="quiz-card summary-card">
           <h2 className="summary-title">Quiz Summary</h2>
           <p className="summary-result">You got {correctWords.length} out of {props.totalQuestions} correct ({percentageRight}%).</p>
@@ -195,7 +197,6 @@ export function QuizComponent(props) {
         setCurrentIndex={setCurrentIndex}
         totalQuestions={words.length}
         finishQuiz={handleFinishQuiz}
-        totalQuestions={words.length}
       />
       <div className="quiz-buttons-container">
         <div className="quiz-last">

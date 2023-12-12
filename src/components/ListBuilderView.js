@@ -96,7 +96,7 @@ export function ListBuilderView(props) {
 
       return {
         word: entry.hwi.hw.replace(/\*/g, ""),
-        audio: audioLink,
+        audio: audioLink, 
         wordClass: entry.fl,
         isSuggestion: false
       };

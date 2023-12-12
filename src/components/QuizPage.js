@@ -5,7 +5,6 @@ import { useParams, useNavigate } from "react-router";
 import SearchFilter from './SearchFilter.js';
 import { getDatabase, ref, onValue } from "firebase/database";
 
-
 export function QuizPage(props) {
   const [wordListData, setWordListData] = useState([]);
   const { wordListId } = useParams();
@@ -44,7 +43,9 @@ export function QuizPage(props) {
       return <div>Quiz not found. Please select a different quiz.</div>;
     }
     return (
+      <>
       <QuizComponent wordList={selectedWordList} currentUser={currentUser}/>
+      </>
     );
   } else {
     return (
