@@ -1,18 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { QuizComponent } from "./Quiz";
 import { Footer } from "./Footer";
 import { useParams, useNavigate } from "react-router";
-import SearchFilter from './SearchFilter.js'
+import SearchFilter from './SearchFilter.js';
+import { getDatabase, ref, onValue } from "firebase/database";
+
 
 export function QuizPage(props) {
-  // const { wordListData } = props.wordSets;
-  // console.log('wordListData ', wordListData);
+  const [wordListData, setWordListData] = useState([]);
   const { wordListId } = useParams();
   const currentUser = props.currentUser;
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const db = getDatabase();
+    const wordSetsRef = ref(db, "wordSets"); 
+
+    onValue(wordSetsRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        const transformedData = Object.keys(data).map(key => ({
+          ...data[key],
+          firebaseKey: key
+        }));
+        setWordListData(transformedData);
+      }
+    });
+  }, []);
+
   const renderWordListButtons = () => {
-    return props.wordSets.map((wordList) => (
+    return wordListData.map((wordList) => (
       <div className="quiz-buttons-container" key={wordList.firebaseKey}>
         <button onClick={() => navigate(`/quiz/${wordList.firebaseKey}`)}>
           {wordList.title}
@@ -22,7 +39,7 @@ export function QuizPage(props) {
   };
 
   if (wordListId) {
-    const selectedWordList = props.wordSets.find(list => list.firebaseKey === wordListId);
+    const selectedWordList = wordListData.find(list => list.firebaseKey === wordListId);
     if (!selectedWordList) {
       return <div>Quiz not found. Please select a different quiz.</div>;
     }
@@ -30,9 +47,6 @@ export function QuizPage(props) {
       <QuizComponent wordList={selectedWordList} currentUser={currentUser}/>
     );
   } else {
-    console.log('props.wordSets Quiz', props.wordSets)
-    // console.log(wordListData)
-    console.log('tagsData:', props.tagsData);
     return (
       <main>
         <div className="quizHeader">
@@ -40,17 +54,11 @@ export function QuizPage(props) {
           <h2>How many correct answers can you get?</h2>
         </div>
         <SearchFilter
-          wordSets={props.wordSets}
+          wordSets={wordListData}
           tagsData={props.tagsData}
           applyFilterCallback={props.handleFilterApply}
           basePath="/quiz"
         />
-        {/* <div className="selector">
-          <div className="searchTitle">
-            Select a wordlist to test your knowledge
-            {renderWordListButtons()}
-          </div>
-        </div> */}
         <Footer imageRef="Audio pronunciations provided by Brittanica.com" />
       </main>
     );

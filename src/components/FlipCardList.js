@@ -8,8 +8,6 @@ export function FlipCardList(props) {
   console.log("Current Index:", currentIndex);
   console.log("Data at Current Index:", data[currentIndex]);
 
-  
-
   const handlePrevious = () => {
     if (currentIndex > 0) {
       setCurrentIndex(currentIndex - 1);
@@ -84,7 +82,6 @@ export function FlipCard(props) {
   return (
     <div className={cardClassName} onClick={props.onCardFlip}>
       <div className="flip-card-front">
-        {/* {!isFlipped && <img src={imgSrc} alt={wordData.word || 'Default Image'} />} */}
         <div className="soundButton">
           <button className="fas" aria-label="Play Sound" onClick={handleSoundClick}>
             &#xf028;

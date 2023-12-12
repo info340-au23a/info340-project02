@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
+import { getDatabase, ref, onValue } from "firebase/database";
 
 
 // TagFilter Component
@@ -94,6 +95,49 @@ export default function SearchFilter(props) {
   const [selectedTags, setSelectedTags] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredWordSets, setFilteredWordSets] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchWordSets = () => {
+    setIsLoading(true);
+    const db = getDatabase();
+    const wordSetsRef = ref(db, "wordSets");
+
+    onValue(wordSetsRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        const wordSetsArray = Object.keys(data).map((key) => ({
+          ...data[key],
+          firebaseKey: key,
+        }));
+        setFilteredWordSets(filterWordSets(wordSetsArray));
+      } else {
+        setFilteredWordSets([]);
+      }
+      setIsLoading(false);
+    });
+  };
+
+  const filterWordSets = (wordSets) => {
+    return wordSets.filter((set) => {
+      const titleLowerCase = set.title ? set.title.toLowerCase() : '';
+      const tagsLowerCase = set.tags ? set.tags.map(tag => tag.toLowerCase()) : [];
+
+      return (
+        titleLowerCase.includes(searchTerm.toLowerCase()) &&
+        (selectedTags.length === 0 ||
+          selectedTags.every((tag) => tagsLowerCase.includes(tag.toLowerCase())))
+      );
+    });
+  };
+
+  useEffect(() => {
+    fetchWordSets();
+  }, []);
+
+  useEffect(() => {
+    setFilteredWordSets(filterWordSets(filteredWordSets));
+  }, [selectedTags, searchTerm]);
+
 
   useEffect(() => {
     const filteredSets = wordSets.filter((set) => {
@@ -131,6 +175,12 @@ export default function SearchFilter(props) {
   const filteredWordSetsArray = filteredWordSets.map((set, index) => (
     <WordCard key={set.id || index} dataObj={set} basePath={props.basePath} />
   ));
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+
   return (
     <form onSubmit={handleClick}>
       <div className="searchFilter">
