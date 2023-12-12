@@ -53,6 +53,8 @@ nav a {
 
 nav {
   width: 100%;
+  justify-content: space-around;
+  align-items: center;
 }
 
 nav ul {
@@ -100,7 +102,7 @@ nav .userImg {
 
 header .nav-item {
   display: flex;
-  align-items:center;
+  align-items: center;
 }
 
 
@@ -213,9 +215,6 @@ header .nav-item {
   margin-top: 20em;
 }
 
-/* .flipcard-container {
-  padding-top: 16em;
-} */
 
 .flip-card {
   text-align: center;
@@ -318,9 +317,7 @@ header .nav-item {
 
 .quiz-sidebar {
   margin-top: 4em;
-  width: 80%; 
-  top: 330px;
-  /* position: absolute; */
+  width: 30%; 
 }
 
 button,
@@ -460,24 +457,21 @@ button:hover,
   justify-content: space-between;
 }
 
-.list {
-  flex: 1;
-  margin-left: 5%;
-  margin-right: 5%;
+.list, .tags{
+  flex: 1 1;
   background-color: #def193;
-  padding: 10px;
+  margin: 3%;
+  padding: 3%;
   border-radius: 10px;
   text-align: center;
 }
 
-.tags {
-  flex: 1 1;
-  margin-left: 5%;
-  margin-right: 5%;
-  background-color: #def193;
-  padding: 10px;
-  border-radius: 10px;
-  text-align: center;
+.list p{
+  font-size: 16px;
+}
+
+.tags label {
+  font-size: 16px;
 }
 
 .word-buttons {
@@ -652,9 +646,6 @@ footer p {
 
 /* Media Queries  */
 @media (min-width: 598px) {
-  .quiz-container {
-    /* width: calc(70% - 1rem);  */
-  }
 
   main {
     margin-top: 10em;
@@ -676,10 +667,8 @@ footer p {
     margin-top: 11em;
   }
 
-  .quiz-card {
-    /* width: calc(70% - 1rem);  */
+
   }
-}
 
 
   @media (min-width: 768px) {
@@ -704,7 +693,13 @@ footer p {
 
     .sign-in {
       margin-top: 11em;
-    }    
+    }
+
+    .list,
+    .tags {
+      padding: 2%;
+    }
+
   }
 
   @media (min-width: 992px) {
@@ -740,10 +735,10 @@ footer p {
       padding-right: 20px;
     }
 
-    /* .nav-btn {
+    .nav-btn {
       padding-right: 20px;
     }
-   */
+  
   
     nav li {
       padding: 10px;
@@ -764,13 +759,17 @@ footer p {
       margin-top: 8em;
     }    
     
-    .quiz-container {
+    /* .quiz-container { */
       /* flex-direction: row; 
       justify-content: space-between;  */
+    /* } */
+
+    .list p{
+      font-size: 20px;
     }
-  
-    .quiz-sidebar {
-      width: 30%; 
-      margin-top: 0; 
+
+    .tags label {
+      font-size: 20px;
     }
+
   }
