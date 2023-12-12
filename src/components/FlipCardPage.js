@@ -7,7 +7,6 @@ import { getDatabase, ref, onValue } from "firebase/database";
 
 export function FlipCardPage(props) {
   const [wordListData, setWordListData] = useState([]);
-  console.log('test', props.wordSets);
   const { wordListId } = useParams(); 
   const navigate = useNavigate();
 

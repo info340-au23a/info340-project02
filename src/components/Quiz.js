@@ -29,22 +29,6 @@ function GenerateQuizCard(props) {
     }
   };
   
-  if (showSummary) {
-    return (
-      <div className="quiz-card">
-        <h2>Quiz Summary</h2>
-        <p>You got {correctWords.length} out of {props.totalQuestions} correct ({percentageRight}%).</p>
-        <div>
-          <strong>Words Correct:</strong>
-          <ul>{correctWords.map((word, i) => <li key={i}>{word}</li>)}</ul>
-        </div>
-        <div>
-          <strong>Words Incorrect:</strong>
-          <ul>{incorrectWords.map((word, i) => <li key={i}>{word}</li>)}</ul>
-        </div>
-      </div>
-    )
-  } else {
     return (
       <div className="quiz">
         <div key={index} className="quiz-card">
@@ -75,7 +59,6 @@ function GenerateQuizCard(props) {
       </div>
     );  
   }
-}
 
 export function QuizComponent(props) {
   const { wordList } = props;
@@ -91,7 +74,6 @@ export function QuizComponent(props) {
     if (authorUID) {
       const db = getDatabase();
       const authorRef = firebaseRef(db, `users/${authorUID}`);
-      console.log("authorRef: " + authorRef);
 
       onValue(
         authorRef,
@@ -219,7 +201,6 @@ export function QuizComponent(props) {
 }
 
 function QuizSidebar({ wordListTitle, authorName, currentQuestion, totalQuestions}) {
-  console.log("wordlistname: " + wordListTitle)
   return (
     <div className="sidebar">
       <h3>Quiz: {wordListTitle}</h3>

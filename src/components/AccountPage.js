@@ -19,9 +19,6 @@ export default function AccountPage(props) {
   let initialURL = props.currentUser.userImg;
   const [imageUrl, setImageUrl] = useState(initialURL);
 
-  console.log("initialURL: " + initialURL);
-  console.log("imageURL: " + imageUrl);
-
   const handleDisplayNameChange = (event) => {
     setNewDisplayName(event.target.value); 
   };
@@ -105,12 +102,12 @@ export default function AccountPage(props) {
       <div className="account-container">
         <div className="card bg-light">
           <div className="card-body">
-            <h2 className="card-title">
+            <h1 className="card-title">
               {props.currentUser.userName && displayName + "'s"} Account
-            </h2>
+            </h1>
 
             <div className="profilePhotoSettings">
-              <h3>Profile Picture</h3>
+              <h2>Profile Picture</h2>
               <div>
                 <img
                   src={imageUrl}
@@ -141,7 +138,7 @@ export default function AccountPage(props) {
               </div>
             </div>
             <div className="displayNameSettings">
-              <h3>Display Name</h3>
+              <h2>Display Name</h2>
               <form onSubmit={handleDisplayNameUpdate}>
                 <input
                   type="text"

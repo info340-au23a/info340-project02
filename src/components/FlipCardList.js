@@ -6,9 +6,6 @@ export function FlipCardList(props) {
   const [isCardFlipped, setIsCardFlipped] = useState(false);
   const { data } = props;
 
-  console.log("Current Index:", currentIndex);
-  console.log("Data at Current Index:", data[currentIndex]);
-
   const handlePrevious = () => {
     if (currentIndex > 0) {
       setCurrentIndex(currentIndex - 1);
@@ -61,7 +58,6 @@ export function FlipCardList(props) {
 export function FlipCard(props) {
 
   const wordData = props.data;
-  console.log('wordData', wordData)
   const isFlipped = props.isFlipped;
 
   let cardClassName = "flip-card";
@@ -78,8 +74,7 @@ export function FlipCard(props) {
   };
 
   const sentence = wordData.sentence || "No example sentence available.";
-  const wordClass = wordData.wordClass || ["No tags available"];
-
+  const wordClass = wordData.wordClass || "No tags available";
 
   return (
     <div className={cardClassName} onClick={props.onCardFlip}>

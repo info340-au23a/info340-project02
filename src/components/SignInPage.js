@@ -22,7 +22,6 @@ const firebaseUIConfig = {
 };
 
 export function SignInPage(props) {
-  console.log(DEFAULT_USERS);
 
   return (
     <div className="sign-in">

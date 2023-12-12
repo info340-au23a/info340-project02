@@ -22,7 +22,6 @@ export function ListBuilderView(props) {
   const [selectedTags, setSelectedTags] = useState([]);
   const [alertMessage, setAlertMessage] = useState(null);
 
-  console.log("user", currentUser);
   const fetchData = (term) => {
     const url = DICTIONARY_API_TEMPLATE.replace("{word}", term).replace(
       "{apiKey}",
@@ -87,7 +86,6 @@ export function ListBuilderView(props) {
 
   const processDetailedEntries = (entries) => {
 
-    console.log("ENTRIES", entries)
     return entries.map((entry) => {
       let audioLink =
         entry.hwi.prs && entry.hwi.prs[0]?.sound?.audio
@@ -103,14 +101,10 @@ export function ListBuilderView(props) {
     });
   };
 
-  useEffect(() => {
-    console.log("Chosen Words List:", chosenWords);
-  }, [chosenWords]);
 
   // handles adding a word to the list when clicked
   const onWordClick = (wordObject) => {
     setSelectedWord(wordObject);
-    console.log("Word Selected:", wordObject);
   };
   const onAddClick = () => {
     if (!selectedWord) return;
@@ -136,8 +130,6 @@ export function ListBuilderView(props) {
             typeof data[0] !== "string"
           ) {
             handleWordAddition(processDetailedEntries([data[0]])[0]);
-          } else {
-            console.log("API did not return a detailed entry");
           }
         })
         .catch((error) => console.error("Fetch error:", error));

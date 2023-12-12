@@ -34,24 +34,20 @@ export function App(props) {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
-        // User is signed in, construct the user object from the auth data
         const userToSet = {
           userId: firebaseUser.uid,
-          userName: firebaseUser.displayName || 'No name', // Fallback to 'No name' if displayName is null
-          userImg: firebaseUser.photoURL || "/img/profile-pictures/null.png", // Fallback to a default image if photoURL is null
+          userName: firebaseUser.displayName || 'No name', 
+          userImg: firebaseUser.photoURL || "/img/profile-pictures/null.png",
         };
         setCurrentUser(userToSet);
       } else {
-        // No user is signed in, redirect or set to null user
-        setCurrentUser(DEFAULT_USERS[0]); // or simply setCurrentUser(null);
+        setCurrentUser(DEFAULT_USERS[0]); 
       }
     });
 
-    // Cleanup subscription on unmount
     return () => unsubscribe();
   }, []);
 
-  // Pulls from MW API (Arrays of Objs & Arrays of Strings)
   useEffect(() => {
     const db = getDatabase();
     const allWordSetsRef = ref(db, "wordSets");
@@ -60,8 +56,8 @@ export function App(props) {
       const allWordSetsObj = snapshot.val();
 
       if (allWordSetsObj === null) {
-        setWordSets([]); //no content
-        return; //break;
+        setWordSets([]); 
+        return; 
       }
 
       const keyArray = Object.keys(allWordSetsObj);
@@ -70,15 +66,14 @@ export function App(props) {
         wordSetObj.firebaseKey = keyString;
         return wordSetObj;
       });
-      setWordSets(allWordSetsArray); //update state & rerender
+      setWordSets(allWordSetsArray); 
     });
   }, []);
 
   const changeUser = (userObj) => {
-    console.log("logging in as", userObj.userName);
     setCurrentUser(userObj);
     if (userObj.userId !== null) {
-      navigateTo("/home"); //go to chat after login
+      navigateTo("/home"); 
     }
   };
 
@@ -89,7 +84,6 @@ export function App(props) {
       selectedTags.every((tag) => item.tags.includes(tag))
     );
     setFilteredData(newData);
-    console.log(filteredData);
   };
 
   console.log("wordset", wordSets);
