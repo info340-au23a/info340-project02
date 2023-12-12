@@ -160,7 +160,7 @@ export function ListBuilderView(props) {
     setSelectedWord(null);
   };
 
-  const onSubmitClick = async () => {
+  const onSubmitClick = () => {
     if (selectedTags.length === 0) {
       setAlertMessage("No selected Tags");
       return;
@@ -182,7 +182,9 @@ export function ListBuilderView(props) {
 
       const db = getDatabase();
       const wordSetsRef = firebaseRef(db, "wordSets"); 
-    
+      
+          const updatedWordSets = [...wordSets, newWordList];
+    setWordSets(updatedWordSets);
 
       // Push the new word list to the specified word set
       firebasePush(wordSetsRef, newWordList)
