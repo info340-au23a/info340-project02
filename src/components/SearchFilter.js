@@ -62,7 +62,6 @@ export function SearchInput(props) {
 // WordCard Component
 function WordCard(props) {
   const { dataObj, basePath } = props;
-  const cardLink = `/quiz/`;
 
   const dataObjTags = dataObj.tags.map((tag, index) => (
     <li key={index}>{index + 1}. {tag}</li>
@@ -133,18 +132,12 @@ export default function SearchFilter(props) {
   };
 
   useEffect(() => {
-    const filteredSets = filterWordSets(wordSets);
-
-    setFilteredWordSets(filteredSets);
+    setFilteredWordSets(filterWordSets(wordSets));
   }, [wordSets, selectedTags, searchTerm]);
 
   useEffect(() => {
     fetchWordSets();
   }, []);
-
-  useEffect(() => {
-    setFilteredWordSets(filterWordSets(filteredWordSets));
-  }, [selectedTags, searchTerm]);
 
   const toggleFilter = () => setIsFilterOpen(!isFilterOpen);
 
