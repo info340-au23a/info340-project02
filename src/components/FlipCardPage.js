@@ -39,9 +39,9 @@ export function FlipCardPage(props) {
       sentence: word.sentence || "No example sentence available."
     }));
     return (
-      <div className="flipcard-container">
-    <FlipCardList data={transformedWords} />
-    </div>
+      <div>
+      <FlipCardList data={transformedWords} />
+      </div>
     );
   } else {
     return (
