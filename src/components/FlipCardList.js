@@ -30,7 +30,7 @@ export function FlipCardList(props) {
   };
 
   return (
-    <div>
+    <div className="flipcard-container">
       <BackButton type="/flipcard"/>
       {data.length > 0 && (
         <FlipCard
