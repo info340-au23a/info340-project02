@@ -93,7 +93,7 @@ export function ListBuilderView(props) {
         entry.hwi.prs && entry.hwi.prs[0]?.sound?.audio
           ? `https://media.merriam-webster.com/audio/prons/en/us/mp3/${entry.hwi.prs[0].sound.audio[0]}/${entry.hwi.prs[0].sound.audio}.mp3`
           : null;
-          
+
       return {
         word: entry.hwi.hw.replace(/\*/g, ""),
         audio: audioLink,
@@ -160,9 +160,10 @@ export function ListBuilderView(props) {
     setSelectedWord(null);
   };
 
-  const onSubmitClick = () => {
+  const onSubmitClick = async () => {
     if (selectedTags.length === 0) {
       setAlertMessage("No selected Tags");
+      return;
     } else if (chosenWords.length === 0) {
       setAlertMessage("No selected words");
     } else if (listTitle.trim() === "") {
@@ -175,29 +176,43 @@ export function ListBuilderView(props) {
           word,
           audio,
           wordClass: wordClass || "",
-          // isSuggestion,
         })),
         authorUID: currentUser.userId,
       };
 
       const db = getDatabase();
-      const wordSetsRef = firebaseRef(db, "wordSets"); // Reference to a specific word set using the title
+      const wordSetsRef = firebaseRef(db, "wordSets"); 
+      
+      try {
+        await firebasePush(wordSetsRef, newWordList);
+
+        setWordSets([...wordSets, newWordList]);
+
+        setListTitle("");
+        setChosenWords([]);
+        setSelectedTags([]);
+        setSearchTerm("");
+        setAlertMessage("List created successfully!");
+      } catch (error) {
+        console.error("Error pushing data to Firebase:", error);
+        setAlertMessage("Error creating list");
+      }
 
       // Push the new word list to the specified word set
-      firebasePush(wordSetsRef, newWordList)
-        .then(() => {
-          // Clear the form after successfully pushing to the database
-          setWordSets([...wordSets, newWordList]);
-          setListTitle("");
-          setChosenWords([]);
-          setSelectedTags([]);
-          setSearchTerm("");
-          setAlertMessage("List created successfully!");
-        })
-        .catch((error) => {
-          console.error("Error pushing data to Firebase:", error);
-          setAlertMessage("Error creating list");
-        });
+    //   firebasePush(wordSetsRef, newWordList) {
+    //     .then(() => {
+    //       // Clear the form after successfully pushing to the database
+    //       setWordSets([...wordSets, newWordList]);
+    //       setListTitle("");
+    //       setChosenWords([]);
+    //       setSelectedTags([]);
+    //       setSearchTerm("");
+    //       setAlertMessage("List created successfully!");
+    //     })
+    //     .catch((error) => {
+    //       console.error("Error pushing data to Firebase:", error);
+    //       setAlertMessage("Error creating list");
+    //     });
     }
   };
 
@@ -205,15 +220,6 @@ export function ListBuilderView(props) {
     <>
       {currentUser.userId ? (
         <>
-          {alertMessage && (
-            <Alert
-              variant="light"
-              dismissible
-              onClose={() => setAlertMessage(null)}
-            >
-              {alertMessage}
-            </Alert>
-          )}
           {alertMessage && (
             <Alert
               variant="light"

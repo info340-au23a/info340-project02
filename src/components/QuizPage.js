@@ -43,7 +43,7 @@ export function QuizPage(props) {
           wordSets={props.wordSets}
           tagsData={props.tagsData}
           applyFilterCallback={props.handleFilterApply}
-          basePath="/flipcard"
+          basePath="/quiz"
         />
         {/* <div className="selector">
           <div className="searchTitle">
