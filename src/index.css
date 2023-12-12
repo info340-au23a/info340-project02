@@ -210,11 +210,6 @@ header .nav-item {
   margin-top: 16em;
 }
 
-/* .cardClassName {
-  margin-top: 25em;
-} */
-
-
 .flip-card {
   text-align: center;
   background-color: white;
@@ -815,6 +810,10 @@ footer p {
 
     .tags label {
       font-size: 20px;
+    }
+
+    .flipcard-container {
+      margin-top: 10em;
     }
 
   }
