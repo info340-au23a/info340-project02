@@ -468,6 +468,11 @@ button:hover,
   align-items: center;
 }
 
+.search-icon {
+  padding-top: 15px;
+  padding-right: 8px;
+}
+
 .input-bar {
   display: flex;
   justify-content: center;
