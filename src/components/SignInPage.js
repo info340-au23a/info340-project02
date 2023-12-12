@@ -4,8 +4,6 @@ import { getAuth, GoogleAuthProvider, EmailAuthProvider } from "firebase/auth";
 
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 
-import DEFAULT_USERS from "./data/sample-accounts.json";
-
 const firebaseUIConfig = {
   signInOptions: [
     GoogleAuthProvider.PROVIDER_ID,

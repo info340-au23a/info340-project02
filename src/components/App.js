@@ -17,7 +17,7 @@ export function App(props) {
   const [currentUser, setCurrentUser] = useState(props.accountsData[0]);
   const [wordSets, setWordSets] = useState([]);
 
-  const { wordsData, tagsData } = props;
+  const { tagsData } = props;
 
   const navigateTo = useNavigate();
 

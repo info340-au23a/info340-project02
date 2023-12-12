@@ -27,15 +27,6 @@ export function QuizPage(props) {
     });
   }, []);
 
-  const renderWordListButtons = () => {
-    return wordListData.map((wordList) => (
-      <div className="quiz-buttons-container" key={wordList.firebaseKey}>
-        <button onClick={() => navigate(`/quiz/${wordList.firebaseKey}`)}>
-          {wordList.title}
-        </button>
-      </div>
-    ));
-  };
 
   if (wordListId) {
     const selectedWordList = wordListData.find(list => list.firebaseKey === wordListId);

@@ -18,13 +18,6 @@ export function FlipCardList(props) {
     }
   };
 
-  const handleLast = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-      setIsCardFlipped(false);
-    }
-  };
-
   const handleCardFlip = () => {
     setIsCardFlipped(!isCardFlipped);
   };

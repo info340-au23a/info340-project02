@@ -4,7 +4,7 @@ import {BackButton} from './BackButton.js'
 
 function GenerateQuizCard(props) {
   const { words, index, input, setInput,
-    submitAnswer, showSummary, correctWords, incorrectWords, percentageRight } = props;
+    submitAnswer } = props;
 
 
   const handleSoundClick = () => {
@@ -43,7 +43,7 @@ function GenerateQuizCard(props) {
                 &#xf028;
               </button>
             </label>
-            <input id="word-input"
+            <input className="word-input"
               value={props.input}
               onChange={(e) => setInput(e.target.value)}
               maxLength={words.word.length}

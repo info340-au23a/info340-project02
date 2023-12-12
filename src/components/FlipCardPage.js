@@ -8,7 +8,6 @@ import { getDatabase, ref, onValue } from "firebase/database";
 export function FlipCardPage(props) {
   const [wordListData, setWordListData] = useState([]);
   const { wordListId } = useParams(); 
-  const navigate = useNavigate();
 
   useEffect(() => {
     const db = getDatabase();
@@ -56,8 +55,7 @@ export function FlipCardPage(props) {
             basePath="/flipcard"
           />
         </main>
-        <Footer imageRef="Flipcard sample photos originally from Pexels.com | 
-        Audio pronunciations created by Brittanica.com" />
+        <Footer imageRef="Audio pronunciations created by Brittanica.com" />
       </>
     );
   }
