@@ -122,6 +122,7 @@ export function QuizComponent(props) {
 
   return (
     <div className="quiz-container">
+      <h2>Spelling Quiz</h2>
             <div className="quiz-sidebar">
         <QuizSidebar
           wordListTitle={title}

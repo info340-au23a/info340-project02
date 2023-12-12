@@ -77,7 +77,6 @@ export function App(props) {
     });
   }, []);
 
-  console.log("wordset", wordSets);
   const changeUser = (userObj) => {
     console.log("logging in as", userObj.userName);
     setCurrentUser(userObj);
@@ -98,6 +97,7 @@ export function App(props) {
     console.log(filteredData);
   };
 
+  console.log("wordset", wordSets);
   return (
     <div className="appContainer">
       <NavBar currentUser={currentUser} changeUserFunction={changeUser} />
@@ -107,8 +107,9 @@ export function App(props) {
           path="flipcard"
           element={<FlipCardPage data={wordsData} currentUser={currentUser} />}
         />
-        <Route path="/quiz/:wordListId" element={<QuizPage data={wordSets} currentUser={currentUser} />} />{/* currentUser={currentUser} */}
-        <Route path="quiz" element={<QuizPage data={wordSets} currentUser={currentUser} />} />
+        
+        <Route path="/quiz/:wordListId" element={<QuizPage wordSets={wordSets} currentUser={currentUser} applyFilterCallback={handleFilterApply} tagsData={tagsData} />} />
+        <Route path="quiz" element={<QuizPage wordSets={wordSets} currentUser={currentUser} applyFilterCallback={handleFilterApply} tagsData={tagsData} />} />
         <Route
           path="create"
           element={
@@ -120,7 +121,7 @@ export function App(props) {
             />
           }
         />
-        <Route
+        {/* <Route
           path="search-filter"
           element={
             <SearchFilterPage
@@ -130,7 +131,7 @@ export function App(props) {
               tagsData={tagsData}
             />
           }
-        />
+        /> */}
         <Route
           path="account"
           element={

@@ -68,10 +68,10 @@ function WordCard(props) {
       <div className="card-deck">
         <div className="card">
           <div className="card-body">
-            <Link to={cardLink} className="card-link">
-              <h1 className="card-title">Title: {dataObj.title}</h1>
-            </Link>
-            <ul className="tagNames">
+          <Link to={`/quiz/${dataObj.firebaseKey}`} className="card-link">
+              <h1 className="card-title">{dataObj.title}</h1>
+            </Link>           
+             <ul className="tagNames">
               <p>- Labeled by tags -</p>
               {dataObj.tags.map((tag, index) => (
                 <li key={index}>{index + 1}. {tag}</li>
@@ -87,6 +87,8 @@ function WordCard(props) {
 // SearchFilter Component
 export default function SearchFilter(props) {
   const { wordSets } = props;
+  console.log('wordSets ', wordSets);
+  console.log(wordSets);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [selectedTags, setSelectedTags] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
