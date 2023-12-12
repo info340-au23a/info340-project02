@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { NavLink, Navigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Navigate } from "react-router-dom";
 
 import {
   getStorage,
